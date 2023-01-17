@@ -40,6 +40,12 @@ export type Gradient = {
   repeat?: boolean;
 }
 
+export type Transform = {
+  x?: string;
+  y?: string;
+  z?: string;
+}
+
 export type PanelOptions = {
   textShadows: Shadow[];
   boxShadows: Shadow[];
@@ -60,6 +66,14 @@ export type PanelOptions = {
     y?: string;
     v?: string;
   }
+  origin: {
+    x?: string;
+    y?: string;
+  };
+  scale: Transform;
+  translate: Transform;
+  rotate: Transform;
+  skew: Transform;
 
   transitions: {
     property: string;
@@ -92,6 +106,11 @@ export function createOptions(): Reactive<PanelOptions> {
     gradients: [],
     backgroundSize: {} as never,
     backgroundPosition: {} as never,
+    origin: {},
+    scale: {},
+    translate: {},
+    rotate: {},
+    skew: {},
   };
 
   return reactive<PanelOptions>(options, true);
@@ -136,7 +155,7 @@ export function joinFilters(filters: Filters, shadows: Shadow[]) {
   };
 }
 
-export function joinBackgrounds({ gradients, backgroundImage }: PanelOptions) {
+export function joinBackgrounds({ gradients, backgroundImage }: PanelOptions): string {
   for (const grad of gradients) {
     const value = gradientString(grad);
 
@@ -147,6 +166,44 @@ export function joinBackgrounds({ gradients, backgroundImage }: PanelOptions) {
 
   const gradient = gradients.map(item => item.value).join(',');
   return [ backgroundImage, gradient ].filter(item => item).join(', ');
+}
+
+export function joinTransforms({ scale, rotate, translate, skew }: PanelOptions): string {
+  const transforms = [];
+
+  if (scale.x || scale.y || scale.z) {
+    if (scale.z) {
+      transforms.push(`scale3d(${ scale.x || 1 }, ${ scale.y || 1 }, ${ scale.z || 1 })`);
+    } else {
+      transforms.push(`scale(${ scale.x || 1 }, ${ scale.y || 1 })`);
+    }
+  }
+
+  if (rotate.x) {
+    if (!rotate.y && !rotate.z) {
+      transforms.push(`rotate(${ rotate.x })`);
+    } else {
+      transforms.push(`rotateX(${ rotate.x })`);
+    }
+  }
+
+  if (rotate.y) {
+    transforms.push(`rotateY(${ rotate.y })`);
+  }
+
+  if (rotate.z) {
+    transforms.push(`rotateZ(${ rotate.z })`);
+  }
+
+  if (translate.x || translate.y || translate.z) {
+    transforms.push(`translate3d(${ translate.x || 0 }, ${ translate.y || 0 }, ${ translate.z || 0 })`);
+  }
+
+  if (skew.x || skew.y) {
+    transforms.push(`skew(${ skew.x || 0 }, ${ skew.y || 0 })`);
+  }
+
+  return transforms.join(' ');
 }
 
 const gradientString = ({ type, angle, shape, values }: Gradient) => {

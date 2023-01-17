@@ -1,12 +1,14 @@
 <script lang="ts">
   import type { Unit } from '@utils/panel';
-  import Hammer from 'hammerjs';
-  import { createEventDispatcher, onMount } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
   import PopUp from './PopUp.svelte';
 
   const dispatch = createEventDispatcher();
-  export let unit: Unit = '';
+  export let unit: Unit = undefined as never;
   export let name = '';
+  export let step = 1;
+  export let min = null;
+  export let max = null;
   export let value = '';
   export let disabled = false;
   export let placeholder = '';
@@ -22,17 +24,21 @@
   let focus = false;
   let unitMenuOpen = false;
 
-  if (unit) {
+  if (typeof unit === 'undefined') {
+    unit = 'px';
+  }
+
+  if (typeof unit !== 'undefined') {
     units = unit;
   }
 
   $: {
     if (value) {
-      count = parseInt(value).toString();
-      units = value.split(/\d+/)[1] || unit || 'px';
+      count = parseFloat(value).toString();
+      units = (value.match(/[a-z%]+$/) || [])[1] || unit;
     } else {
       count = '';
-      units = unit || 'px';
+      units = unit;
     }
   }
 
@@ -55,24 +61,24 @@
 
     dispatch('input', event.target);
   };
-
-  onMount(() => {
-    if (self) {
-      const ham = new Hammer(self);
-
-      ham.get('pan').set({ enable: true, direction: 6 });
-      ham.on('pan', (e) => {
-        if (e.deltaX > 0) {
-          count = (parseInt(count || '0') + 1).toString();
-        } else if (e.deltaX < 0) {
-          count = (parseInt(count || '0') - 1).toString();
-        }
-
-        value = `${ count }${ units }`;
-        dispatch('input', self);
-      });
-    }
-  });
+  //
+  // onMount(() => {
+  //   if (self) {
+  //     const ham = new Hammer(self);
+  //
+  //     ham.get('pan').set({ enable: true, direction: 6 });
+  //     ham.on('pan', (e) => {
+  //       if (e.deltaX > 0) {
+  //         count = (parseFloat(count || '0') + 1).toString();
+  //       } else if (e.deltaX < 0) {
+  //         count = (parseFloat(count || '0') - 1).toString();
+  //       }
+  //
+  //       value = `${ count }${ units }`;
+  //       dispatch('input', self);
+  //     });
+  //   }
+  // });
 </script>
 <div class="kanpas-input-unit flex-row-center-y {className}"
      class:focus
@@ -82,6 +88,9 @@
          {name}
          {placeholder}
          {disabled}
+         {min}
+         {max}
+         {step}
          value={count}
          bind:this={self}
          on:keyup={changeValue}
@@ -99,6 +108,7 @@
             <div class="unit-item" on:keypress on:click={() => changeUnit('em')}>Font - <span>em</span></div>
             <div class="unit-item" on:keypress on:click={() => changeUnit('vw')}>Viewport Width - <span>vw</span></div>
             <div class="unit-item" on:keypress on:click={() => changeUnit('vh')}>Viewport Height - <span>vh</span></div>
+            <div class="unit-item" on:keypress on:click={() => changeUnit('deg')}>Degree - <span>deg</span></div>
           </div>
         </PopUp>
       {/if}

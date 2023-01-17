@@ -12,6 +12,7 @@
   import Margin from '@components/panels/Margin.svelte';
   import Padding from '@components/panels/Padding.svelte';
   import Position from '@components/panels/Position.svelte';
+  import Transform from '@components/panels/Transform.svelte';
   import Transition from '@components/panels/Transition.svelte';
   import { createOptions, createStyles } from '@utils/panel';
   import Shadow from './panels/Shadow.svelte';
@@ -49,6 +50,8 @@
   <Border {styles}></Border>
   <div class="kanpas-separator-x"></div>
   <BorderRadius {styles}></BorderRadius>
+  <div class="kanpas-separator-x"></div>
+  <Transform {styles} {options}></Transform>
   <div class="kanpas-separator-x"></div>
   <DropShadow {styles} {options}></DropShadow>
   <div class="kanpas-separator-x"></div>

@@ -1,7 +1,7 @@
 <script lang="ts">
+  import Range from '@components/common/Range.svelte';
   import { createStyles } from '@utils/panel';
   import { capitalize } from '@utils/string.js';
-  import ColorPickerTrigger from '../colors/ColorPickerTrigger.svelte';
   import Icon from '../common/Icon.svelte';
   import Panel from '../common/Panel.svelte';
 
@@ -63,7 +63,7 @@
   </svelte:fragment>
   <div class="kanpas-panel-section flex-row-center-y" slot="panel-body">
     <span class="kanpas-panel-prop-label mdr-10">Opacity</span>
-    <input type="range" min="0" max="1" step="0.01" class="flex" bind:value={$styles.opacity}>
+    <Range max="1" step="0.01" fill="1" class="flex" bind:value={$styles.opacity}></Range>
     <span class="kanpas-prop-unit">{typeof $styles.opacity === 'undefined' ? 'auto' : $styles.opacity}</span>
     <Icon clickable
           tooltip="Revert"

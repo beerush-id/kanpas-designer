@@ -155,15 +155,18 @@
 
   .gradient-step {
     width: 6px;
-    height: 100%;
+    height: calc(100% + 8px);
     position: absolute;
-    top: 0;
+    top: -4px;
     margin-left: -3px;
-    border-radius: 10px;
+    border-radius: 3px;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
   }
 
   :global(.gradient-step .kanpas-color-picker-trigger) {
+    top: 50%;
+    left: 50%;
     opacity: 0;
+    transform: translate3d(-50%, -50%, 0);
   }
 </style>
