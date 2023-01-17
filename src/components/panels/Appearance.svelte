@@ -1,5 +1,6 @@
 <script lang="ts">
   import { createStyles } from '@utils/panel';
+  import { capitalize } from '@utils/string.js';
   import ColorPickerTrigger from '../colors/ColorPickerTrigger.svelte';
   import Icon from '../common/Icon.svelte';
   import Panel from '../common/Panel.svelte';
@@ -19,6 +20,22 @@
     styles.visibility = visibility;
   };
 
+  const blendings = [
+    'normal',
+    'multiply',
+    'screen',
+    'overlay',
+    'darken',
+    'lighten',
+    'color-dodge',
+    'color-burn',
+    'difference',
+    'exclusion',
+    'hue',
+    'saturation',
+    'luminosity'
+  ];
+
   $: {
     visibility = styles.visibility;
   }
@@ -32,17 +49,8 @@
   };
 </script>
 
-<Panel title="Appearance">
+<Panel title="Appearance" collapsible collapsed>
   <svelte:fragment slot="panel-head">
-    <Icon class="mdr-6">format_color_fill</Icon>
-    <ColorPickerTrigger tooltip="Background Color"
-                        class="mdr-10"
-                        bind:value={$styles.backgroundColor}
-                        bind:variable={$styles.backgroundColorVar}></ColorPickerTrigger>
-    <Icon class="mdr-6">format_color_text</Icon>
-    <ColorPickerTrigger tooltip="Foreground Color"
-                        bind:value={$styles.color} bind:variable={$styles.colorVar}></ColorPickerTrigger>
-    <div class="kanpas-separator-y"></div>
     <Icon clickable class="mdr-10"
           tooltip={!visibility ? 'Visibility' : visibility === 'visible' ? 'Visible': 'Hidden'}
           active={visibility}
@@ -53,7 +61,7 @@
           on:click={toggleNoAppearance}>disabled_visible
     </Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
+  <div class="kanpas-panel-section flex-row-center-y" slot="panel-body">
     <span class="kanpas-panel-prop-label mdr-10">Opacity</span>
     <input type="range" min="0" max="1" step="0.01" class="flex" bind:value={$styles.opacity}>
     <span class="kanpas-prop-unit">{typeof $styles.opacity === 'undefined' ? 'auto' : $styles.opacity}</span>
@@ -62,6 +70,38 @@
           class="mdl-10"
           active={typeof $styles.opacity !== 'undefined'}
           on:click={delete styles.opacity}>
+      settings_backup_restore
+    </Icon>
+  </div>
+  <div class="kanpas-panel-section flex-row-center-y">
+    <span class="kanpas-panel-prop-label mdr-10 flex">Blending Mode</span>
+    <select class="flex" bind:value={$styles.mixBlendMode}>
+      <option value={undefined}>Default</option>
+      {#each blendings as mode}
+        <option value={mode}>{capitalize(mode)}</option>
+      {/each}
+    </select>
+    <Icon clickable
+          tooltip="Revert"
+          class="mdl-10"
+          active={typeof $styles.mixBlendMode !== 'undefined'}
+          on:click={delete styles.mixBlendMode}>
+      settings_backup_restore
+    </Icon>
+  </div>
+  <div class="kanpas-panel-section flex-row-center-y">
+    <span class="kanpas-panel-prop-label mdr-10 flex">Background Blend</span>
+    <select class="flex" bind:value={$styles.backgroundBlendMode}>
+      <option value={undefined}>Default</option>
+      {#each blendings as mode}
+        <option value={mode}>{capitalize(mode)}</option>
+      {/each}
+    </select>
+    <Icon clickable
+          tooltip="Revert"
+          class="mdl-10"
+          active={typeof $styles.backgroundBlendMode !== 'undefined'}
+          on:click={delete styles.backgroundBlendMode}>
       settings_backup_restore
     </Icon>
   </div>

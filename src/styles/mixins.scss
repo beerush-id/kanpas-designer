@@ -116,6 +116,7 @@
     line-height: 1;
     border: 1px solid var(--kanpas-color-input-line);
     border-radius: var(--kanpas-radius-small);
+    min-width: 0;
 
     &::placeholder {
       font-family: var(--kanpas-font-body);
@@ -387,6 +388,22 @@
 
       &.items-center {
         align-items: center;
+      }
+
+      &.items-start {
+        align-items: flex-start;
+      }
+
+      &.items-end {
+        align-items: flex-end;
+      }
+
+      &.content-start {
+        align-content: flex-start;
+      }
+
+      &.content-end {
+        align-content: flex-end;
       }
 
       &.content-center {

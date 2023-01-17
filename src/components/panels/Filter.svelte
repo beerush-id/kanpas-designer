@@ -1,7 +1,7 @@
 <script lang="ts">
   import Icon from '@components/common/Icon.svelte';
   import Panel from '@components/common/Panel.svelte';
-  import { createOptions, createStyles, type Filters } from '@utils/panel';
+  import { createOptions, createStyles, joinFilters } from '@utils/panel';
 
   export let styles = createStyles();
   export let options = createOptions();
@@ -9,18 +9,6 @@
 
   const key = role === 'filter' ? 'filters' : 'backdropFilters';
   const propKey = role === 'filter' ? 'filter' : 'backdropFilter';
-
-  const units: Filters = {
-    blur: 'px',
-    brightness: '',
-    contrast: '%',
-    grayscale: '%',
-    hueRotate: 'deg',
-    invert: '%',
-    opacity: '%',
-    saturate: '%',
-    sepia: '%'
-  };
 
   const removeFilter = (name: string) => {
     if (typeof options[key][name] === 'number') {
@@ -31,18 +19,23 @@
   };
 
   const updateFilter = () => {
-    const active: string[] = [];
+    const { filter, filterVar } = joinFilters(options[key], role === 'filter' ? options.dropShadows : []);
 
-    for (const [ prop, value ] of Object.entries(options[key])) {
-      if (typeof value !== 'undefined' && value !== '') {
-        active.push(`${ prop.replace(/[A-Z]/g, m => `-${ m.toLowerCase() }`) }(${ value }${ units[prop] })`);
+    if (filter || filterVar) {
+      if (filter) {
+        styles[propKey] = filter;
+      } else {
+        delete styles[propKey];
       }
-    }
 
-    if (active.length) {
-      styles[propKey] = active.join(' ');
+      if (filterVar) {
+        styles[`${ propKey }Var`] = filterVar;
+      } else {
+        delete styles[`${ propKey }Var`];
+      }
     } else {
       delete styles[propKey];
+      delete styles[`${ propKey }Var`];
     }
   };
 

@@ -134,6 +134,10 @@
     &.focus {
       border-color: var(--kanpas-color-input-line-active);
     }
+
+    &.small input {
+      width: 32px;
+    }
   }
 
   .kanpas-panel-value-unit {

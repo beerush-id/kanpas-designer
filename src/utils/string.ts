@@ -14,6 +14,10 @@ export function humanize(text: string, capital?: boolean): string {
   return capital ? capitalize(result) : result;
 }
 
+export function dash(text: string): string {
+  return text.replace(/[A-Z]/g, m => `-${ m.toLowerCase() }`);
+}
+
 export function makePath(path: string): string {
   const allowed = path.replace(/\s+/g, '-').match(/[\w-_.\/:]+/g) || [];
   return cleanPath(allowed.join('').toLowerCase());

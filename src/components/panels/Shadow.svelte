@@ -59,7 +59,7 @@
 </script>
 
 <Panel title={role === 'box' ? 'Box Shadow' : 'Text Shadow'}
-       icon="ev_shadow"
+       icon={role === 'box' ? 'token' : 'hdr_auto'}
        collapsible
        collapsed={!$options[optKey].length}>
   <svelte:fragment slot="panel-head">

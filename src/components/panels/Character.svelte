@@ -153,6 +153,7 @@
                bind:value={$styles.fontSize}>
       <PopUp>Text Size</PopUp>
     </InputUnit>
+    <Icon class="mdl-10">format_color_text</Icon>
     <ColorPickerTrigger class="mdl-4"
                         tooltip="Text Color"
                         bind:value={$styles.color}

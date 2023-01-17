@@ -136,7 +136,12 @@
       if (trigger === 'hover' || trigger === 'mixed') {
         parent.addEventListener('mouseenter', activate);
         parent.addEventListener('mouseleave', deactivate);
-        parent.addEventListener('click', syncPos);
+
+        if (trigger === 'hover') {
+          parent.addEventListener('click', deactivate);
+        } else {
+          parent.addEventListener('click', syncPos);
+        }
       } else if (trigger === 'click') {
         parent.addEventListener('click', activate);
       }
@@ -165,11 +170,11 @@
       class:active
       bind:this={element}
       style="text-align: {align}">
-      <slot />
+      <slot/>
     </span>
   {:else if role === 'overlay'}
     <div class="kanpas-overlay kanpas-acrylic" bind:this={element}>
-      <slot />
+      <slot/>
     </div>
   {:else}
     <div
@@ -182,7 +187,7 @@
       on:keypress
       on:mouseenter={trigger === 'hover' || trigger === 'mixed' ? reactivate : null}
       on:mouseleave={trigger === 'hover' ? deactivate : null}>
-      <slot />
+      <slot/>
     </div>
   {/if}
   {#if active && (trigger === 'click' || trigger === 'mixed')}
@@ -192,7 +197,7 @@
       on:mouseenter={deactivateMixed}
       on:mouseleave={cancelDeactivateMixed}
       on:keypress
-      on:click|stopPropagation|preventDefault={deactivate} />
+      on:click|stopPropagation|preventDefault={deactivate}/>
   {/if}
 {/if}
 

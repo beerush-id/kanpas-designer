@@ -1,6 +1,5 @@
 <script lang="ts">
   import { i18n } from '@actions/i18n.js';
-  import Icon from '@components/common/Icon.svelte';
   import { createStyles } from '@utils/panel';
   import ColorPickerTrigger from '../colors/ColorPickerTrigger.svelte';
   import InputUnit from '../common/InputUnit.svelte';
@@ -89,16 +88,14 @@
   };
 </script>
 
-<Panel title collapsible collapsed>
+<Panel icon="border_all" title="Border" collapsible collapsed>
   <svelte:fragment slot="panel-head">
-    <Icon size="medium" tooltip="Borders">border_all</Icon>
-    <span class="flex"></span>
-    <InputUnit placeholder="Size"
+    <InputUnit placeholder="Size" class="small"
                bind:value={$styles.borderWidth}
                on:input={() => borderChange('border')}></InputUnit>
     <select class="mdl-4"
             bind:value={$styles.borderStyle}
-            on:change={() => borderChange('border')}>
+            on:change={() => borderChange('border')} style:width="70px">
       {#each borderStyles as pos}
         <option value={pos.value}>{pos.label}</option>
       {/each}

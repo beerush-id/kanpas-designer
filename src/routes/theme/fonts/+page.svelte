@@ -105,7 +105,8 @@
             }
 
             if (value !== '') {
-              propCSS += `  ${ key.replace(/[A-Z]/g, str => '-' + str.toLowerCase()) }: ${ value };\r\n`;
+              propCSS += `  ${ key.replace('webkit', '-webkit')
+                .replace(/[A-Z]/g, str => '-' + str.toLowerCase()) }: ${ value };\r\n`;
             }
           }
         }
