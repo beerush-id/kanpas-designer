@@ -1,0 +1,167 @@
+[
+  {
+    "name": "heading",
+    "label": "Headings",
+    "icon": "view_headline",
+    "elements": [
+      {
+        "tag": "h1",
+        "label": "Heading 1"
+      },
+      {
+        "tag": "h2",
+        "label": "Heading 2"
+      },
+      {
+        "tag": "h3",
+        "label": "Heading 3"
+      },
+      {
+        "tag": "h4",
+        "label": "Heading 4"
+      },
+      {
+        "tag": "h5",
+        "label": "Heading 5"
+      },
+      {
+        "tag": "h6",
+        "label": "Heading 6"
+      }
+    ]
+  },
+  {
+    "name": "text",
+    "label": "Text Elements",
+    "icon": "text_fields",
+    "elements": [
+      {
+        "tag": "p",
+        "label": "Paragraph"
+      },
+      {
+        "tag": "blockquote",
+        "label": "Quote"
+      },
+      {
+        "tag": "span",
+        "label": "Inline Text"
+      },
+      {
+        "tag": "a",
+        "label": "Hyperlink"
+      },
+      {
+        "tag": "strong",
+        "label": "Bold Text"
+      }
+    ]
+  },
+  {
+    "name": "form",
+    "label": "Forms & Inputs",
+    "icon": "post_add",
+    "elements": [
+      {
+        "tag": "form",
+        "label": "Form"
+      },
+      {
+        "tag": "button",
+        "label": "Button",
+        "variants": [
+          {
+            "name": "outlined",
+            "label": "Outlined"
+          },
+          {
+            "name": "borderless",
+            "label": "Borderless"
+          }
+        ]
+      },
+      {
+        "tag": "input",
+        "label": "Input"
+      },
+      {
+        "tag": "input",
+        "type": "checkbox",
+        "label": "Checkbox"
+      },
+      {
+        "tag": "input",
+        "type": "date",
+        "label": "Date"
+      },
+      {
+        "tag": "input",
+        "type": "datetime-local",
+        "label": "Date - Time"
+      },
+      {
+        "tag": "input",
+        "type": "email",
+        "label": "Email"
+      },
+      {
+        "tag": "input",
+        "type": "file",
+        "label": "File"
+      },
+      {
+        "tag": "input",
+        "type": "number",
+        "label": "Number"
+      },
+      {
+        "tag": "input",
+        "type": "password",
+        "label": "Password"
+      },
+      {
+        "tag": "input",
+        "type": "radio",
+        "label": "Radio"
+      },
+      {
+        "tag": "input",
+        "type": "range",
+        "label": "Slider"
+      },
+      {
+        "tag": "input",
+        "type": "submit",
+        "label": "Submit"
+      },
+      {
+        "tag": "input",
+        "type": "tel",
+        "label": "Telephone"
+      },
+      {
+        "tag": "input",
+        "type": "text",
+        "label": "Text Field"
+      },
+      {
+        "tag": "input",
+        "type": "time",
+        "label": "Time"
+      },
+      {
+        "tag": "input",
+        "type": "time",
+        "label": "Time"
+      },
+      {
+        "tag": "select",
+        "label": "Dropdown"
+      },
+      {
+        "tag": "textarea",
+        "label": "Text Area"
+      }
+    ]
+  }
+]

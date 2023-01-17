@@ -1,0 +1,29 @@
+[
+  {
+    "name": "visit",
+    "target": "feature",
+    "targetName": "/",
+    "description": "Open www.app.com",
+    "actions": [
+      {
+        "name": "show",
+        "target": "element",
+        "targetName": "h1",
+        "inputs": "Hello World",
+        "description": "See a Hello World"
+      },
+      {
+        "name": "show",
+        "target": "element",
+        "targetName": "p",
+        "description": "See a welcome message from Kanpas."
+      },
+      {
+        "name": "show",
+        "target": "element",
+        "targetName": "a",
+        "description": "See a link to Login."
+      }
+    ]
+  }
+]

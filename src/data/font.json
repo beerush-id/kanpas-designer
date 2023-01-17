@@ -1,0 +1,241 @@
+[
+  {
+    "name": "Open Sans",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');",
+    "weights": ["300", "400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "light",
+        "label": "Light",
+        "value": "300"
+      },
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": "600"
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": "700"
+      }
+    ]
+  },
+  {
+    "name": "Montserrat",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');",
+    "weights": ["300", "400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "light",
+        "label": "Light",
+        "value": "300"
+      },
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": "600"
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": "700"
+      }
+    ]
+  },
+  {
+    "name": "Oswald",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');",
+    "weights": ["200", "300", "400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "extra-light",
+        "label": "Extra Light",
+        "value": "200"
+      },
+      {
+        "name": "light",
+        "label": "Light",
+        "value": "300"
+      },
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": "600"
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": "700"
+      }
+    ]
+  },
+  {
+    "name": "Raleway",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');",
+    "weights": ["200", "300", "400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "extra-light",
+        "label": "Extra Light",
+        "value": "200"
+      },
+      {
+        "name": "light",
+        "label": "Light",
+        "value": "300"
+      },
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": "600"
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": "700"
+      }
+    ]
+  },
+  {
+    "name": "Chivo Mono",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');",
+    "weights": ["200", "300", "400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "extra-light",
+        "label": "Extra Light",
+        "value": "200"
+      },
+      {
+        "name": "light",
+        "label": "Light",
+        "value": "300"
+      },
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": 600
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": 700
+      }
+    ]
+  },
+  {
+    "name": "Caveat",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');",
+    "weights": ["400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": "600"
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": "700"
+      }
+    ]
+  },
+  {
+    "name": "Josefin Slab",
+    "css": "@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');",
+    "weights": ["200", "300", "400", "500", "600", "700"],
+    "weightMaps": [
+      {
+        "name": "extra-light",
+        "label": "Extra Light",
+        "value": "200"
+      },
+      {
+        "name": "light",
+        "label": "Light",
+        "value": "300"
+      },
+      {
+        "name": "regular",
+        "label": "Regular",
+        "value": "400"
+      },
+      {
+        "name": "medium",
+        "label": "Medium",
+        "value": "500"
+      },
+      {
+        "name": "bold",
+        "label": "Bold",
+        "value": "600"
+      },
+      {
+        "name": "extra-bold",
+        "label": "Extra Bold",
+        "value": "700"
+      }
+    ]
+  }
+]

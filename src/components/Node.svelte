@@ -1,0 +1,356 @@
+<script lang="ts">
+  import Icon from '@components/common/Icon.svelte';
+  import { scaleOut } from '@services/transition';
+
+  export let type: 'feature' | 'element' | 'component' | 'action' = 'element';
+  export let root = false;
+  export let aside = false;
+  export let color = '';
+  export let hasChildren = false;
+  export let hasAside = false;
+  export let expanded = false;
+
+  const icons = {
+    feature: 'dashboard',
+    element: 'html',
+    component: 'category',
+    action: 'ads_click',
+    visit: 'travel_explore'
+  };
+</script>
+
+<div out:scaleOut class="kanpas-node kanpas-scale-in" class:root class:aside
+     style:--kanpas-color-node-line={color}>
+  <div class="kanpas-node-self"
+       class:has-children={hasChildren}
+       class:has-aside={hasAside}
+       class:expanded>
+    {#if root}
+      <div class="kanpas-node-root-flag">
+        <Icon>label</Icon>
+      </div>
+    {/if}
+    <div class="kanpas-node-head">
+      <div class="kanpas-node-icon mdb-10">
+        <slot name="node-icon">
+          <Icon size="medium">{icons[type]}</Icon>
+        </slot>
+      </div>
+      <slot name="head"></slot>
+      <div class="node-prefix">
+        <slot name="prefix">a</slot>
+      </div>
+      <div class="node-suffix">
+        <slot name="suffix">Contains</slot>
+      </div>
+
+      <div class="node-step-button">
+        <slot name="node-menu"></slot>
+      </div>
+      <div class="node-action action-top">
+        <slot name="action-top"></slot>
+      </div>
+      <div class="node-action action-left">
+        <slot name="action-left"></slot>
+      </div>
+
+      <div class="node-action action-right">
+        <slot name="action-right">
+          <Icon clickable xDir="after" yDir="between" tooltip="Add">add</Icon>
+        </slot>
+      </div>
+
+      <div class="node-action action-bottom">
+        <slot name="action-bottom">
+          {#if hasChildren}
+            <Icon clickable
+                  tooltip={expanded ? 'Collapse' : 'Expand'}
+                  on:click={() => expanded = !expanded}>{expanded ? 'expand_less' : 'expand_more'}</Icon>
+          {:else}
+            <Icon clickable
+                  tooltip="Add"
+                  on:click={() => expanded = !expanded}>add
+            </Icon>
+          {/if}
+        </slot>
+      </div>
+    </div>
+    {#if expanded}
+      <div class="kanpas-node-children">
+        <slot></slot>
+      </div>
+    {/if}
+  </div>
+  <div class="kanpas-node-aside flex-row" class:has-aside={hasAside}>
+    <slot name="node-aside"></slot>
+  </div>
+</div>
+
+<style lang="scss">
+  .kanpas-node {
+    margin: 172px 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+
+    & > .kanpas-node-self > .kanpas-node-head:before {
+      content: "";
+      display: block;
+      width: 2px;
+      height: calc(100% + 174px);
+      background-color: var(--kanpas-color-node-line);
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-bottom: -94px;
+      margin-left: -1px;
+      z-index: -1;
+    }
+
+    & > .kanpas-node-self:not(.has-children) > .kanpas-node-head:before,
+    & > .kanpas-node-self:not(.expanded) > .kanpas-node-head:before {
+      height: calc(100% + 132px);
+      margin-bottom: -54px;
+    }
+
+    &:first-child > .kanpas-node-self > .kanpas-node-head:before,
+    &:last-child > .kanpas-node-self > .kanpas-node-head:before,
+    &.aside:last-child > .kanpas-node-self > .kanpas-node-head:before {
+      height: calc(100% + 128px - 22px);
+    }
+
+    & > .kanpas-node-self:after {
+      content: "";
+      display: block;
+      width: calc(100% + 172px);
+      height: 39px;
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 128px - 74px - 15px);
+      transform: translate3d(-50%, 0, 0);
+      border-top: 2px solid var(--kanpas-color-node-line);
+    }
+
+    &:first-child > .kanpas-node-self:after {
+      width: calc(50% + 64px);
+      transform: none;
+      border-left: 2px solid var(--kanpas-color-node-line);
+      border-top-left-radius: 15px;
+      margin-left: -1px;
+    }
+
+    &:last-child > .kanpas-node-self:after {
+      width: calc(50% + 64px);
+      transform: none;
+      left: unset;
+      right: 50%;
+      border-right: 2px solid var(--kanpas-color-node-line);
+      border-top-right-radius: 15px;
+      margin-right: -1px;
+    }
+
+    &:not(.aside):first-child:last-child > .kanpas-node-self:after,
+    &.root > .kanpas-node-self:after,
+    &.aside > .kanpas-node-self:after {
+      width: 2px;
+      height: 41px;
+      border: none;
+      background-color: var(--kanpas-color-node-line);
+    }
+  }
+
+  .kanpas-node-root-flag {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-left: -16px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 78px;
+    background-color: var(--kanpas-color-node-bg);
+    box-shadow: 0 0 0 2px var(--kanpas-color-node-line);
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .kanpas-node-self, .kanpas-node-head {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .kanpas-node-self.has-aside:before {
+    content: "";
+    display: block;
+    width: calc(50% + 64px);
+    border-top: 2px solid var(--kanpas-color-node-line);
+    position: absolute;
+    left: calc(50% + 32px);
+    top: 52px;
+    transition: all .3s ease-in-out;
+  }
+
+  .kanpas-node-aside {
+    margin-top: -40px;
+    position: relative;
+
+    &.has-aside:before,
+    &.has-aside:after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+
+    &.has-aside:before {
+      border-top: 2px solid var(--kanpas-color-node-line);
+      border-right: 2px solid var(--kanpas-color-node-line);
+      top: 92px;
+      width: calc(100% - 32px);
+      right: 32px;
+    }
+
+    &.has-aside:after {
+      width: 2px;
+      height: 12px;
+      background-color: var(--kanpas-color-node-line);
+      position: absolute;
+      right: 32px;
+      top: 87px;
+      border-radius: 50%;
+    }
+  }
+
+  .kanpas-node-head {
+    padding: var(--kanpas-space-small);
+    background-color: var(--kanpas-color-node-bg);
+    border-radius: 10px;
+    white-space: nowrap;
+    min-width: 150px;
+
+    &:hover {
+      .node-action:not(:empty) {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .node-prefix, .node-suffix {
+    position: absolute;
+    left: 50%;
+    transform: translate3d(-50%, 0, 0);
+    background-color: var(--kanpas-color-node-tips-bg);
+    font-size: var(--kanpas-font-hints);
+    padding: var(--kanpas-space-tight) var(--kanpas-space-small);
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .node-step-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+  }
+
+  .node-prefix {
+    bottom: 100%;
+    margin-bottom: 10px;
+    box-shadow: 0 0 0 2px var(--kanpas-color-node-tips-line);
+  }
+
+  .node-suffix {
+    top: 100%;
+    margin-top: 10px;
+    box-shadow: 0 0 0 2px var(--kanpas-color-node-tips-line-alt);
+  }
+
+  .node-action {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    min-height: 24px;
+    background-color: var(--kanpas-color-node-tips-bg);
+    border: 2px solid var(--kanpas-color-node-line);
+    position: absolute;
+    z-index: 1;
+    border-radius: 12px;
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out, padding .3s ease-in-out,
+    margin .2s ease-in-out, width .3s ease-in-out, height .3s ease-in-out, transform .3s ease-in-out,
+    top .3s ease-in-out, left .3s ease-in-out, right .3s ease-in-out, bottom .3s ease-in-out;
+    //transition: all .3s ease-in-out;
+
+    &.action-top, &.action-bottom {
+      left: 50%;
+      margin-left: -12px;
+    }
+
+    &.action-left, &.action-right {
+      top: 50%;
+      margin-top: -12px;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.action-top {
+      bottom: 100%;
+      margin-bottom: 46px;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &.action-right {
+      opacity: 1;
+      visibility: visible;
+      flex-direction: column;
+      left: 100%;
+      margin-left: 6px;
+      margin-top: 0;
+      transform: translate3d(0, -50%, 0);
+
+      &:not(:empty) {
+        padding: 8px 0;
+      }
+    }
+
+    &.action-bottom {
+      top: 100%;
+      margin-top: 54px;
+    }
+
+    &.action-left {
+      right: 100%;
+      margin-right: 6px;
+    }
+
+    &:empty {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .kanpas-node-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--kanpas-color-node-bg-alt);
+    border-radius: 50%;
+  }
+
+  .kanpas-node-children {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+</style>

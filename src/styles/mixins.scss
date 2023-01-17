@@ -1,0 +1,534 @@
+@use "sass:map";
+@import "theme";
+
+@mixin size-variables() {
+  :root {
+    --#{$variable-prefix}-space: 24px;
+    @each $name, $size in $named-spaces {
+      --#{$variable-prefix}-space-#{$name}: #{$size};
+    }
+    @each $i in $sized-spaces {
+      --#{$variable-prefix}-space-#{$i}: #{$i}px;
+    }
+    @each $name, $size in $text-sizes {
+      --#{$variable-prefix}-text-#{$name}: #{$size};
+    }
+  }
+}
+
+@mixin color-variables($base-colors:true, $action-colors:true, $dark-theme:true) {
+  :root {
+    @if $base-colors == true {
+      @each $name, $colors in $color-swatches {
+        @each $size, $color in $colors {
+          --#{$variable-prefix}-color-#{""+$name}-#{$size}: #{$color};
+        }
+      }
+    }
+
+    @if $action-colors == true {
+      @each $group, $colors in $color-actions {
+        @each $state, $i in map.get($colors, 'light') {
+          --#{$variable-prefix}-color-#{$group}-#{$state}: var(--#{$variable-prefix}-color-#{map.get($colors, 'color')}-#{$i});
+        }
+      }
+    }
+
+    @if $dark-theme == true {
+      @media (prefers-color-scheme: dark) {
+        @each $group, $colors in $color-actions {
+          @each $state, $i in map.get($colors, 'dark') {
+            --#{$variable-prefix}-color-#{$group}-#{$state}: var(--#{$variable-prefix}-color-#{map.get($colors, 'color')}-#{$i});
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin background-colors {
+  @each $name, $colors in $color-swatches {
+    .bg-#{""+$name} {
+      background-color: var(--#{$variable-prefix}-color-#{$name}-600);
+    }
+
+    @each $size, $color in $colors {
+      .bg-#{""+$name}-#{$size} {
+        background-color: var(--#{$variable-prefix}-color-#{$name}-#{$size});
+      }
+    }
+  }
+}
+
+@mixin foreground-colors {
+  @each $name, $colors in $color-swatches {
+    .fg-#{""+$name} {
+      color: var(--#{$variable-prefix}-color-#{$name}-600);
+    }
+
+    @each $size, $color in $colors {
+      .fg-#{""+$name}-#{$size} {
+        color: var(--#{$variable-prefix}-color-#{$name}-#{$size});
+      }
+    }
+  }
+}
+
+@mixin colors {
+  @include color-variables;
+  @include background-colors;
+  @include foreground-colors;
+}
+
+@mixin resets {
+  @each $h in (h1, h2, h3, h4, h5, h6) {
+    #{$h} {
+      font-size: var(--kanpas-font-#{$h});
+      color: var(--kanpas-color-title);
+      margin: 0;
+    }
+  }
+
+  h6 {
+    font-weight: 500;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a, input, button, select, textarea, input {
+    transition: all .2s ease-in-out;
+  }
+
+  select.active {
+    border-color: var(--kanpas-color-success-active);
+  }
+
+  select, textarea, input {
+    outline: none;
+    color: var(--kanpas-color-foreground);
+    background-color: var(--kanpas-color-input-bg);
+    font-family: var(--kanpas-font-body);
+    font-size: var(--kanpas-font-subtitle);
+    line-height: 1;
+    border: 1px solid var(--kanpas-color-input-line);
+    border-radius: var(--kanpas-radius-small);
+
+    &::placeholder {
+      font-family: var(--kanpas-font-body);
+      color: var(--kanpas-color-foreground);
+      opacity: 0.75;
+    }
+
+    &:hover {
+      border-color: var(--kanpas-color-input-line-hover);
+    }
+
+    &:focus {
+      border-color: var(--kanpas-color-input-line-active);
+    }
+
+    &.disabled, &[disabled] {
+      pointer-events: none;
+      opacity: 0.5;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    outline: none;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+  }
+
+  input, textarea {
+    font-family: var(--kanpas-font), sans-serif;
+    overflow: unset;
+    padding: 2px 8px;
+  }
+
+  [contenteditable] {
+    outline: none;
+    transition: all .2s ease-in-out;
+    position: relative;
+
+    &:hover {
+      color: var(--kanpas-color-input-line-active);
+    }
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: calc(100% + 7px);
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -2px;
+      border: 1px solid var(--kanpas-color-input-line-active);
+      margin-top: -4px;
+      border-radius: var(--kanpas-radius-small);
+      opacity: 0;
+      visibility: visible;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    &:focus {
+      padding: 0 10px;
+
+      &:before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  button {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--kanpas-font-body);
+    padding: var(--kanpas-space-tight) var(--kanpas-space-small);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1px;
+    appearance: none;
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: var(--kanpas-radius-small);
+    background-color: transparent;
+    cursor: pointer;
+
+    .kanpas-icon:first-child:not(:last-child) {
+      margin-right: 8px;
+    }
+
+    .kanpas-icon:last-child:not(:first-child) {
+      margin-left: 8px;
+    }
+
+    &.elevate {
+      box-shadow: 0 0 5px var(--kanpas-color-shadow);
+    }
+
+    &.primary {
+      background-color: var(--kanpas-color-primary-normal);
+      color: var(--kanpas-color-primary-fg);
+
+      &:hover {
+        background-color: var(--kanpas-color-primary-hover);
+      }
+
+      &:focus, &:active {
+        background-color: var(--kanpas-color-primary-active);
+      }
+    }
+
+    &.positive {
+      background-color: var(--kanpas-color-success-normal);
+      color: var(--kanpas-color-success-fg);
+
+      &:hover {
+        background-color: var(--kanpas-color-success-hover);
+      }
+
+      &:focus, &:active {
+        background-color: var(--kanpas-color-success-active);
+      }
+    }
+
+    &.negative {
+      background-color: var(--kanpas-color-accent-normal);
+      color: var(--kanpas-color-accent-fg);
+
+      &:hover {
+        background-color: var(--kanpas-color-accent-hover);
+      }
+
+      &:focus, &:active {
+        background-color: var(--kanpas-color-accent-active);
+      }
+    }
+
+    &.destructive {
+      background-color: var(--kanpas-color-warn-normal);
+      color: var(--kanpas-color-warn-fg);
+
+      &:hover {
+        background-color: var(--kanpas-color-warn-hover);
+      }
+
+      &:focus, &:active {
+        background-color: var(--kanpas-color-warn-active);
+      }
+    }
+
+    &.outline {
+      background-color: transparent;
+
+      &.primary:not(:hover) {
+        border-color: var(--kanpas-color-primary-normal);
+        color: var(--kanpas-color-primary-normal);
+      }
+
+      &.positive:not(:hover) {
+        border-color: var(--kanpas-color-success-normal);
+        color: var(--kanpas-color-success-normal);
+      }
+
+      &.negative:not(:hover) {
+        border-color: var(--kanpas-color-accent-normal);
+        color: var(--kanpas-color-accent-normal);
+      }
+
+      &.destructive:not(:hover) {
+        border-color: var(--kanpas-color-warn-normal);
+        color: var(--kanpas-color-warn-normal);
+      }
+    }
+
+    &.borderless {
+      border-color: transparent;
+      background-color: transparent;
+
+      &.primary:not(:hover) {
+        color: var(--kanpas-color-primary-normal);
+      }
+
+      &.positive:not(:hover) {
+        color: var(--kanpas-color-success-normal);
+      }
+
+      &.negative:not(:hover) {
+        color: var(--kanpas-color-accent-normal);
+      }
+
+      &.destructive:not(:hover) {
+        color: var(--kanpas-color-warn-normal);
+      }
+    }
+
+    &.disabled, &:disabled {
+      opacity: 1;
+      pointer-events: none;
+
+      &.primary {
+        &:not(.borderless):not(.outline) {
+          background-color: var(--kanpas-color-primary-disabled);
+        }
+
+        &.outline {
+          border-color: var(--kanpas-color-primary-disabled);
+        }
+
+        &.outline, &.borderless {
+          color: var(--kanpas-color-primary-disabled);
+        }
+      }
+
+      &.positive {
+        &:not(.borderless):not(.outline) {
+          background-color: var(--kanpas-color-success-disabled);
+        }
+
+        &.outline {
+          border-color: var(--kanpas-color-success-disabled);
+        }
+
+        &.outline, &.borderless {
+          color: var(--kanpas-color-success-disabled);
+        }
+      }
+
+      &.negative {
+        &:not(.borderless):not(.outline) {
+          background-color: var(--kanpas-color-accent-disabled);
+        }
+
+        &.outline {
+          border-color: var(--kanpas-color-accent-disabled);
+        }
+
+        &.outline, &.borderless {
+          color: var(--kanpas-color-accent-disabled);
+        }
+      }
+
+      &.destructive {
+        &:not(.borderless):not(.outline) {
+          background-color: var(--kanpas-color-warn-disabled);
+        }
+
+        &.outline {
+          border-color: var(--kanpas-color-warn-disabled);
+        }
+
+        &.outline, &.borderless {
+          color: var(--kanpas-color-warn-disabled);
+        }
+      }
+    }
+  }
+}
+
+@mixin layouts {
+  .flex {
+    flex: 1;
+  }
+
+  @each $dir in (row, column) {
+    .flex-#{$dir} {
+      display: flex;
+      flex-direction: $dir;
+
+      &.items-center {
+        align-items: center;
+      }
+
+      &.content-center {
+        justify-content: center;
+      }
+    }
+
+    .flex-#{$dir}-center {
+      display: flex;
+      flex-direction: $dir;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flex-#{$dir}-center-x {
+      display: flex;
+      flex-direction: $dir;
+      @if $dir == row {
+        justify-content: center;
+      }
+      @if $dir == column {
+        align-items: center;
+      }
+    }
+
+    .flex-#{$dir}-center-y {
+      display: flex;
+      flex-direction: $dir;
+      @if $dir == row {
+        align-items: center;
+      }
+      @if $dir == column {
+        justify-content: center;
+      }
+    }
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .full-height {
+    height: 100%;
+  }
+
+  .-strong {
+    font-weight: 600;
+  }
+
+  .-label {
+    opacity: 0.8;
+  }
+}
+
+@mixin spacing {
+  @each $i, $size in (1:--kanpas-space-small, 2:--kanpas-space, 3:--kanpas-space-large) {
+    @each $n, $p in (p:padding, m:margin) {
+      .#{$n}-#{$i} {
+        #{$p}: var($size);
+      }
+    }
+
+    @each $d, $p in (l:left, t:top, r:right, b:bottom) {
+      .p#{$d}-#{$i} {
+        padding-#{$p}: var(#{$size});
+      }
+      .m#{$d}-#{$i} {
+        margin-#{$p}: var(#{$size});
+      }
+    }
+
+    @each $d, $prop in (x:(left, right), y:(top, bottom)) {
+      .p#{$d}-#{$i} {
+        @each $p in $prop {
+          padding-#{$p}: var($size);
+        }
+      }
+      .m#{$d}-#{$i} {
+        @each $p in $prop {
+          margin-#{$p}: var($size);
+        }
+      }
+    }
+  }
+}
+
+@mixin spacing-sizes {
+  @each $i in $sized-spaces {
+    .pd-#{$i} {
+      padding: #{$i}px;
+    }
+
+    .md-#{$i} {
+      margin: #{$i}px;
+    }
+
+    @each $d, $prop in (x:(left, right), y:(top, bottom)) {
+      .pd#{$d}-#{$i} {
+        @each $p in $prop {
+          padding-#{$p}: #{$i}px;
+        }
+      }
+      .md#{$d}-#{$i} {
+        @each $p in $prop {
+          margin-#{$p}: #{$i}px;
+        }
+      }
+    }
+
+    @each $d, $prop in (l: left, t: top, r: right, b: bottom) {
+      .pd#{$d}-#{$i} {
+        padding-#{$prop}: #{$i}px;
+      }
+      .md#{$d}-#{$i} {
+        margin-#{$prop}: #{$i}px;
+      }
+    }
+  }
+}
+
+@mixin text-sizes {
+  @each $name, $size in $text-sizes {
+    .text-#{$name} {
+      font-size: #{$size};
+    }
+  }
+
+  @each $name, $weight in (light: 400, medium: 500, strong: 600) {
+    .text-#{$name} {
+      font-weight: #{$weight};
+    }
+  }
+}
+
+@mixin line-grid-bg($size: 20px, $bg-color: #f4f4f4, $line-color: #eeeeee) {
+  background-color: $bg-color;
+  background-size: $size $size;
+  background-image: linear-gradient(to right, $line-color 1px, transparent 1px), linear-gradient(to bottom, $line-color 1px, transparent 1px);
+}
+
+@mixin radial-grid-bg($size: 20px, $bg-color: #f4f4f4, $line-color: #f4f4f4, $dot-size: 1px) {
+  background-color: $bg-color;
+  background-size: $size $size;
+  background-image: radial-gradient(circle, $line-color $dot-size, rgba(0, 0, 0, 0) $dot-size);
+}

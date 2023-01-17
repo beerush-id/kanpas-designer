@@ -1,0 +1,9 @@
+{
+  "actions": [
+    {
+      "name": "a",
+      "label": "Anchor",
+      "description": "An anchor or link to navigate between pages, or external sites."
+    }
+  ]
+}

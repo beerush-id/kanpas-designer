@@ -1,0 +1,610 @@
+{
+  "swatches": [
+    {
+      "name": "Grey",
+      "color": "#63718d",
+      "colors": [
+        {
+          "name": "10",
+          "color": "#fcfcfd",
+          "darkColor": "#fcfcfd",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "50",
+          "color": "#f6f7f9",
+          "darkColor": "#f6f7f9",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "100",
+          "color": "#e7e9ee",
+          "darkColor": "#e7e9ee",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "200",
+          "color": "#c3c9d5",
+          "darkColor": "#c3c9d5",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "300",
+          "color": "#96a1b5",
+          "darkColor": "#96a1b5",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "400",
+          "color": "#7886a1",
+          "darkColor": "#7886a1",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "500",
+          "color": "#63718d",
+          "darkColor": "#63718d",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "600",
+          "color": "#546078",
+          "darkColor": "#546078",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "700",
+          "color": "#3f485a",
+          "darkColor": "#3f485a",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "800",
+          "color": "#353c4b",
+          "darkColor": "#353c4b",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "900",
+          "color": "#2a303c",
+          "darkColor": "#2a303c",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "950",
+          "color": "#1d222a",
+          "darkColor": "#1d222a",
+          "darkVariable": "",
+          "variable": ""
+        }
+      ]
+    }, {
+      "name": "Red",
+      "color": "#d53811",
+      "colors": [
+        {
+          "name": "10",
+          "color": "#fff9f9",
+          "darkColor": "#fff9f9",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "50",
+          "color": "#fef3f1",
+          "darkColor": "#fef3f1",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "100",
+          "color": "#fcded9",
+          "darkColor": "#fcded9",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "200",
+          "color": "#f9c5b8",
+          "darkColor": "#f9c5b8",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "300",
+          "color": "#f48b71",
+          "darkColor": "#f48b71",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "400",
+          "color": "#f06542",
+          "darkColor": "#f06542",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "500",
+          "color": "#d53811",
+          "darkColor": "#d53811",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "600",
+          "color": "#a52c0d",
+          "darkColor": "#a52c0d",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "700",
+          "color": "#7b200a",
+          "darkColor": "#7b200a",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "800",
+          "color": "#561706",
+          "darkColor": "#561706",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "900",
+          "color": "#390f04",
+          "darkColor": "#390f04",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "950",
+          "color": "#2a0a01",
+          "darkColor": "#2a0a01",
+          "darkVariable": "",
+          "variable": ""
+        }
+      ]
+    }, {
+      "name": "Green",
+      "color": "#00854b",
+      "colors": [
+        {
+          "name": "10",
+          "color": "#f8fffc",
+          "darkColor": "#f8fffc",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "50",
+          "color": "#f2fdf8",
+          "darkColor": "#f2fdf8",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "100",
+          "color": "#baf7dd",
+          "darkColor": "#baf7dd",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "200",
+          "color": "#71f4bb",
+          "darkColor": "#71f4bb",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "300",
+          "color": "#0bda80",
+          "darkColor": "#0bda80",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "400",
+          "color": "#00a85f",
+          "darkColor": "#00a85f",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "500",
+          "color": "#00854b",
+          "darkColor": "#00854b",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "600",
+          "color": "#00663a",
+          "darkColor": "#00663a",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "700",
+          "color": "#004d2b",
+          "darkColor": "#004d2b",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "800",
+          "color": "#003820",
+          "darkColor": "#003820",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "900",
+          "color": "#002916",
+          "darkColor": "#002916",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "950",
+          "color": "#00170d",
+          "darkColor": "#00170d",
+          "darkVariable": "",
+          "variable": ""
+        }
+      ]
+    }, {
+      "name": "Blue",
+      "color": "#086ce8",
+      "colors": [
+        {
+          "name": "10",
+          "color": "#f8faff",
+          "darkColor": "#f8faff",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "50",
+          "color": "#f0f7fe",
+          "darkColor": "#f0f7fe",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "100",
+          "color": "#cfe6fc",
+          "darkColor": "#cfe6fc",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "200",
+          "color": "#b5d5fc",
+          "darkColor": "#b5d5fc",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "300",
+          "color": "#6cacf9",
+          "darkColor": "#6cacf9",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "400",
+          "color": "#2b87f8",
+          "darkColor": "#2b87f8",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "500",
+          "color": "#086ce8",
+          "darkColor": "#086ce8",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "600",
+          "color": "#0653b2",
+          "darkColor": "#0653b2",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "700",
+          "color": "#043776",
+          "darkColor": "#043776",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "800",
+          "color": "#032754",
+          "darkColor": "#032754",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "900",
+          "color": "#021c3b",
+          "darkColor": "#021c3b",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "950",
+          "color": "#011227",
+          "darkColor": "#011227",
+          "darkVariable": "",
+          "variable": ""
+        }
+      ]
+    }, {
+      "name": "Orange",
+      "color": "#b56007",
+      "colors": [
+        {
+          "name": "10",
+          "color": "#fffaf7",
+          "darkColor": "#fffaf7",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "50",
+          "color": "#fef7f0",
+          "darkColor": "#fef7f0",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "100",
+          "color": "#fddebf",
+          "darkColor": "#fddebf",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "200",
+          "color": "#fabe80",
+          "darkColor": "#fabe80",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "300",
+          "color": "#f68c1f",
+          "darkColor": "#f68c1f",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "400",
+          "color": "#dd7409",
+          "darkColor": "#dd7409",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "500",
+          "color": "#b56007",
+          "darkColor": "#b56007",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "600",
+          "color": "#844605",
+          "darkColor": "#844605",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "700",
+          "color": "#623404",
+          "darkColor": "#623404",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "800",
+          "color": "#4a2703",
+          "darkColor": "#4a2703",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "900",
+          "color": "#311a02",
+          "darkColor": "#311a02",
+          "darkVariable": "",
+          "variable": ""
+        },
+        {
+          "name": "950",
+          "color": "#1e1001",
+          "darkColor": "#1e1001",
+          "darkVariable": "",
+          "variable": ""
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Primary",
+      "color": "#086ce8",
+      "colors": [
+        {
+          "name": "normal",
+          "color": "#086ce8",
+          "variable": "--color-blue-500",
+          "darkColor": "#086ce8",
+          "darkVariable": "--color-blue-500"
+        },
+        {
+          "name": "hover",
+          "color": "#2b87f8",
+          "variable": "--color-blue-400",
+          "darkColor": "#2b87f8",
+          "darkVariable": "--color-blue-400"
+        },
+        {
+          "name": "active",
+          "color": "#0653b2",
+          "variable": "--color-blue-600",
+          "darkColor": "#0653b2",
+          "darkVariable": "--color-blue-600"
+        },
+        {
+          "name": "disabled",
+          "color": "#cfe6fc",
+          "variable": "--color-blue-100",
+          "darkColor": "#cfe6fc",
+          "darkVariable": "--color-blue-100"
+        }
+      ]
+    },
+    {
+      "name": "Positive",
+      "color": "#00854b",
+      "colors": [
+        {
+          "name": "normal",
+          "color": "#00854b",
+          "variable": "--color-green-500",
+          "darkColor": "#00854b",
+          "darkVariable": "--color-green-500"
+        },
+        {
+          "name": "hover",
+          "color": "#00a85f",
+          "variable": "--color-green-400",
+          "darkColor": "#00a85f",
+          "darkVariable": "--color-green-400"
+        },
+        {
+          "name": "active",
+          "color": "#00663a",
+          "variable": "--color-green-600",
+          "darkColor": "#00663a",
+          "darkVariable": "--color-green-600"
+        },
+        {
+          "name": "disabled",
+          "color": "#baf7dd",
+          "variable": "--color-green-100",
+          "darkColor": "#baf7dd",
+          "darkVariable": "--color-green-100"
+        }
+      ]
+    },
+    {
+      "name": "Negative",
+      "color": "#b56007",
+      "colors": [
+        {
+          "name": "normal",
+          "color": "#b56007",
+          "variable": "--color-orange-500",
+          "darkColor": "#b56007",
+          "darkVariable": "--color-orange-500"
+        },
+        {
+          "name": "hover",
+          "color": "#dd7409",
+          "variable": "--color-orange-400",
+          "darkColor": "#dd7409",
+          "darkVariable": "--color-orange-400"
+        },
+        {
+          "name": "active",
+          "color": "#844605",
+          "variable": "--color-orange-600",
+          "darkColor": "#844605",
+          "darkVariable": "--color-orange-600"
+        },
+        {
+          "name": "disabled",
+          "color": "#fddebf",
+          "variable": "--color-orange-100",
+          "darkColor": "#fddebf",
+          "darkVariable": "--color-orange-100"
+        }
+      ]
+    },
+    {
+      "name": "Destructive",
+      "color": "#d53811",
+      "colors": [
+        {
+          "name": "normal",
+          "color": "#d53811",
+          "variable": "--color-red-500",
+          "darkColor": "#d53811",
+          "darkVariable": "--color-red-500"
+        },
+        {
+          "name": "hover",
+          "color": "#f06542",
+          "variable": "--color-red-400",
+          "darkColor": "#f06542",
+          "darkVariable": "--color-red-400"
+        },
+        {
+          "name": "active",
+          "color": "#a52c0d",
+          "variable": "--color-red-600",
+          "darkColor": "#a52c0d",
+          "darkVariable": "--color-red-600"
+        },
+        {
+          "name": "disabled",
+          "color": "#fcded9",
+          "variable": "--color-red-100",
+          "darkColor": "#fcded9",
+          "darkVariable": "--color-red-100"
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "Main",
+      "color": "#63718d",
+      "colors": [
+        {
+          "name": "background",
+          "color": "#fcfcfd",
+          "variable": "--color-grey-50",
+          "darkColor": "#2a303c",
+          "darkVariable": "--color-grey-900"
+        },
+        {
+          "name": "foreground",
+          "color": "#2a303c",
+          "variable": "--color-grey-900",
+          "darkColor": "#fcfcfd",
+          "darkVariable": "--color-grey-50"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,579 @@
+@mixin prefer-light {
+  --kanpas-white: #ffffff;
+  --kanpas-black: #000000;
+
+  /* Spacing */
+  --kanpas-space: 24px;
+  --kanpas-space-xxs: 2px;
+  --kanpas-space-xs: 4px;
+  --kanpas-space-small: 12px;
+  --kanpas-space-medium: 16px;
+  --kanpas-space-large: 32px;
+  --kanpas-space-xl: 48px;
+  --kanpas-space-xxl: 64px;
+
+  --kanpas-space-2: 2px;
+  --kanpas-space-4: 4px;
+  --kanpas-space-6: 6px;
+  --kanpas-space-8: 8px;
+  --kanpas-space-10: 10px;
+  --kanpas-space-12: 12px;
+  --kanpas-space-16: 16px;
+  --kanpas-space-18: 18px;
+  --kanpas-space-20: 20px;
+  --kanpas-space-24: 24px;
+  --kanpas-space-32: 32px;
+  --kanpas-space-48: 48px;
+  --kanpas-space-56: 56px;
+  --kanpas-space-64: 64px;
+  --kanpas-space-72: 72px;
+  --kanpas-space-96: 96px;
+  --kanpas-space-128: 128px;
+  --kanpas-space-tight: 8px;
+
+  /* Radius */
+  --kanpas-radius: 5px;
+  --kanpas-radius-small: 3px;
+  --kanpas-radius-large: 10px;
+  --kanpas-radius-xlarge: 20px;
+
+  /* Canvas */
+  --kanpas-canvas-prefix: 0px;
+
+  /* Color - Blue */
+  --kanpas-color-blue-50: #f0f7fe;
+  --kanpas-color-blue-100: #cfe6fc;
+  --kanpas-color-blue-200: #b5d5fc;
+  --kanpas-color-blue-300: #6cacf9;
+  --kanpas-color-blue-400: #2b87f8;
+  --kanpas-color-blue-500: #086ce8;
+  --kanpas-color-blue-600: #0653b2;
+  --kanpas-color-blue-700: #043776;
+  --kanpas-color-blue-800: #032754;
+  --kanpas-color-blue-900: #021c3b;
+
+  --kanpas-color-green-50: #f2fdf8;
+  --kanpas-color-green-100: #baf7dd;
+  --kanpas-color-green-200: #71f4bb;
+  --kanpas-color-green-300: #0bda80;
+  --kanpas-color-green-400: #00a85f;
+  --kanpas-color-green-500: #00854b;
+  --kanpas-color-green-600: #00663a;
+  --kanpas-color-green-700: #004d2b;
+  --kanpas-color-green-800: #003820;
+  --kanpas-color-green-900: #002916;
+
+  --kanpas-color-red-50: #fef3f1;
+  --kanpas-color-red-100: #fcded9;
+  --kanpas-color-red-200: #f9c5b8;
+  --kanpas-color-red-300: #f48b71;
+  --kanpas-color-red-400: #f06542;
+  --kanpas-color-red-500: #d53811;
+  --kanpas-color-red-600: #a52c0d;
+  --kanpas-color-red-700: #7b200a;
+  --kanpas-color-red-800: #561706;
+  --kanpas-color-red-900: #390f04;
+
+  --kanpas-color-orange-50: #fef7f0;
+  --kanpas-color-orange-100: #fddebf;
+  --kanpas-color-orange-200: #fabe80;
+  --kanpas-color-orange-300: #f68c1f;
+  --kanpas-color-orange-400: #dd7409;
+  --kanpas-color-orange-500: #b56007;
+  --kanpas-color-orange-600: #844605;
+  --kanpas-color-orange-700: #623404;
+  --kanpas-color-orange-800: #4a2703;
+  --kanpas-color-orange-900: #311a02;
+
+  --kanpas-color-grey-10: #fcfcfd;
+  --kanpas-color-grey-50: #edeeef;
+  --kanpas-color-grey-100: #dfe0e5;
+  --kanpas-color-grey-200: #c3c9d5;
+  --kanpas-color-grey-300: #9694b2;
+  --kanpas-color-grey-400: #757489;
+  --kanpas-color-grey-500: #646374;
+  --kanpas-color-grey-600: #545361;
+  --kanpas-color-grey-700: #41404c;
+  --kanpas-color-grey-800: #33323c;
+  --kanpas-color-grey-900: #2b2a33;
+  --kanpas-color-grey-950: #1c1b22;
+
+  --kanpas-color-logo-primary: #db2127;
+  --kanpas-color-logo-secondary: #00a75e;
+
+  --kanpas-color-adaptive-primary: var(--kanpas-color-grey-950);
+  --kanpas-color-adaptive-secondary: var(--kanpas-color-grey-500);
+
+  --kanpas-color-primary-normal: var(--kanpas-color-blue-500);
+  --kanpas-color-primary-hover: var(--kanpas-color-blue-400);
+  --kanpas-color-primary-active: var(--kanpas-color-blue-600);
+  --kanpas-color-primary-disabled: var(--kanpas-color-blue-100);
+  --kanpas-color-primary-fg: var(--kanpas-color-blue-50);
+  --kanpas-color-accent-normal: var(--kanpas-color-orange-500);
+  --kanpas-color-accent-hover: var(--kanpas-color-orange-400);
+  --kanpas-color-accent-active: var(--kanpas-color-orange-600);
+  --kanpas-color-accent-disabled: var(--kanpas-color-orange-100);
+  --kanpas-color-accent-fg: var(--kanpas-color-orange-50);
+  --kanpas-color-warn-normal: var(--kanpas-color-red-500);
+  --kanpas-color-warn-hover: var(--kanpas-color-red-400);
+  --kanpas-color-warn-active: var(--kanpas-color-red-600);
+  --kanpas-color-warn-disabled: var(--kanpas-color-red-100);
+  --kanpas-color-warn-fg: var(--kanpas-color-red-50);
+  --kanpas-color-success-normal: var(--kanpas-color-green-500);
+  --kanpas-color-success-hover: var(--kanpas-color-green-400);
+  --kanpas-color-success-active: var(--kanpas-color-green-600);
+  --kanpas-color-success-disabled: var(--kanpas-color-green-100);
+  --kanpas-color-success-fg: var(--kanpas-color-green-50);
+
+  --kanpas-color-main-bg: var(--kanpas-color-grey-100);
+  --kanpas-color-background: var(--kanpas-color-grey-10);
+  --kanpas-color-background-alt: var(--kanpas-color-grey-100);
+  --kanpas-color-background-side: var(--kanpas-color-grey-50);
+  --kanpas-color-foreground: var(--kanpas-color-grey-900);
+  --kanpas-color-foreground-alt: var(--kanpas-color-grey-800);
+  --kanpas-color-foreground-shade: var(--kanpas-color-grey-600);
+
+  --kanpas-color-header-bg: var(--kanpas-color-grey-10);
+
+  --kanpas-color-node-bg: var(--kanpas-color-grey-10);
+  --kanpas-color-node-bg-alt: var(--kanpas-color-grey-50);
+  --kanpas-color-node-line: var(--kanpas-color-green-400);
+  --kanpas-color-node-tips-bg: var(--kanpas-color-grey-100);
+  --kanpas-color-node-tips-line: var(--kanpas-color-orange-400);
+  --kanpas-color-node-tips-line-alt: var(--kanpas-color-green-400);
+
+  --kanpas-color-acrylic: #ffffff;
+  --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.3);
+
+  --kanpas-color-background-card: var(--kanpas-white);
+  --kanpas-color-background-card-alt: var(--kanpas-color-grey-100);
+  --kanpas-color-shadow: rgba(0, 0, 0, 0.15);
+
+  --kanpas-color-title: var(--kanpas-color-grey-900);
+  --kanpas-color-subtitle: var(--kanpas-color-grey-600);
+
+  --kanpas-color-line: var(--kanpas-color-grey-200);
+  --kanpas-color-line-alt: var(--kanpas-color-grey-300);
+
+  --kanpas-color-menu: var(--kanpas-color-grey-600);
+  --kanpas-color-menu-hover: var(--kanpas-color-green-400);
+  --kanpas-color-menu-active: var(--kanpas-color-green-500);
+
+  --kanpas-color-menu-icon: var(--kanpas-color-grey-500);
+  --kanpas-color-menu-icon-hover: var(--kanpas-color-primary-hover);
+
+  --kanpas-color-icon-button-active: var(--kanpas-color-green-500);
+  --kanpas-color-icon-button-active-fg: var(--kanpas-color-blue-50);
+
+  --kanpas-color-tooltip: var(--kanpas-color-grey-200);
+  --kanpas-color-tooltip-bg: var(--kanpas-color-grey-950);
+
+  --kanpas-color-input-bg: var(--kanpas-color-grey-50);
+  --kanpas-color-input-line: var(--kanpas-color-grey-300);
+  --kanpas-color-input-line-hover: var(--kanpas-color-primary-hover);
+  --kanpas-color-input-line-active: var(--kanpas-color-primary-active);
+
+  /* Typography - Base */
+  --kanpas-font: "Poppins";
+  --kanpas-font-body: 14px;
+  --kanpas-font-title: 16px;
+  --kanpas-font-subtitle: 12px;
+  --kanpas-font-hints: 10px;
+
+  --kanpas-font-light: 300;
+  --kanpas-font-normal: 400;
+  --kanpas-font-medium: 500;
+  --kanpas-font-bold: 700;
+
+  /* Typography - Headings */
+  --kanpas-font-h1: 24px;
+  --kanpas-font-h2: 22px;
+  --kanpas-font-h3: 20px;
+  --kanpas-font-h4: 18px;
+  --kanpas-font-h5: 16px;
+  --kanpas-font-h6: 14px;
+
+  --kanpas-button-space: var(--kanpas-space-small) var(--kanpas-space-medium);
+  --kanpas-button-radius: var(--kanpas-radius-small);
+
+  --kanpas-effect-fast: all .2ms ease-in-out;
+  --kanpas-effect-medium: .4ms;
+  --kanpas-effect-slow: .6ms;
+}
+
+@mixin prefer-dark {
+  --kanpas-white: #000000;
+  --kanpas-black: #ffffff;
+
+  --kanpas-color-adaptive-primary: var(--kanpas-color-grey-10);
+  --kanpas-color-adaptive-secondary: var(--kanpas-color-grey-300);
+
+  --kanpas-color-primary-fg: var(--kanpas-color-grey-10);
+  --kanpas-color-primary-normal: var(--kanpas-color-blue-500);
+  --kanpas-color-primary-hover: var(--kanpas-color-blue-400);
+  --kanpas-color-primary-active: var(--kanpas-color-blue-600);
+  --kanpas-color-primary-disabled: var(--kanpas-color-blue-800);
+  --kanpas-color-accent-normal: var(--kanpas-color-orange-500);
+  --kanpas-color-accent-hover: var(--kanpas-color-orange-400);
+  --kanpas-color-accent-active: var(--kanpas-color-orange-600);
+  --kanpas-color-accent-disabled: var(--kanpas-color-orange-800);
+  --kanpas-color-warn-normal: var(--kanpas-color-red-500);
+  --kanpas-color-warn-hover: var(--kanpas-color-red-400);
+  --kanpas-color-warn-active: var(--kanpas-color-red-600);
+  --kanpas-color-warn-disabled: var(--kanpas-color-red-800);
+  --kanpas-color-success-normal: var(--kanpas-color-green-500);
+  --kanpas-color-success-hover: var(--kanpas-color-green-400);
+  --kanpas-color-success-active: var(--kanpas-color-green-600);
+  --kanpas-color-success-disabled: var(--kanpas-color-green-800);
+
+  --kanpas-color-main-bg: var(--kanpas-color-grey-900);
+  --kanpas-color-background: var(--kanpas-color-grey-900);
+  --kanpas-color-background-alt: var(--kanpas-color-grey-950);
+  --kanpas-color-background-side: var(--kanpas-color-grey-800);
+  --kanpas-color-foreground: var(--kanpas-color-grey-100);
+  --kanpas-color-foreground-alt: var(--kanpas-color-grey-200);
+
+  --kanpas-color-header-bg: var(--kanpas-color-grey-900);
+
+  --kanpas-color-acrylic: #111111;
+  --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.2);
+
+  --kanpas-color-background-card: var(--kanpas-color-grey-900);
+  --kanpas-color-background-card-alt: var(--kanpas-color-grey-950);
+  --kanpas-color-shadow: rgba(0, 0, 0, 0.3);
+
+  --kanpas-color-node-bg: var(--kanpas-color-grey-950);
+  --kanpas-color-node-bg-alt: var(--kanpas-color-grey-800);
+  --kanpas-color-node-tips-bg: var(--kanpas-color-grey-900);
+
+  --kanpas-color-title: var(--kanpas-color-grey-100);
+  --kanpas-color-subtitle: var(--kanpas-color-grey-300);
+
+  --kanpas-color-line: var(--kanpas-color-grey-950);
+  --kanpas-color-line-alt: var(--kanpas-color-grey-800);
+
+  --kanpas-color-menu: var(--kanpas-color-grey-200);
+  --kanpas-color-menu-hover: var(--kanpas-color-grey-50);
+  --kanpas-color-menu-active: var(--kanpas-color-green-400);
+
+  --kanpas-color-menu-icon: var(--kanpas-color-grey-300);
+  --kanpas-color-menu-icon-hover: var(--kanpas-color-grey-200);
+
+  --kanpas-color-icon-button-active: var(--kanpas-color-green-400);
+  --kanpas-color-icon-button-active-fg: var(--kanpas-color-green-50);
+
+  --kanpas-color-input-bg: var(--kanpas-color-grey-700);
+  --kanpas-color-input-line: var(--kanpas-color-grey-950);
+}
+
+:root {
+  @include prefer-light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include prefer-dark;
+  }
+}
+
+.kanpas-desktop {
+  @include prefer-light;
+}
+
+.kanpas-desktop.dark {
+  @include prefer-dark;
+}
+
+@import "./styles/normalize";
+@import "./styles/theme";
+@import "./styles/mixins";
+
+::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  background: var(--kanpas-color-grey-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kanpas-color-grey-500);
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--kanpas-color-grey-200);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.kanpas-reset {
+  @include resets;
+}
+
+.kanpas-app {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: var(--kanpas-font-body);
+  line-height: var(--kanpas-font-body-height);
+  color: var(--kanpas-color-foreground);
+  background-color: var(--kanpas-color-main-bg);
+
+  @include layouts;
+  @include spacing;
+  @include spacing-sizes;
+}
+
+.kanpas-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  @include radial-grid-bg(24px, transparent, rgba(0, 0, 0, 0.15), 2px);
+}
+
+.kanpas-card-shadow {
+  box-shadow: 0 0 5px var(--kanpas-color-shadow);
+}
+
+.kanpas-card {
+  @extend .kanpas-card-shadow;
+  background-color: var(--kanpas-color-background-card);
+  border-top-left-radius: var(--kanpas-radius-large);
+  border-top-right-radius: var(--kanpas-radius-large);
+}
+
+.kanpas-card-alt {
+  @extend .kanpas-card;
+  background-color: var(--kanpas-color-background-card);
+  border-top-left-radius: 0;
+  box-shadow: none;
+}
+
+.kanpas-card-bg {
+  background-color: var(--kanpas-color-background-card);
+}
+
+.kanpas-card-bg-alt {
+  background-color: var(--kanpas-color-background-card);
+}
+
+.kanpas-acrylic {
+  @extend .kanpas-card-shadow;
+
+  backdrop-filter: blur(32px);
+  border-radius: var(--kanpas-radius);
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-color: var(--kanpas-color-acrylic);
+    border-radius: var(--kanpas-radius);
+    opacity: 0.85;
+  }
+
+  .kanpas-separator-x, .kanpas-separator-x, .kanpas-tab-button, .kanpas-tab-head {
+    border-color: var(--kanpas-color-acrylic-line) !important;
+  }
+}
+
+.kanpas-card-rounded {
+  @extend .kanpas-card;
+  border-radius: var(--kanpas-radius);
+}
+
+.kanpas-remove {
+  display: none !important;
+}
+
+.kanpas-hidden {
+  visibility: hidden !important;
+}
+
+.kanpas-separator {
+  margin-right: var(--kanpas-space);
+}
+
+.kanpas-separator-x {
+  width: 100%;
+  border-bottom: 1px solid var(--kanpas-color-line);
+  margin: var(--kanpas-space-small) 0;
+}
+
+.kanpas-separator-y {
+  height: 18px;
+  border-right: 1px solid var(--kanpas-color-line);
+  margin: 0 var(--kanpas-space-small);
+}
+
+.kanpas-panel {
+  .kanpas-panel-title:not(:last-child) {
+    margin-bottom: var(--kanpas-space-small);
+    user-select: none;
+  }
+
+  .kanpas-panel-head-icon {
+    opacity: 0.8;
+  }
+
+  .kanpas-panel-section {
+    justify-content: space-between;
+
+    &:not(:last-child) {
+      margin-bottom: var(--kanpas-space-small);
+    }
+  }
+
+  .kanpas-panel-body.collapsed {
+    display: none;
+  }
+
+  .kanpas-panel-prop-label {
+    font-size: var(--kanpas-font-subtitle);
+    opacity: 0.6;
+    user-select: none;
+  }
+
+  .kanpas-vertical-separator {
+    height: 18px;
+    border-right: 1px solid var(--kanpas-color-line);
+  }
+
+  .kanpas-panel-input-wrap {
+    position: relative;
+    padding-right: 16px;
+
+    .kanpas-panel-value-unit {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
+
+  .kanpas-panel-value-unit {
+    font-size: 10px;
+    opacity: 0.5;
+    user-select: none;
+  }
+
+  select, input {
+    height: 24px;
+  }
+
+  select {
+    padding: 2px 8px;
+  }
+
+  input {
+    padding: 2px 8px;
+    text-align: center;
+  }
+
+  input:not([class]) {
+    width: 56px;
+  }
+
+  input[type="number"] {
+    padding-right: 0;
+  }
+}
+
+.kanpas-accept-events {
+  pointer-events: fill;
+}
+
+.kanpas-scroll-y {
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.kanpas-scroll-x {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale3d(0, 0, 0);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  10% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(1.2, 1.2, 1.2);
+  }
+  100% {
+    transform: scale3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.kanpas-animation-fix {
+  backface-visibility: hidden;
+  perspective: none;
+}
+
+.kanpas-scale-in {
+  animation: scaleIn .3s cubic-bezier(.47, 1.64, .41, .8);
+}
+
+.kanpas-scale-out {
+  transform-origin: center 10%;
+  animation: scaleOut .3s ease-in-out;
+}
+
+.kanpas-fade-in {
+  animation: fadeIn .3s ease-in-out;
+}
+
+.kanpas-fade-out {
+  animation: fadeOut .3s ease-in-out;
+}
+
+.kanpas-tool-button {
+  width: 40px;
+  height: 40px;
+}

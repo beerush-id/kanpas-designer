@@ -1,0 +1,81 @@
+{
+  "main": [
+    {
+      "name": "feature",
+      "title": "Features",
+      "endpoint": "features",
+      "icon": "dashboard",
+      "children": []
+    },
+    {
+      "name": "component",
+      "title": "Components",
+      "endpoint": "components",
+      "icon": "category",
+      "children": []
+    },
+    {
+      "name": "service",
+      "title": "Services",
+      "endpoint": "services",
+      "icon": "electrical_services",
+      "children": []
+    },
+    {
+      "name": "model",
+      "title": "Models",
+      "endpoint": "models",
+      "icon": "account_tree",
+      "children": []
+    },
+    {
+      "name": "theme",
+      "title": "Theme",
+      "endpoint": "theme",
+      "icon": "style",
+      "children": [
+        {
+          "name": "color",
+          "title": "Colors",
+          "endpoint": "colors",
+          "icon": "palette"
+        },
+        {
+          "name": "font",
+          "title": "Typography",
+          "endpoint": "fonts",
+          "icon": "font_download"
+        },
+        {
+          "name": "element",
+          "title": "Elements",
+          "endpoint": "elements",
+          "icon": "html"
+        }
+      ]
+    },
+    {
+      "name": "journey",
+      "title": "Journey",
+      "endpoint": "journey",
+      "icon": "footprint",
+      "children": []
+    }
+  ],
+  "tools": [
+    {
+      "name": "setting",
+      "title": "Settings",
+      "endpoint": "settings",
+      "icon": "settings",
+      "children": [
+        {
+          "name": "environment",
+          "title": "Environments",
+          "endpoint": "environments",
+          "icon": "variables"
+        }
+      ]
+    }
+  ]
+}

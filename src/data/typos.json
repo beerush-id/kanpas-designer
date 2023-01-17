@@ -1,0 +1,47 @@
+{
+  "body": {
+    "name": "body",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum, felis in pretium pharetra, risus velit imperdiet nulla, a luctus eros mi eu mi. Quisque aliquet ac orci et luctus. Nullam pulvinar bibendum metus ac sodales. Donec blandit lorem eu urna auctor ullamcorper. Sed urna urna, sagittis et egestas sed, vestibulum id ex. Proin id laoreet nisl, a sagittis nisi. Etiam ac sollicitudin nulla."
+  },
+  "headings": [
+    {
+      "name": "h1",
+      "text": "Heading 1"
+    },
+    {
+      "name": "h2",
+      "text": "Heading 2"
+    },
+    {
+      "name": "h3",
+      "text": "Heading 3"
+    },
+    {
+      "name": "h4",
+      "text": "Heading 4"
+    },
+    {
+      "name": "h5",
+      "text": "Heading 5"
+    },
+    {
+      "name": "h6",
+      "text": "Heading 6"
+    }
+  ],
+  "paragraph": {
+    "name": "p",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum, felis in pretium pharetra, risus velit imperdiet nulla, a luctus eros mi eu mi. Quisque aliquet ac orci et luctus. Nullam pulvinar bibendum metus ac sodales. Donec blandit lorem eu urna auctor ullamcorper. Sed urna urna, sagittis et egestas sed, vestibulum id ex. Proin id laoreet nisl, a sagittis nisi. Etiam ac sollicitudin nulla."
+  },
+  "separator": {
+    "name": "hr"
+  },
+  "link": {
+    "name": "a",
+    "text": "Learn More..."
+  },
+  "quote": {
+    "name": "blockquote",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum, felis in pretium pharetra, risus velit imperdiet nulla, a luctus eros mi eu mi."
+  }
+}

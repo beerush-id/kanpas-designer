@@ -1,0 +1,47 @@
+[
+  {
+    "name": "home",
+    "description": "A Home Page",
+    "type": "feature",
+    "properties": {},
+    "classList": [],
+    "children": [
+      {
+        "name": "header",
+        "description": "A Header",
+        "type": "component",
+        "tagName": "Header",
+        "properties": {},
+        "classList": [],
+        "children": []
+      },
+      {
+        "name": "hero",
+        "description": "A Hero Section",
+        "type": "element",
+        "tagName": "section",
+        "properties": {},
+        "classList": [],
+        "children": []
+      },
+      {
+        "name": "contact",
+        "description": "A Contact Section",
+        "type": "element",
+        "tagName": "section",
+        "properties": {},
+        "classList": [],
+        "children": []
+      },
+      {
+        "name": "footer",
+        "description": "A Footer",
+        "type": "component",
+        "tagName": "Footer",
+        "properties": {},
+        "classList": [],
+        "children": []
+      }
+    ]
+  }
+]
