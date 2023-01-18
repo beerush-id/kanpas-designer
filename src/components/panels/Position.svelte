@@ -1,6 +1,5 @@
 <script lang="ts">
   import { createStyles } from '@utils/panel';
-  import Icon from '../common/Icon.svelte';
   import InputUnit from '../common/InputUnit.svelte';
   import Panel from '../common/Panel.svelte';
   import PopUp from '../common/PopUp.svelte';
@@ -43,12 +42,8 @@
 
 <Panel title="Position" icon="picture_in_picture" collapsible collapsed={!$styles.position}>
   <svelte:fragment slot="panel-head">
-    {#each positions as pos}
-      {#if pos.value === $styles.position}
-        <Icon tooltip={pos.helper} class="mdr-10">info</Icon>
-      {/if}
-    {/each}
     <select name="position" bind:value={$styles.position} on:change={positionChanged}>
+      <option value={undefined}>Default</option>
       {#each positions as pos}
         <option value={pos.value}>{pos.label}</option>
       {/each}

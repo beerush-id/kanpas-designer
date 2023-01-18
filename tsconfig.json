@@ -19,7 +19,9 @@
       "@services/*": ["./src/services/*"],
       "@actions/*": ["./src/actions/*"],
       "@templates/*": ["./src/templates/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
+      "$lib": ["src/lib"],
+      "$lib/*": ["src/lib/*"]
     }
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

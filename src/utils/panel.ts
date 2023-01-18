@@ -46,7 +46,7 @@ export type Transform = {
   z?: string;
 }
 
-export type PanelOptions = {
+export type StylerOptions = {
   textShadows: Shadow[];
   boxShadows: Shadow[];
 
@@ -95,8 +95,8 @@ export const filterUnits: Filters = {
   sepia: '%'
 };
 
-export function createOptions(): Reactive<PanelOptions> {
-  const options: PanelOptions = {
+export function createOptions(): Reactive<StylerOptions> {
+  const options: StylerOptions = {
     textShadows: [],
     boxShadows: [],
     filters: {} as never,
@@ -113,7 +113,7 @@ export function createOptions(): Reactive<PanelOptions> {
     skew: {},
   };
 
-  return reactive<PanelOptions>(options, true);
+  return reactive<StylerOptions>(options, true);
 }
 
 export function createStyles(styles: StyleDeclarations = {} as never): Reactive<StyleDeclarations> {
@@ -155,7 +155,7 @@ export function joinFilters(filters: Filters, shadows: Shadow[]) {
   };
 }
 
-export function joinBackgrounds({ gradients, backgroundImage }: PanelOptions): string {
+export function joinBackgrounds({ gradients, backgroundImage }: StylerOptions): string {
   for (const grad of gradients) {
     const value = gradientString(grad);
 
@@ -168,7 +168,7 @@ export function joinBackgrounds({ gradients, backgroundImage }: PanelOptions): s
   return [ backgroundImage, gradient ].filter(item => item).join(', ');
 }
 
-export function joinTransforms({ scale, rotate, translate, skew }: PanelOptions): string {
+export function joinTransforms({ scale, rotate, translate, skew }: StylerOptions): string {
   const transforms = [];
 
   if (scale.x || scale.y || scale.z) {

@@ -28,4 +28,4 @@
   };
 </script>
 
-<input class="{className}" type="range" {min} {max} {step} value={count} on:input={update}>
+<input {name} class="{className}" type="range" {min} {max} {step} value={count} on:input={update}>

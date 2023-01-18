@@ -179,8 +179,4 @@
     font-size: var(--kanpas-font-subtitle);
     opacity: 0.5;
   }
-
-  input[type="range"] {
-    width: 72px;
-  }
 </style>

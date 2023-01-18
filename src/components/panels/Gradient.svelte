@@ -88,12 +88,12 @@
             tooltip={grad.type === 'linear' ? 'Switch to Radial' : 'Switch to Linear'}
             class="mdr-16" on:click={() => toggleMode(grad)}>{grad.type === 'linear' ? 'contrast' : 'blur_on'}</Icon>
       <div class="gradient-preview flex"
-           style:background-image={grad.value} on:click={e => addStep(e, grad)}>
+           style:background-image={grad.value} on:click={e => addStep(e, grad)} on:keypress>
         {#each grad.values as step}
           <div class="gradient-step"
                style:left="{step.stop}%"
                style:background-color={step.color}
-               on:click|stopPropagation>
+               on:click|stopPropagation on:keypress>
             <ColorPickerTrigger
               bind:value={step.color}
               bind:variable={step.variable}

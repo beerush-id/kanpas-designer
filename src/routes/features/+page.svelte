@@ -22,7 +22,7 @@
     {#each $todos as { name, done }, i}
       {console.log(`${i + 1}. Rendering new todo...`) || ''}
       <li style:text-decoration={done ? 'line-through' : ''}
-          on:click={() => done = !done}>{i + 1}. {name}{done ? ' - Done' : ''}</li>
+          on:click={() => done = !done} on:keypress>{i + 1}. {name}{done ? ' - Done' : ''}</li>
     {:else}
       <li>Let's add some todo!</li>
     {/each}
