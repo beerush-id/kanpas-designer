@@ -6,7 +6,7 @@
   const { messages, questions } = toast;
 </script>
 
-<div class="kanpas-toast-list">
+<div class="kanpas-toast-list" on:wheel|stopPropagation>
   {#if $messages}
     {#each $messages as message}
       <div class="kanpas-toast-item flex-row-center-y {message.color}">
@@ -34,7 +34,7 @@
     {/each}
   {/if}
 </div>
-<div class="kanpas-prompt-list" class:visible={$questions?.length}>
+<div class="kanpas-prompt-list" class:visible={$questions?.length} on:wheel|stopPropagation>
   {#if $questions}
     {#each $questions as prompt}
       <div class="kanpas-prompt-item {prompt.message.color}">
@@ -166,6 +166,7 @@
     height: 100%;
     top: 0;
     left: 0;
+    z-index: 999;
     visibility: hidden;
     background-color: rgba(0, 0, 0, 0.5);
 

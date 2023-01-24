@@ -4,10 +4,9 @@
   import { offsetRect, scaledClientRect } from '@utils/element';
   import { onDestroy } from 'svelte';
 
-  const { hoverStyles, focusStyles } = selector;
+  const { hoverStyles } = selector;
 
   let hoverElem: HTMLElement;
-  let focusElem: HTMLElement;
 
   const unsubHover = hoverStyles.subscribe(() => {
     if (hoverElem) {
@@ -16,17 +15,11 @@
       }
 
       if (selector.styles) {
-        placeMargin();
+        setTimeout(() => {
+          placeMargin();
+        }, 200);
         placePadding();
         placeBounds();
-      }
-    }
-  });
-
-  const unsubFocus = focusStyles.subscribe(() => {
-    if (focusElem) {
-      for (const [ key, value ] of Object.entries(focusStyles)) {
-        focusElem.style[key] = value;
       }
     }
   });
@@ -171,9 +164,6 @@
     if (typeof unsubHover === 'function') {
       unsubHover();
     }
-    if (typeof unsubFocus === 'function') {
-      unsubFocus();
-    }
   });
 </script>
 
@@ -195,12 +185,6 @@
   </div>
   <div class="size" class:active={$selector.extended}>{parseInt($hoverStyles.width).toLocaleString(2)}
     x {parseInt($hoverStyles.height).toLocaleString(2)}</div>
-</div>
-<div bind:this={focusElem} class="kanpas-box-focus">
-  <div class="focus-frame top"></div>
-  <div class="focus-frame right"></div>
-  <div class="focus-frame bottom"></div>
-  <div class="focus-frame left"></div>
 </div>
 {#each $selector.focusBounds as focus}
   <div class="kanpas-box-focus"

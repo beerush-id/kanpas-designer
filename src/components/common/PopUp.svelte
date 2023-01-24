@@ -169,11 +169,12 @@
       class="kanpas-tooltip x-{xDir} y-{yDir}"
       class:active
       bind:this={element}
+      on:wheel|stopPropagation
       style="text-align: {align}">
       <slot/>
     </span>
   {:else if role === 'overlay'}
-    <div class="kanpas-overlay kanpas-acrylic" bind:this={element}>
+    <div class="kanpas-overlay kanpas-acrylic" bind:this={element} on:wheel|stopPropagation>
       <slot/>
     </div>
   {:else}
@@ -185,6 +186,7 @@
       bind:this={element}
       on:click={dismiss ? deactivate : () => null}
       on:keypress
+      on:wheel|stopPropagation
       on:mouseenter={trigger === 'hover' || trigger === 'mixed' ? reactivate : null}
       on:mouseleave={trigger === 'hover' ? deactivate : null}>
       <slot/>
@@ -197,7 +199,7 @@
       on:mouseenter={deactivateMixed}
       on:mouseleave={cancelDeactivateMixed}
       on:keypress
-      on:click|stopPropagation|preventDefault={deactivate}/>
+      on:click|stopPropagation|preventDefault={deactivate}></div>
   {/if}
 {/if}
 
@@ -209,7 +211,6 @@
     transition: opacity 0.2s ease-in-out, margin 0.2s ease-in-out, visibility 0.2s ease-in-out;
     opacity: 0;
     visibility: hidden;
-    color: var(--kanpas-color-tooltip);
 
     &:not(.reset) {
       backdrop-filter: blur(25px);
@@ -224,7 +225,7 @@
         left: 0;
         z-index: -1;
         pointer-events: none;
-        background-color: var(--kanpas-color-tooltip-bg);
+        background-color: var(--kanpas-color-acrylic);
         opacity: 0.8;
       }
     }

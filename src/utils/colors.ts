@@ -5,8 +5,11 @@ export type StyleDeclarations = CSSStyleDeclaration & {
   [prop: string]: string;
 };
 
+export let COLOR_PREFIX = 'color-';
+
 export type ColorInput = {
   name: string;
+  fullName?: string;
   color: string;
   alpha?: string;
   variable?: string;
@@ -18,34 +21,61 @@ export type ColorInput = {
 
 export type ColorInputGroup = {
   name: string;
+  fullName?: string;
   color?: string;
   colors: ColorInput[];
+}
+
+function prepareColors(group: ColorInputGroup) {
+  group.fullName = colorName(group);
+
+  group.colors.forEach(child => {
+    child.fullName = colorName(group, child);
+
+    if (child.darkColor !== child.color) {
+      child.darkColor = child.color;
+    }
+
+    if (child.variable && child.variable !== child.darkVariable) {
+      child.darkVariable = child.variable;
+    }
+  });
+}
+
+function applyFullNames() {
+  colors.swatches.forEach((group: ColorInputGroup) => {
+    prepareColors(group);
+  });
+
+  colors.states.forEach((group: ColorInputGroup) => {
+    prepareColors(group);
+  });
+}
+
+applyFullNames();
+
+export function prefix(name: string) {
+  COLOR_PREFIX = name;
+  applyFullNames();
 }
 
 /**
  * Duplicate color to the dark color fields.
  */
-colors.swatches.forEach(group => {
-  group.colors.forEach(item => {
-    item.darkColor = item.color;
-    if (item.variable) {
-      item.darkVariable = item.variable;
-    }
-  });
-});
-
-colors.states.forEach(group => {
-  group.colors.forEach(item => {
-    item.darkColor = item.color;
-    if (item.variable) {
-      item.darkVariable = item.variable;
-    }
-  });
-});
 
 export const swatches = resistant<ColorInputGroup[], true>('color-swatches', colors.swatches);
 export const states = resistant<ColorInputGroup[], true>('color-states', colors.states);
 export const variables = resistant<ColorInputGroup[], true>('color-customs', colors.variables);
+
+export function colorName(group: ColorInputGroup | string, color?: ColorInput | string) {
+  if (color) {
+    return `--${ COLOR_PREFIX }${ varname(typeof group === 'string'
+                                          ? group
+                                          : group.name) }-${ varname(typeof color === 'string' ? color : color.name) }`;
+  } else {
+    return `--${ COLOR_PREFIX }${ varname(typeof group === 'string' ? group : group.name) }`;
+  }
+}
 
 /**
  * Pick a white/black to make sure it can be visible on top of the given color.
@@ -58,7 +88,7 @@ export function foreground(color: string): string {
   }
 
   if (color.length === 3) {
-    color = color.split('').map(function (hex) {
+    color = color.split('').map(function(hex) {
       return hex + hex;
     }).join('');
   }
@@ -91,7 +121,7 @@ export function shade(color: string, level: number) {
 
 export function createSwatches(
   color: string,
-  maps: Array<string> = ['10', '50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950']
+  maps: Array<string> = [ '10', '50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950' ]
 ): ColorInput[] {
   const level = Math.round(100 / maps.length) * 3;
   const start = Math.ceil(maps.length / 2);
@@ -179,6 +209,10 @@ export function varname(name: string) {
   return name.toLowerCase().replace(/[-\s]+/g, '-');
 }
 
+export function cssVarName(name: string) {
+  return `var(${ name.replace(/^--/, '--' + COLOR_PREFIX) })`;
+}
+
 export function toCssVar(groups: ColorInputGroup[], options: CssVarOptions = {}): string {
   const { className = ':root' } = options;
 
@@ -188,14 +222,14 @@ export function toCssVar(groups: ColorInputGroup[], options: CssVarOptions = {})
   let css = '';
 
   if (light) {
-    css += `${className} {\r\n${light}}\r\n`;
+    css += `${ className } {\r\n${ light }}\r\n`;
   }
 
   if (dark) {
     if (options.darkClass) {
-      css += `${className}${options.darkClass} {\r\n${dark}  }\r\n`;
+      css += `${ className }${ options.darkClass } {\r\n${ dark }  }\r\n`;
     } else {
-      css += `@media (prefers-color-scheme: dark) {\r\n  ${className} {\r\n${dark}  }\r\n}\r\n`;
+      css += `@media (prefers-color-scheme: dark) {\r\n  ${ className } {\r\n${ dark }  }\r\n}\r\n`;
     }
   }
 
@@ -203,27 +237,27 @@ export function toCssVar(groups: ColorInputGroup[], options: CssVarOptions = {})
 }
 
 function cssVar(group: ColorInputGroup, options: CssVarOptions = {}) {
-  const { prefix = 'color', forceDark } = options;
-  const { name, color, colors } = group;
+  const { forceDark } = options;
+  const { color, colors } = group;
 
   let light = '';
   let dark = '';
 
   if (color) {
-    light += `  --${prefix}-${varname(name)}: ${color};\r\n`;
+    light += `  ${ colorName(group) }: ${ color };\r\n`;
   }
 
   for (const child of colors) {
     if (child.variable) {
-      light += `  --${prefix}-${varname(name)}-${varname(child.name)}: var(${child.variable});\r\n`;
+      light += `  ${ colorName(group, child) }: ${ cssVarName(child.variable) };\r\n`;
     } else {
-      light += `  --${prefix}-${varname(name)}-${varname(child.name)}: ${child.color};\r\n`;
+      light += `  ${ colorName(group, child) }: ${ child.color };\r\n`;
     }
 
     if ((child.darkVariable && child.darkVariable !== child.variable) || (child.darkVariable && forceDark)) {
-      dark += `    --${prefix}-${varname(name)}-${varname(child.name)}: var(${child.darkVariable});\r\n`;
+      dark += `    ${ colorName(group, child) }: ${ cssVarName(child.darkVariable) };\r\n`;
     } else if ((child.darkColor && child.darkColor !== child.color) || (child.darkColor && forceDark)) {
-      dark += `    --${prefix}-${varname(name)}-${varname(child.name)}: ${child.darkColor};\r\n`;
+      dark += `    ${ colorName(group, child) }: ${ child.darkColor };\r\n`;
     }
   }
 

@@ -97,6 +97,7 @@
   --kanpas-color-grey-800: #33323c;
   --kanpas-color-grey-900: #2b2a33;
   --kanpas-color-grey-950: #1c1b22;
+  --kanpas-color-grey-1000: #121217;
 
   --kanpas-color-logo-primary: #db2127;
   --kanpas-color-logo-secondary: #00a75e;
@@ -199,6 +200,15 @@
   --kanpas-effect-fast: all .2ms ease-in-out;
   --kanpas-effect-medium: .4ms;
   --kanpas-effect-slow: .6ms;
+
+  --kanpas-tool-size: 40px;
+  --kanpas-tool-button-size: 32px;
+  --kanpas-sidemenu-width: 48px;
+  --kanpas-toolbar-height: 48px;
+  --kanpas-statusbar-height: 24px;
+  --kanpas-toolbar-bg: var(--kanpas-color-grey-50);
+  --kanpas-toolbar-line: var(--kanpas-color-grey-200);
+  --kanpas-toogroup-bg: var(--kanpas-color-grey-50);
 }
 
 @mixin prefer-dark {
@@ -235,8 +245,8 @@
 
   --kanpas-color-header-bg: var(--kanpas-color-grey-900);
 
-  --kanpas-color-acrylic: #111111;
-  --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.2);
+  --kanpas-color-acrylic: var(--kanpas-color-grey-950);
+  --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.3);
 
   --kanpas-color-background-card: var(--kanpas-color-grey-900);
   --kanpas-color-background-card-alt: var(--kanpas-color-grey-950);
@@ -264,6 +274,9 @@
 
   --kanpas-color-input-bg: var(--kanpas-color-grey-700);
   --kanpas-color-input-line: var(--kanpas-color-grey-950);
+  --kanpas-toolbar-bg: var(--kanpas-color-grey-950);
+  --kanpas-toolbar-line: var(--kanpas-color-grey-1000);
+  --kanpas-toogroup-bg: var(--kanpas-color-grey-900);
 }
 
 :root {
@@ -367,12 +380,10 @@ html, body {
   background-color: var(--kanpas-color-background-card);
 }
 
-.kanpas-acrylic {
-  @extend .kanpas-card-shadow;
-
+.kanpas-acrylic-bg {
   backdrop-filter: blur(32px);
-  border-radius: var(--kanpas-radius);
   position: relative;
+  transition: all .2s ease-in-out;
 
   &:before {
     content: "";
@@ -384,13 +395,28 @@ html, body {
     left: 0;
     z-index: -1;
     background-color: var(--kanpas-color-acrylic);
-    border-radius: var(--kanpas-radius);
     opacity: 0.85;
   }
 
   .kanpas-separator-x, .kanpas-separator-x, .kanpas-tab-button, .kanpas-tab-head {
-    border-color: var(--kanpas-color-acrylic-line) !important;
+    border-color: var(--kanpas-toolbar-line) !important;
   }
+}
+
+.kanpas-acrylic {
+  @extend .kanpas-card-shadow;
+  @extend .kanpas-acrylic-bg;
+  border-radius: var(--kanpas-radius);
+
+  &:before {
+    border-radius: var(--kanpas-radius);
+  }
+}
+
+.kanpas-tool-group {
+  background-color: var(--kanpas-toogroup-bg);
+  border: 1px solid var(--kanpas-toolbar-line);
+  border-radius: var(--kanpas-radius);
 }
 
 .kanpas-card-rounded {
@@ -551,6 +577,33 @@ html, body {
   }
 }
 
+@keyframes slideInRight {
+  0% {
+    transform: translate3d(-24px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translate3d(24px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translate3d(0, 24px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 .kanpas-animation-fix {
   backface-visibility: hidden;
   perspective: none;
@@ -573,7 +626,31 @@ html, body {
   animation: fadeOut .3s ease-in-out;
 }
 
+.kanpas-slide-in-right {
+  animation: slideInRight .2s cubic-bezier(.47, 1.64, .41, .8);
+}
+
+.kanpas-slide-in-left {
+  animation: slideInLeft .2s cubic-bezier(.47, 1.64, .41, .8);
+}
+
+.kanpas-slide-in-top {
+  animation: slideInTop .2s cubic-bezier(.47, 1.64, .41, .8);
+}
+
 .kanpas-tool-button {
-  width: 40px;
-  height: 40px;
+  width: var(--kanpas-tool-size);
+  height: var(--kanpas-tool-size);
+}
+
+.-uppercase {
+  text-transform: uppercase;
+}
+
+.-lowercase {
+  text-transform: lowercase;
+}
+
+.-capitalize {
+  text-transform: capitalize;
 }

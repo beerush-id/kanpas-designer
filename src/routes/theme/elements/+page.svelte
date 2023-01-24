@@ -24,22 +24,26 @@
 <ImmersiveOption title="Components" collapsible></ImmersiveOption>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <CanvasSwitch></CanvasSwitch>
+    <div class="kanpas-tool-group">
+      <CanvasSwitch></CanvasSwitch>
+    </div>
     <div class="mdr-24"></div>
-    <MockupSwitch></MockupSwitch>
+    <div class="kanpas-tool-group">
+      <MockupSwitch></MockupSwitch>
+    </div>
   </div>
 </Portal>
 <Canvas>
-  <div class="tree-panel kanpas-acrylic" slot="canvas-panel-left" class:expanded={$mockup.fullScreen}>
+  <div class="tree-panel kanpas-acrylic-bg" slot="canvas-panel-left" class:expanded={$mockup.fullScreen}>
     <div class="tree-header pd-16 flex-row-center-y">
       <h5>HTML Elements</h5>
       <span class="flex"></span>
       <Icon clickable tooltip="Add Group">create_new_folder</Icon>
     </div>
     <div class="tree-groups flex">
-      {#each groups as group}
-        <Panel icon={group.icon} title={group.label} collapsible>
-          <div class="kanpas-panel-section pdl-10">
+      {#each groups as group, i}
+        <Panel icon={group.icon} title={group.label} collapsible collapsed>
+          <div class="kanpas-panel-section pdl-4">
             {#each group.elements as elem}
               <div class="tree-item">
                 <div class="tree-item-head flex-row-center-y">
@@ -50,7 +54,9 @@
             {/each}
           </div>
         </Panel>
-        <div class="kanpas-separator-x"></div>
+        {#if i < (groups.length - 1)}
+          <div class="kanpas-separator-x"></div>
+        {/if}
       {/each}
     </div>
   </div>
@@ -163,7 +169,7 @@
       {/each}
     </div>
   </Mockup>
-  <div class="style-panel kanpas-acrylic" slot="canvas-panel-right" class:expanded={$mockup.fullScreen}>
+  <div class="style-panel kanpas-acrylic-bg" slot="canvas-panel-right" class:expanded={$mockup.fullScreen}>
     <EditorPanel></EditorPanel>
   </div>
 </Canvas>
@@ -172,7 +178,7 @@
   .tree-panel {
     display: flex;
     flex-direction: column;
-    margin-left: 56px;
+    border-right: 1px solid var(--kanpas-toolbar-line);
   }
 
   .tree-item:not(:last-child) {
@@ -180,11 +186,13 @@
   }
 
   .style-panel, .tree-panel {
-    width: 320px;
-    margin-top: 56px;
-    border-radius: var(--kanpas-radius);
-    height: calc(100% - 56px - var(--kanpas-space-tight));
+    border-radius: 0;
+    height: 100%;
     transition: all .3s ease-in-out;
+
+    &:before {
+      border-radius: 0;
+    }
 
     &.expanded {
       margin: 0;
@@ -193,12 +201,12 @@
   }
 
   .style-panel {
-    margin-right: var(--kanpas-space-tight);
+    border-left: 1px solid var(--kanpas-toolbar-line);
   }
 
   .tree-groups {
     overflow-y: auto;
-    padding: 0 16px;
+    padding: 0 16px 16px 16px;
   }
 
   .tree-item {

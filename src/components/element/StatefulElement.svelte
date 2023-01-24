@@ -1,0 +1,12 @@
+<script lang="ts">
+  export let tag = 'div';
+  export let states = [ 'hover', 'focus', 'active', 'disabled' ];
+  export let variants = [];
+</script>
+
+<div class="kanpas-elements">
+  <div class="kanpas-element-head">
+    <h3>Standard</h3>
+    <p>Button styles when used without any class.</p>
+  </div>
+</div>

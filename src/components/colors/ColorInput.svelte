@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { varname } from '@utils/colors.js';
+  import { colorName } from '@utils/colors.js';
   import { createEventDispatcher, onMount } from 'svelte';
   import PopUp from '../common/PopUp.svelte';
   import ColorPicker from './ColorPicker.svelte';
@@ -27,7 +27,7 @@
 
 <div class="kanpas-color-input flex-row-center-y {focused ? 'focus' : ''}">
   <div class="kanpas-color-input-name flex flex-row-center-y">
-    <span class="kanpas-color-input-value mdr-4">--color-{varname(group)}-</span>
+    <span class="kanpas-color-input-value mdr-4">{colorName(group)}-</span>
     <input
       class="flex"
       type="text"

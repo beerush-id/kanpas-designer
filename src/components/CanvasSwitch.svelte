@@ -11,22 +11,22 @@
   };
 </script>
 
-<div class="canvas-switch kanpas-acrylic flex-row-center-y">
-  <Icon clickable class="kanpas-tool-button" tooltip="Zoom Out"
+<div class="canvas-switch flex-row-center-y">
+  <Icon clickable class="tool-icon" tooltip="Zoom Out"
         on:click={() => canvas.zoomOut()}>zoom_out
   </Icon>
   <div class="flex-row-center scale-label mdx-6">
     <span contenteditable="true" on:blur={setScale}>{Math.round($canvas.scale * 100)}</span>
     <span>%</span>
   </div>
-  <Icon clickable class="kanpas-tool-button" tooltip="Zoom In"
+  <Icon clickable class="tool-icon" tooltip="Zoom In"
         on:click={() => canvas.zoomIn()}>zoom_in
   </Icon>
   <div class="kanpas-separator-y"></div>
-  <Icon clickable class="kanpas-tool-button" tooltip="Reset Zoom"
-        on:click={() => canvas.resetZoom()}>zoom_out_map
+  <Icon clickable class="tool-icon" tooltip="Reset Zoom"
+        on:click={() => canvas.resetZoom()} active={$canvas.scale !== 1}>zoom_in_map
   </Icon>
-  <Icon clickable class="kanpas-tool-button" tooltip="Center View" active={!$canvas.centered}
+  <Icon clickable class="tool-icon" tooltip="Center View" active={!$canvas.centered}
         on:click={() => canvas.center()}>center_focus_weak
   </Icon>
 </div>

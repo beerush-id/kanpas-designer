@@ -3,13 +3,16 @@
   import { persistent } from '@beerush/reactor';
   import Immersive from '@components/common/Immersive.svelte';
   import Toast from '@components/common/Toast.svelte';
-  import { mockup } from '@services/mockup';
+  import { css } from '@services/css';
   import { navigation } from '@services/navigation';
   import { selector } from '@services/selector';
   import type { AfterNavigate } from '@sveltejs/kit';
   import { theme } from '@utils/colors';
   import { browser } from '@utils/logger';
+  import { onDestroy } from 'svelte';
   import '../app.scss';
+
+  css.subscribe();
 
   persistent('app-settings', {
     domain: 'www.myapp.com'
@@ -44,9 +47,13 @@
     navigation.activate(nav);
     navigation.navigating = false;
   });
+
+  onDestroy(() => {
+    css.unsubscribe();
+  });
 </script>
 
-<Immersive expanded={$mockup?.expandedHeaderMenu} collapsible={$mockup?.collapsibleHeader}>
+<Immersive>
   <slot/>
 </Immersive>
 <div id="kanpas-popup" class="kanpas-reset">

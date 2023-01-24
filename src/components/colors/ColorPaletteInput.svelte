@@ -1,6 +1,6 @@
 <script lang="ts">
   import { copy } from '@utils/clipboard.js';
-  import { foreground, varname } from '@utils/colors';
+  import { colorName, foreground } from '@utils/colors';
   import { createEventDispatcher, onMount } from 'svelte';
   import Icon from '../common/Icon.svelte';
   import PopUp from '../common/PopUp.svelte';
@@ -14,7 +14,7 @@
   export let parent = '';
   export let inheritable = false;
 
-  $: variableName = `--color-${ varname(parent) }-${ varname(name) }`;
+  $: variableName = colorName(parent, name);
   let element: HTMLInputElement;
 
   onMount(() => {

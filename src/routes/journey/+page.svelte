@@ -25,10 +25,12 @@
 <ImmersiveOption title="Journey" collapsible/>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <div class="kanpas-acrylic flex-row-center-y mdr-8">
+    <div class="kanpas-tool-group flex-row-center-y mdr-8">
       <Icon class="tool-icon" tooltip="Add Journey" clickable on:click={addJourney}>new_label</Icon>
     </div>
-    <CanvasSwitch/>
+    <div class="kanpas-tool-group">
+      <CanvasSwitch/>
+    </div>
   </div>
 </Portal>
 <Canvas>

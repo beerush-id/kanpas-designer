@@ -26,12 +26,12 @@
   on:click
   on:keypress>
   <span class="kanpas-icon-symbol">
-    <slot />
+    <slot/>
   </span>
   {#if tooltip}
     <PopUp {xDir} {yDir}>{tooltip}</PopUp>
   {/if}
-  <slot name="tooltip" />
+  <slot name="tooltip"/>
 </div>
 
 <style lang="scss">
@@ -53,8 +53,8 @@
     }
 
     &.tool-icon {
-      width: 40px;
-      height: 40px;
+      width: var(--kanpas-tool-size);
+      height: var(--kanpas-tool-button-size);
     }
 
     &.active {

@@ -47,12 +47,12 @@ export type Transform = {
 }
 
 export type StylerOptions = {
-  textShadows: Shadow[];
+  dropShadows: Shadow[];
   boxShadows: Shadow[];
+  textShadows: Shadow[];
 
   filters: Filters;
   backdropFilters: Filters;
-  dropShadows: Shadow[];
   gradients: Gradient[];
   backgroundClip?: boolean;
   backgroundImage?: string;
@@ -122,11 +122,13 @@ export function createStyles(styles: StyleDeclarations = {} as never): Reactive<
 
 export function joinFilters(filters: Filters, shadows: Shadow[]) {
   const activeFilters = [];
+
   for (const [ prop, value ] of Object.entries(filters)) {
     if (typeof value !== 'undefined' && value !== '') {
       activeFilters.push(`${ dash(prop) }(${ value }${ filterUnits[prop as never] })`);
     }
   }
+
   const activeShadows: {
     color: string;
     colorVar?: string;

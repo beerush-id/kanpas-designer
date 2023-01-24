@@ -17,6 +17,10 @@
   console.log('Rendering svelte todos...');
 </script>
 
+<svelte:head>
+  <title>Features | Kanpas</title>
+</svelte:head>
+
 <div style="width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center">
   <ul>
     {#each $todos as { name, done }, i}

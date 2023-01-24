@@ -1,12 +1,16 @@
 <script lang="ts">
   import type { Reactive, Unsubscribe } from '@beerush/reactor';
+  import { reactive } from '@beerush/reactor';
   import type { ColorInput } from '@utils/colors';
-  import { states, swatches, theme, variables, varname } from '@utils/colors.js';
+  import { colorName } from '@utils/colors';
+  import { states, swatches, theme, variables } from '@utils/colors.js';
   import { createEventDispatcher } from 'svelte';
   import ColorPicker from 'svelte-awesome-color-picker';
   import PopUp from '../common/PopUp.svelte';
 
   const dispatch = createEventDispatcher();
+
+  let query = '';
   let className = '';
   export { className as class };
 
@@ -28,7 +32,7 @@
 
   const updateColor = (group: string, color: string, name: string) => {
     value = color;
-    variable = `--color-${ varname(group) }-${ varname(name) }`;
+    variable = colorName(group, name);
     dispatch('input', { color: value, variable });
   };
 
@@ -45,32 +49,77 @@
       }
     }
   };
+
+  let fStates = reactive([]);
+  let fSwatches = reactive([]);
+  let fVariables = reactive([]);
+
+  const filter = () => {
+    fVariables.splice(0, fVariables.length);
+    fStates.splice(0, fStates.length);
+    fSwatches.splice(0, fSwatches.length);
+
+    variables.forEach(group => {
+      const colors = group.colors.filter(c => c.name.toLowerCase().includes(query));
+
+      if (colors.length) {
+        fVariables.push({ ...group, colors });
+      } else if (group.name.toLowerCase().includes(query)) {
+        fVariables.push(group);
+      }
+    });
+
+    states.forEach(group => {
+      const colors = group.colors.filter(c => c.name.toLowerCase().includes(query));
+
+      if (colors.length) {
+        fStates.push({ ...group, colors });
+      } else if (group.name.toLowerCase().includes(query)) {
+        fStates.push(group);
+      }
+    });
+
+    swatches.forEach(group => {
+      const colors = group.colors.filter(c => c.name.toLowerCase().includes(query));
+
+      if (colors.length) {
+        fSwatches.push({ ...group, colors });
+      } else if (group.name.toLowerCase().includes(query)) {
+        fSwatches.push(group);
+      }
+    });
+  };
+
+  filter();
 </script>
 
-<div class="kanpas-color-picker-wrap {className}">
+<div class="kanpas-color-picker-wrap {className}" on:wheel|stopPropagation>
   <div class="kanpas-color-picker">
     <div class="kanpas-color-variables">
-      <div class="kanpas-color-list-label">Common</div>
-      <div class="kanpas-color-list flex-row">
-        {#if $variables}
-          {#each $variables as group}
+      <div class="kanpas-color-search mdb-12">
+        <input type="text" placeholder="Search color" bind:value={query} style:width="100%" on:input={filter}>
+      </div>
+      {#if $fVariables.length}
+        <div class="kanpas-color-list-label">Common</div>
+        <div class="kanpas-color-list flex-row">
+          {#each $fVariables as group}
             {#each group.colors as item}
               <div
                 class="kanpas-color-view"
                 style="background-color: {$theme.scheme === 'dark' ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
-                <PopUp performance
-                >--color-{varname(group.name)}-{varname(item.name)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
+                <PopUp performance>
+                  {colorName(group, item)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
                 </PopUp>
               </div>
             {/each}
           {/each}
-        {/if}
-      </div>
-      <div class="kanpas-separator-x"></div>
-      {#if $states}
-        {#each $states as group}
+        </div>
+        <div class="kanpas-separator-x"></div>
+      {/if}
+      {#if $fStates.length}
+        {#each $fStates as group}
           <div class="kanpas-color-list-label">{group.name}</div>
           <div class="kanpas-color-list flex-row">
             {#each group.colors as item}
@@ -79,17 +128,17 @@
                 style="background-color: {$theme.scheme === 'dark' ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
-                <PopUp performance
-                >--color-{varname(group.name)}-{varname(item.name)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
+                <PopUp performance>
+                  {colorName(group, item)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
                 </PopUp>
               </div>
             {/each}
           </div>
         {/each}
+        <div class="kanpas-separator-x"></div>
       {/if}
-      <div class="kanpas-separator-x"></div>
-      {#if $swatches}
-        {#each $swatches as group}
+      {#if $fSwatches.length}
+        {#each $fSwatches as group}
           <div class="kanpas-color-list-label">{group.name}</div>
           <div class="kanpas-color-list flex-row">
             {#each group.colors as item}
@@ -98,8 +147,8 @@
                 style="background-color: {$theme.scheme === 'dark' ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
-                <PopUp performance
-                >--color-{varname(group.name)}-{varname(item.name)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
+                <PopUp performance>
+                  {colorName(group, item)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
                 </PopUp>
               </div>
             {/each}

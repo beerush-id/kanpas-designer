@@ -2,7 +2,7 @@
   import { reactive } from '@beerush/reactor';
   import { toast } from '@services/toast';
   import { copy } from '@utils/clipboard';
-  import { type ColorInput, randomize, theme, toCssVar, varname } from '@utils/colors';
+  import { type ColorInput, colorName, randomize, theme, toCssVar } from '@utils/colors';
   import { createEventDispatcher, onMount } from 'svelte';
   import Icon from '../common/Icon.svelte';
   import Input from './ColorInput.svelte';
@@ -33,18 +33,18 @@
   };
 
   const copyColor = (input: ColorInput) => {
-    copy(`--color-${ varname(name) }-${ varname(input.name) }`, 'Color copied to clipboard');
+    copy(colorName(name, input), 'Color copied to clipboard');
   };
   const removeColor = (input: ColorInput) => {
     toast
       .ask({
         title: 'Remove Color',
-        subtitle: `Are you sure want to remove color: --color-${ varname(name) }-${ varname(input.name) }?`
+        subtitle: `Are you sure want to remove color: ${ colorName(name, input) }?`
       })
       .then(() => {
         colors.splice(colors.indexOf(input), 1);
       })
-      .catch(() => null);
+      .catch(() => {});
   };
 
   let nameInput: HTMLInputElement;

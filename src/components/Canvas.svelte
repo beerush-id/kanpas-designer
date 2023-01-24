@@ -1,13 +1,16 @@
 <script lang="ts">
+  import CanvasSwitch from '@components/CanvasSwitch.svelte';
   import { canvas } from '@services/canvas.js';
   import Hammer from 'hammerjs';
   import { onDestroy, onMount } from 'svelte';
 
+  export let showControls = false;
   export let floatingPanel = false;
   let className = '';
   export { className as class };
 
   let self;
+  let left;
   let draggable;
   let mousedrag;
   let startPoint: MouseEvent;
@@ -193,7 +196,23 @@
 </script>
 
 <div class="canvas {className}">
-  <div class="canvas-panel canvas-panel-left kanpas-reset" class:floating={floatingPanel} on:wheel={captureWheel}>
+  {#if showControls}
+    <div class="canvas-controls flex-row-center-y"
+         style:width="{self?.offsetWidth}px"
+         style:left="{left?.offsetWidth}px">
+      <slot name="canvas-control-prefix"></slot>
+      <div class="flex"></div>
+      <div class="kanpas-acrylic">
+        <CanvasSwitch></CanvasSwitch>
+      </div>
+      <div class="flex"></div>
+      <slot name="canvas-control-suffix"></slot>
+    </div>
+  {/if}
+  <div class="canvas-panel canvas-panel-left kanpas-reset"
+       bind:this={left}
+       class:floating={floatingPanel}
+       on:wheel={captureWheel}>
     <slot name="canvas-panel-left"></slot>
   </div>
   <div class="canvas-content"
@@ -222,6 +241,15 @@
     display: flex;
     flex-direction: row;
     position: relative;
+  }
+
+  .canvas-controls {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: var(--kanpas-space-tight);
   }
 
   .canvas-content {

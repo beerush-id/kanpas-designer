@@ -2,7 +2,6 @@
   import Icon from '@components/common/Icon.svelte';
   import InputUnit from '@components/common/InputUnit.svelte';
   import Panel from '@components/common/Panel.svelte';
-  import Range from '@components/common/Range.svelte';
   import { createOptions, createStyles, joinTransforms } from '@utils/panel';
 
   export let styles = createStyles();
@@ -88,6 +87,37 @@
 
     transform();
   };
+
+  const properties = [
+    {
+      key: 'translate',
+      label: 'Translate',
+      unit: '%',
+      inputs: [ 'x', 'y', 'z' ]
+    },
+    {
+      key: 'rotate',
+      label: 'Rotation',
+      unit: 'deg',
+      min: -360,
+      max: 360,
+      inputs: [ 'x', 'y', 'z' ]
+    },
+    {
+      key: 'scale',
+      label: 'Scale',
+      unit: '',
+      inputs: [ 'x', 'y', 'z' ]
+    },
+    {
+      key: 'skew',
+      label: 'Skew',
+      unit: 'deg',
+      min: -360,
+      max: 360,
+      inputs: [ 'x', 'y' ]
+    },
+  ];
 </script>
 
 <Panel icon="transform" title="Transform" collapsible collapsed={!$styles.transform}>
@@ -117,83 +147,30 @@
           on:click={orgReset}>settings_backup_restore
     </Icon>
   </div>
+  {#each properties as prop}
+    <div class="kanpas-panel-section flex-row-center-y">
+      <div class="kanpas-panel-prop-label flex">{prop.label}</div>
+      {#each prop.inputs as input}
+        <InputUnit unit={prop.unit} min={prop.min} max={prop.max}
+                   class="mdl-4 small"
+                   placeholder={input}
+                   bind:value={$options[prop.key][input]}
+                   on:input={transform}></InputUnit>
+      {/each}
+      <Icon clickable tooltip="Revert" class="mdl-10"
+            on:click={() => reset(prop.key)}>settings_backup_restore
+      </Icon>
+    </div>
+  {/each}
   <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Translate</div>
-    <InputUnit unit="%"
-               class="mdl-4 small"
-               placeholder="x"
-               bind:value={$options.translate.x}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="%"
-               class="mdl-4 small"
-               placeholder="y"
-               bind:value={$options.translate.y}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="%"
-               class="mdl-4 small"
-               placeholder="z"
-               bind:value={$options.translate.z}
-               on:input={transform}></InputUnit>
+    <div class="kanpas-panel-prop-label flex">Style</div>
+    <select bind:value={$styles.transformStyle}>
+      <option value={undefined}>Default</option>
+      <option value="flat">Flat</option>
+      <option value="preserve-3d">Preserve 3D</option>
+    </select>
     <Icon clickable tooltip="Revert" class="mdl-10"
-          on:click={() => reset('translate')}>settings_backup_restore
-    </Icon>
-  </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Rotation</div>
-    <InputUnit unit="deg"
-               class="mdl-4 small"
-               placeholder="x"
-               bind:value={$options.rotate.x}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="deg"
-               class="mdl-4 small"
-               placeholder="y"
-               bind:value={$options.rotate.y}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="deg"
-               class="mdl-4 small"
-               placeholder="z"
-               bind:value={$options.rotate.z}
-               on:input={transform}></InputUnit>
-    <Icon clickable tooltip="Revert" class="mdl-10"
-          on:click={() => reset('rotate')}>settings_backup_restore
-    </Icon>
-  </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Scale</div>
-    <InputUnit unit="" min="0" step={0.1}
-               class="mdl-4 small"
-               placeholder="x"
-               bind:value={$options.scale.x}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="" min="0" step={0.1}
-               class="mdl-4 small"
-               placeholder="y"
-               bind:value={$options.scale.y}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="" min="0" step={0.1}
-               class="mdl-4 small"
-               placeholder="z"
-               bind:value={$options.scale.z}
-               on:input={transform}></InputUnit>
-    <Icon clickable tooltip="Revert" class="mdl-10"
-          on:click={() => reset('scale')}>settings_backup_restore
-    </Icon>
-  </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Scew</div>
-    <InputUnit unit="deg"
-               class="mdl-4 small"
-               placeholder="x"
-               bind:value={$options.skew.x}
-               on:input={transform}></InputUnit>
-    <InputUnit unit="deg"
-               class="mdl-4 small"
-               placeholder="y"
-               bind:value={$options.skew.y}
-               on:input={transform}></InputUnit>
-    <Icon clickable tooltip="Revert" class="mdl-10"
-          on:click={() => reset('skew')}>settings_backup_restore
+          on:click={() => delete styles.transformStyle}>settings_backup_restore
     </Icon>
   </div>
 </Panel>

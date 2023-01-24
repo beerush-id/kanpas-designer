@@ -35,6 +35,7 @@
 
   const rem = (grad: Gradient) => {
     options.gradients.splice(options.gradients.indexOf(grad), 1);
+    updateCssValues();
   };
 
   const clear = () => {

@@ -39,8 +39,6 @@
     <Character {styles} collapsed></Character>
     <div class="kanpas-separator-x"></div>
   {/if}
-  <Gradient {styles} {options}></Gradient>
-  <div class="kanpas-separator-x"></div>
   <Margin {styles}></Margin>
   <div class="kanpas-separator-x"></div>
   <Padding {styles}></Padding>
@@ -52,6 +50,8 @@
   <BorderRadius {styles}></BorderRadius>
   <div class="kanpas-separator-x"></div>
   <Transform {styles} {options}></Transform>
+  <div class="kanpas-separator-x"></div>
+  <Gradient {styles} {options}></Gradient>
   <div class="kanpas-separator-x"></div>
   <DropShadow {styles} {options}></DropShadow>
   <div class="kanpas-separator-x"></div>

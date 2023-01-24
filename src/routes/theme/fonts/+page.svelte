@@ -8,10 +8,11 @@
   import EditorPanel from '@components/EditorPanel.svelte';
   import Mockup from '@components/Mockup.svelte';
   import MockupSwitch from '@components/MockupSwitch.svelte';
+  import VariableShortcuts from '@components/VariableShortcuts.svelte';
 
   import typos from '@data/typos.json';
   import { mockup } from '@services/mockup.js';
-  import { dragmove, focusAssist, hoverAssist } from '@services/selector';
+  import { dragmove, focusAssist, hoverAssist, selector } from '@services/selector';
   import { copy } from '@utils/clipboard';
   import { states, swatches, toCssVar, variables } from '@utils/colors';
   import { createOptions, createStyles } from '@utils/panel';
@@ -62,11 +63,6 @@
     options = elements.body.options;
   };
 
-  let css = toCssVar(
-    [ ...swatches, ...states, ...variables ],
-    { className: '.kanpas-root', darkClass: '.dark-mode' }
-  );
-
   let styleElement = document.querySelector('#css-variables');
 
   if (!styleElement) {
@@ -74,7 +70,6 @@
     styleElement.setAttribute('id', 'css-variables');
   }
 
-  styleElement.innerHTML = css;
   document.head.appendChild(styleElement);
 
   const createCSS = (
@@ -131,11 +126,14 @@
 
   const exportCSS = () => {
     if ('innerHTML' in styleElement) {
-      styleElement.innerHTML = `${ css }\r\n${ createCSS() }`;
+      styleElement.innerHTML = `${ createCSS() }`;
     }
   };
 
   const unsubCSS = elements.subscribe(() => {
+    setTimeout(() => {
+      selector.placeFocuses();
+    }, 100);
     exportCSS();
   });
 
@@ -150,67 +148,74 @@
 <ImmersiveOption title="Typography" collapsible></ImmersiveOption>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <div class="kanpas-acrylic">
+    <div class="kanpas-tool-group flex-row-center-y">
+      <VariableShortcuts></VariableShortcuts>
+      <div class="kanpas-separator-y"></div>
       <Icon class="tool-icon" clickable tooltip="Copy CSS" on:click={copyCSS}>css</Icon>
     </div>
     <div class="mx-1"></div>
-    <CanvasSwitch></CanvasSwitch>
+    <div class="kanpas-tool-group">
+      <CanvasSwitch></CanvasSwitch>
+    </div>
     <div class="mx-1"></div>
-    <MockupSwitch></MockupSwitch>
+    <div class="kanpas-tool-group">
+      <MockupSwitch></MockupSwitch>
+    </div>
   </div>
 </Portal>
 <Canvas>
   <Mockup styles={elements.body.styles} on:body-focus={switchToBody}>
-    <div class="kanpas-preview">
-      {#each elements.headings as elem}
-        <svelte:element this={elem.name}
-                        use:dragmove="{elem.styles}"
-                        use:hoverAssist={elem.styles}
-                        use:focusAssist
-                        on:click={() => switchElem(elem)}
-                        on:keypress>{elem.text}</svelte:element>
-        <p use:hoverAssist={elements.paragraph.styles}
-           use:dragmove="{elements.paragraph.styles}"
-           use:focusAssist
-           on:keypress
-           on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
-        <p use:hoverAssist={elements.paragraph.styles}
-           use:dragmove="{elements.paragraph.styles}"
-           use:focusAssist
-           on:keypress
-           on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
+    {#each elements.headings as elem}
+      <svelte:element this={elem.name}
+                      use:dragmove="{elem.styles}"
+                      use:hoverAssist={elem.styles}
+                      use:focusAssist
+                      on:click={() => switchElem(elem)}
+                      on:keypress>{elem.text}</svelte:element>
+      <p use:hoverAssist={elements.paragraph.styles}
+         use:dragmove="{elements.paragraph.styles}"
+         use:focusAssist
+         on:keypress
+         on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
+      <p use:hoverAssist={elements.paragraph.styles}
+         use:dragmove="{elements.paragraph.styles}"
+         use:focusAssist
+         on:keypress
+         on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
 
-        <blockquote use:hoverAssist={elements.quote.styles}
-                    use:dragmove="{elements.quote.styles}"
-                    use:focusAssist
-                    on:keypress
-                    on:click={() => switchElem(elements.quote)}>{elements.quote.text}</blockquote>
+      <blockquote use:hoverAssist={elements.quote.styles}
+                  use:dragmove="{elements.quote.styles}"
+                  use:focusAssist
+                  on:keypress
+                  on:click={() => switchElem(elements.quote)}>{elements.quote.text}</blockquote>
 
-        <a href="/" use:hoverAssist={elements.link.styles}
-           use:dragmove="{elements.link.styles}"
-           use:focusAssist
-           on:keypress
-           on:click|preventDefault|stopPropagation={() => switchElem(elements.link)}>{elements.link.text}</a>
+      <a href="/" use:hoverAssist={elements.link.styles}
+         use:dragmove="{elements.link.styles}"
+         use:focusAssist
+         on:keypress
+         on:click|preventDefault|stopPropagation={() => switchElem(elements.link)}>{elements.link.text}</a>
 
-        <hr use:hoverAssist={elements.separator.styles}
-            use:dragmove="{elements.separator.styles}"
-            use:focusAssist
-            on:keypress
-            on:click={() => switchElem(elements.separator)}>
-      {/each}
-    </div>
+      <hr use:hoverAssist={elements.separator.styles}
+          use:dragmove="{elements.separator.styles}"
+          use:focusAssist
+          on:keypress
+          on:click={() => switchElem(elements.separator)}>
+    {/each}
   </Mockup>
-  <div class="editor-panel kanpas-acrylic" class:expanded={$mockup.fullScreen} slot="canvas-panel-right">
+  <div class="editor-panel kanpas-acrylic-bg" class:expanded={$mockup.fullScreen} slot="canvas-panel-right">
     <EditorPanel {styles} {options} textMode></EditorPanel>
   </div>
 </Canvas>
 
 <style lang="scss">
   .editor-panel {
-    margin-top: 56px;
-    margin-right: var(--kanpas-space-tight);
-    border-radius: var(--kanpas-radius);
-    height: calc(100% - 56px - var(--kanpas-space-tight));
+    border-radius: 0;
+    height: 100%;
+    border-left: 1px solid var(--kanpas-toolbar-line);
+
+    &:before {
+      border-radius: 0;
+    }
 
     &.expanded {
       margin: 0;

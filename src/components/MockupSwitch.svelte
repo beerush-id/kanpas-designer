@@ -16,71 +16,67 @@
   };
 </script>
 
-<div class="kanpas-mockup-switch kanpas-acrylic flex-row-center">
+<div class="kanpas-mockup-switch flex-row-center">
   <slot></slot>
   <Icon clickable
         tooltip={$theme.scheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-        class="{$theme.scheme} kanpas-tool-button"
+        class="{$theme.scheme} tool-icon"
         on:click={toggleDarkMode}>{$theme.scheme}_mode
   </Icon>
   <Icon clickable
         tooltip="Full View Mode"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={!$mockup.enabled}
         on:click={() => mockup.enabled = !mockup.enabled}>document_scanner
   </Icon>
   <div class="kanpas-separator-y"></div>
   <Icon clickable
         tooltip="Desktop Mode"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={$mockup.active.name === 'desktop'}
         on:click={() => use('desktop')}>desktop_windows
   </Icon>
   <Icon clickable
         tooltip="Laptop Mode"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={$mockup.active.name === 'laptop'}
         on:click={() => use('laptop')}>laptop
   </Icon>
   <Icon clickable
         tooltip="Tablet Mode"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={$mockup.active.name === 'tablet'}
         on:click={() => use('tablet')}>tablet
   </Icon>
   <Icon clickable
         tooltip="Mobile Mode"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={$mockup.active.name === 'mobile'}
         on:click={() => use('mobile')}>phone_iphone
   </Icon>
   <div class="kanpas-separator-y"></div>
   <Icon clickable
         tooltip="Show Notch"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={$mockup.notch}
         on:click={() => mockup.notch = !mockup.notch}>camera_rear
   </Icon>
   <Icon clickable
         tooltip="3D View"
-        class="kanpas-tool-button"
+        class="tool-icon"
         active={$mockup.view3d}
         on:click={() => mockup.view3d = !mockup.view3d}>view_in_ar
   </Icon>
   {#if $mockup.active.portraitSupport}
     <Icon clickable
           tooltip="Rotate Screen"
-          class="kanpas-tool-button"
+          class="tool-icon"
           on:click={() => mockup.rotate()}>screen_rotation
     </Icon>
   {/if}
 </div>
 
 <style lang="scss">
-  .kanpas-mockup-switch {
-    height: 40px;
-  }
-
   .kanpas-mockup-switch :global(.kanpas-icon.light) {
     color: var(--kanpas-color-orange-300);
   }
