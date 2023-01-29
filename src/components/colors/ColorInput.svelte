@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { colorName } from '@utils/colors.js';
+  import { colorName, prefixColor } from '@utils/colors.js';
   import { createEventDispatcher, onMount } from 'svelte';
   import PopUp from '../common/PopUp.svelte';
   import ColorPicker from './ColorPicker.svelte';
@@ -39,7 +39,7 @@
   <div class="kanpas-color-input-trigger">
     <div class="kanpas-color-input-pick" style="background-color: {value}">
       {#if !pickerActive}
-        <PopUp xDir="before" yDir="between">{variable || value}</PopUp>
+        <PopUp xDir="before" yDir="between">{variable ? prefixColor(variable) : value}</PopUp>
       {/if}
       <PopUp
         expanded

@@ -1,28 +1,17 @@
 <script lang="ts">
   import Icon from '@components/common/Icon.svelte';
+  import ThemeSwitch from '@components/ThemeSwitch.svelte';
   import { mockup } from '@services/mockup.js';
-  import { theme } from '@utils/colors';
 
   const use = (name: string) => {
     mockup.use(name);
-  };
-
-  const toggleDarkMode = () => {
-    if (theme.scheme === 'dark') {
-      theme.scheme = 'light';
-    } else {
-      theme.scheme = 'dark';
-    }
   };
 </script>
 
 <div class="kanpas-mockup-switch flex-row-center">
   <slot></slot>
-  <Icon clickable
-        tooltip={$theme.scheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-        class="{$theme.scheme} tool-icon"
-        on:click={toggleDarkMode}>{$theme.scheme}_mode
-  </Icon>
+  <div class="mdl-8"></div>
+  <ThemeSwitch role="toggle"></ThemeSwitch>
   <Icon clickable
         tooltip="Full View Mode"
         class="tool-icon"

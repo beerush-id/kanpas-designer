@@ -91,7 +91,7 @@
       <WheelMenu label="Action" menuItems={editMenus}></WheelMenu>
     </PopUp>
   </svelte:fragment>
-  <div slot="suffix">contains</div>
+  <div slot="suffix">with</div>
 
   <svelte:fragment slot="action-bottom">
     {#if $action.actions.length}

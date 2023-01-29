@@ -77,6 +77,16 @@ export function colorName(group: ColorInputGroup | string, color?: ColorInput | 
   }
 }
 
+export function rawColorName(group: ColorInputGroup | string, color?: ColorInput | string) {
+  if (color) {
+    return `--${ varname(typeof group === 'string'
+                         ? group
+                         : group.name) }-${ varname(typeof color === 'string' ? color : color.name) }`;
+  } else {
+    return `--${ varname(typeof group === 'string' ? group : group.name) }`;
+  }
+}
+
 /**
  * Pick a white/black to make sure it can be visible on top of the given color.
  * @param {string} color
@@ -193,10 +203,12 @@ function nToHex(color: number) {
 }
 
 export type ThemeSetting = {
-  scheme?: 'dark' | 'light';
+  scheme?: 'dark' | 'light' | 'system';
   darkMode?: boolean;
 }
-export const theme: Reactive<ThemeSetting> = resistant<ThemeSetting>('theme-setting', {});
+export const theme: Reactive<ThemeSetting> = resistant<ThemeSetting>('theme-setting', {
+  scheme: 'system'
+});
 
 export type CssVarOptions = {
   prefix?: string;
@@ -209,8 +221,12 @@ export function varname(name: string) {
   return name.toLowerCase().replace(/[-\s]+/g, '-');
 }
 
-export function cssVarName(name: string) {
-  return `var(${ name.replace(/^--/, '--' + COLOR_PREFIX) })`;
+export function prefixColor(name: string): string {
+  return name.replace(/^--/, '--' + COLOR_PREFIX);
+}
+
+export function cssVarName(name: string): string {
+  return `var(${ prefixColor(name) })`;
 }
 
 export function toCssVar(groups: ColorInputGroup[], options: CssVarOptions = {}): string {

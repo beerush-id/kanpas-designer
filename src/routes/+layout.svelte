@@ -8,7 +8,6 @@
   import { selector } from '@services/selector';
   import type { AfterNavigate } from '@sveltejs/kit';
   import { theme } from '@utils/colors';
-  import { browser } from '@utils/logger';
   import { onDestroy } from 'svelte';
   import '../app.scss';
 
@@ -19,24 +18,30 @@
   });
 
   const setDarkMode = (dark?: boolean) => {
-    if (dark) {
-      theme.scheme = 'dark';
-      theme.darkMode = true;
-    } else {
-      theme.scheme = 'light';
-      theme.darkMode = false;
-    }
+    theme.darkMode = theme.scheme === 'system' ? dark : theme.scheme === 'dark';
   };
 
-  if (browser.isBrowser) {
-    const darkMode = window.matchMedia('(prefers-color-scheme: dark)');
+  const darkMode = window.matchMedia('(prefers-color-scheme: dark)');
 
-    darkMode.addEventListener('change', (e: any) => {
-      setDarkMode(e.target.matches);
-    });
+  darkMode.addEventListener('change', (e: any) => {
+    setDarkMode(e.target.matches);
+  });
 
-    setDarkMode(darkMode.matches);
-  }
+  setDarkMode(darkMode.matches);
+
+  const unsubScheme = theme.subscribe((o, f, v, a, path) => {
+    const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.body.classList.remove('kanpas-light');
+    document.body.classList.remove('kanpas-dark');
+
+    if ([ 'light', 'dark' ].includes(theme.scheme as never)) {
+      document.body.classList.add(`kanpas-${ theme.scheme }`);
+    }
+
+    if (!path || path === 'scheme') {
+      theme.darkMode = theme.scheme === 'system' ? dark : theme.scheme === 'dark';
+    }
+  });
 
   beforeNavigate(() => {
     selector.clearFocus();
@@ -50,6 +55,9 @@
 
   onDestroy(() => {
     css.unsubscribe();
+    if (typeof unsubScheme === 'function') {
+      unsubScheme();
+    }
   });
 </script>
 

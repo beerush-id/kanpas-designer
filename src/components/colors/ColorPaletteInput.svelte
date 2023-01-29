@@ -1,6 +1,7 @@
 <script lang="ts">
   import { copy } from '@utils/clipboard.js';
   import { colorName, foreground } from '@utils/colors';
+  import { prefixColor } from '@utils/colors.js';
   import { createEventDispatcher, onMount } from 'svelte';
   import Icon from '../common/Icon.svelte';
   import PopUp from '../common/PopUp.svelte';
@@ -59,7 +60,7 @@
              on:input={input}/>
     {/if}
     <span class="kanpas-color-palette-value" style="color: {foreground(value)}"
-    >{variable || value}</span>
+    >{variable ? prefixColor(variable) : value}</span>
     {#if !pickerActive}
       <PopUp yDir="above" role="popup" delay={100} performance>
         <div class="flex-row-center-y">

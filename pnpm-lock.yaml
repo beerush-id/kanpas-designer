@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@beerush/reactor': ^0.6.2
+  '@beerush/reactor': ^0.9.1
   '@playwright/test': ^1.29.2
   '@sveltejs/adapter-auto': ^1.0.0
   '@sveltejs/adapter-node': ^1.1.0
@@ -27,10 +27,8 @@ specifiers:
   vite: ^4.0.4
   vitest: ^0.25.8
 
-dependencies:
-  '@beerush/reactor': 0.6.9
-
 devDependencies:
+  '@beerush/reactor': 0.9.1
   '@playwright/test': 1.29.2
   '@sveltejs/adapter-auto': 1.0.1_@sveltejs+kit@1.1.1
   '@sveltejs/adapter-node': 1.1.3_@sveltejs+kit@1.1.1
@@ -58,9 +56,9 @@ devDependencies:
 
 packages:
 
-  /@beerush/reactor/0.6.9:
-    resolution: {integrity: sha512-E1pZowEZ40hIGdF6evTPtj202SHRqeHWMGp0ccKmCgp8Kf24UjOY4FHFL5KF1F15CPsGqIM/wzNCYegfEc+EYQ==}
-    dev: false
+  /@beerush/reactor/0.9.1:
+    resolution: {integrity: sha512-WId09kTp/aSHP9cZ8YEA5TsJeFdNI28xmWezEw3/8oLWmXumd0V6gflIUHxnxPu2ewkIF8XGGX0pvMqQlE4tzw==}
+    dev: true
 
   /@esbuild/android-arm/0.16.17:
     resolution: {integrity: sha512-N9x1CMXVhtWEAMS7pNNONyA14f71VPQN9Cnavj1XQh6T7bskqiLLrSca4O0Vr8Wdcga943eThxnVp3JLnBMYtw==}

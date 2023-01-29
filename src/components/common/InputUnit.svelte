@@ -43,6 +43,7 @@
   }
 
   const changeUnit = (u: Unit) => {
+    unit = u;
     units = u;
 
     if (count) {
@@ -61,24 +62,6 @@
 
     dispatch('input', event.target);
   };
-  //
-  // onMount(() => {
-  //   if (self) {
-  //     const ham = new Hammer(self);
-  //
-  //     ham.get('pan').set({ enable: true, direction: 6 });
-  //     ham.on('pan', (e) => {
-  //       if (e.deltaX > 0) {
-  //         count = (parseFloat(count || '0') + 1).toString();
-  //       } else if (e.deltaX < 0) {
-  //         count = (parseFloat(count || '0') - 1).toString();
-  //       }
-  //
-  //       value = `${ count }${ units }`;
-  //       dispatch('input', self);
-  //     });
-  //   }
-  // });
 </script>
 <div class="kanpas-input-unit flex-row-center-y {className}"
      class:focus

@@ -14,7 +14,7 @@
   import { mockup } from '@services/mockup.js';
   import { dragmove, focusAssist, hoverAssist, selector } from '@services/selector';
   import { copy } from '@utils/clipboard';
-  import { states, swatches, toCssVar, variables } from '@utils/colors';
+  import { cssVarName, states, swatches, toCssVar, variables } from '@utils/colors';
   import { createOptions, createStyles } from '@utils/panel';
   import { onDestroy } from 'svelte';
 
@@ -96,7 +96,8 @@
             let value = elem.styles[key];
 
             if (elem.styles[`${ key }Var`]) {
-              value = elem.styles[`${ key }Var`].replace(/--[\w\d_-]+/g, m => `var(${ m })`);
+              value = cssVarName(elem.styles[`${ key }Var`]);
+              // value = elem.styles[`${ key }Var`].replace(/--[\w\d_-]+/g, m => `var(${ m })`);
             }
 
             if (value !== '') {

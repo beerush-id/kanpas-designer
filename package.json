@@ -14,6 +14,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
+    "@beerush/reactor": "^0.9.1",
     "@playwright/test": "^1.29.2",
     "@sveltejs/adapter-auto": "^1.0.0",
     "@sveltejs/adapter-node": "^1.1.0",
@@ -39,8 +40,5 @@
     "vite": "^4.0.4",
     "vitest": "^0.25.8"
   },
-  "type": "module",
-  "dependencies": {
-    "@beerush/reactor": "^0.6.2"
-  }
+  "type": "module"
 }

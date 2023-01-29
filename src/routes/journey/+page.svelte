@@ -1,17 +1,18 @@
 <script lang="ts">
-  import { reactive } from '@beerush/reactor';
+  import { resistant } from '@beerush/reactor';
   import Canvas from '@components/Canvas.svelte';
   import CanvasSwitch from '@components/CanvasSwitch.svelte';
   import Icon from '@components/common/Icon.svelte';
   import ImmersiveOption from '@components/common/ImmersiveOption.svelte';
   import Portal from '@components/common/Portal.svelte';
   import JourneyNode from '@components/nodes/JourneyNode.svelte';
-  import data from '@data/journey.json';
   import { create, type VisitStep } from '@services/journey';
   import { scaleIn } from '@services/transition';
   import { randomize } from '@utils/colors';
 
-  const journeys = reactive<VisitStep[], true>(data, true);
+  const journeys = resistant<VisitStep[], true>('journeys', [
+    { type: 'visit', path: '/', actions: [], color: randomize() }
+  ], true);
 
   const addJourney = () => {
     journeys.push(create({ type: 'visit', path: '', actions: [], color: randomize() }));

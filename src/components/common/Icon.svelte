@@ -2,7 +2,7 @@
   import type { DirectionX, DirectionY } from '@utils/popup';
   import PopUp from './PopUp.svelte';
 
-  export let size: 'small' | 'medium' | 'large' | 'strong' = 'small';
+  export let size: 'thin' | 'small' | 'medium' | 'large' | 'strong' = 'small';
   export let boxSize = 0;
   export let width = 0;
   export let height = 0;
@@ -80,6 +80,10 @@
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+  }
+
+  .kanpas-icon-thin {
+    font-size: 14px;
   }
 
   .kanpas-icon-small {

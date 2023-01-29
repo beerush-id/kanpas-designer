@@ -104,7 +104,7 @@
       stacked
       menuItems={activeWheel.children}
       on:label-change={labelChange}
-      {...createChildProps(activeWheel)} />
+      {...createChildProps(activeWheel)}/>
   {/if}
   <div
     class="kanpas-wheel-menu"
@@ -117,11 +117,11 @@
           class="wheel-menu-item"
           style="--rotation: {sliceAngle * i}deg; width: {sliceSize}px"
           class:placeholder={!menu.icon}
+          class:active={menu.active}
           on:mouseenter={() => setLabel(menu.label)}
           on:mouseleave={() => setLabel('')}>
           <div
             class="wheel-menu-value"
-            class:active={menu.active}
             on:click={(e) => activate(e, menu, sliceAngle * i)}
             on:keypress>
             {#if menu.icon}
@@ -209,6 +209,7 @@
     &.stacked:first-child {
       background-color: transparent;
       filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.4));
+      box-shadow: none;
 
       &:before {
         opacity: 0;
@@ -250,7 +251,29 @@
     text-align: center;
     pointer-events: none;
     rotate: var(--rotation);
-    clip-path: polygon(100% 0, 0 0, 100% 100%, 0% 100%);
+    clip-path: polygon(100% 0, 0 0, 50% 50%, 50% 50%);
+
+    &:before {
+      content: "";
+      display: block;
+      width: var(--wheel-size);
+      height: var(--wheel-size);
+      position: absolute;
+      top: 0;
+      left: calc(50% - (var(--wheel-size) / 2));
+      border-top: 2px solid var(--kanpas-color-node-bg);
+      box-shadow: inset 0 0 0 40px var(--kanpas-color-node-bg);
+      border-radius: 50%;
+      transition: all .2s ease-in-out;
+    }
+
+    &:hover:before {
+      border-top: 2px solid var(--kanpas-color-node-bg-alt);
+    }
+
+    &.active:before {
+      border-top: 2px solid var(--kanpas-color-node-line);
+    }
 
     &.placeholder {
       pointer-events: none;
@@ -268,16 +291,10 @@
     align-items: center;
     justify-content: center;
     pointer-events: fill;
-    background-color: var(--kanpas-color-node-bg);
     color: var(--kanpas-color-foreground);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
-    &:hover,
-    &.active {
-      background-color: var(--kanpas-color-node-line);
-    }
   }
 </style>

@@ -331,18 +331,11 @@
     justify-content: center;
     width: 18px;
     height: 32px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     cursor: pointer;
     transition: all .2s ease-in-out;
 
     &:hover {
       background-color: var(--kanpas-color-success-hover);
-    }
-
-    &:before {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
     }
   }
 

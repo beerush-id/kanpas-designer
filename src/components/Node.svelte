@@ -15,7 +15,8 @@
     element: 'html',
     component: 'category',
     action: 'ads_click',
-    visit: 'travel_explore'
+    visit: 'travel_explore',
+    layout: 'dashboard_customize',
   };
 </script>
 

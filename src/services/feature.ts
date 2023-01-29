@@ -14,7 +14,7 @@ export type Feature = {
   meta?: FeatureMeta;
 }
 
-export class FeatureList {
+export class FeatureStore {
   public features: Reactive<Reactive<Feature>[]> = reactive([] as never);
 
   public create(name: string): Reactive<Feature> {
@@ -28,4 +28,4 @@ export class FeatureList {
   }
 }
 
-export const features = new FeatureList();
+export const features = new FeatureStore();

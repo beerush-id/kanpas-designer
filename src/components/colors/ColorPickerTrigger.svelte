@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { cssVarName, theme } from '@utils/colors';
   import { createEventDispatcher } from 'svelte';
   import PopUp from '../common/PopUp.svelte';
   import ColorPicker from './ColorPicker.svelte';
@@ -14,7 +15,9 @@
   export { className as class };
 </script>
 
-<div class="kanpas-color-picker-trigger {className}" style="background-color: {value};">
+<div class="kanpas-root kanpas-color-picker-trigger {className}"
+     class:dark-mode={$theme.darkMode}
+     style:background-color={variable ? cssVarName(variable) : value}>
   {#if !active}
     <PopUp>{tooltip}</PopUp>
   {/if}

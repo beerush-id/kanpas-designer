@@ -145,6 +145,7 @@
 
   --kanpas-color-acrylic: #ffffff;
   --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.3);
+  --kanpas-acrylic-blur: 25px;
 
   --kanpas-color-background-card: var(--kanpas-white);
   --kanpas-color-background-card-alt: var(--kanpas-color-grey-100);
@@ -209,6 +210,9 @@
   --kanpas-toolbar-bg: var(--kanpas-color-grey-50);
   --kanpas-toolbar-line: var(--kanpas-color-grey-200);
   --kanpas-toogroup-bg: var(--kanpas-color-grey-50);
+  --scrollbar-bg: rgba(0, 0, 0, 0);
+  --scrollbar-fg: rgba(0, 0, 0, 0.5);
+  --ease-bounce: cubic-bezier(.47, 1.64, .41, .8);
 }
 
 @mixin prefer-dark {
@@ -277,6 +281,8 @@
   --kanpas-toolbar-bg: var(--kanpas-color-grey-950);
   --kanpas-toolbar-line: var(--kanpas-color-grey-1000);
   --kanpas-toogroup-bg: var(--kanpas-color-grey-900);
+  --scrollbar-bg: rgba(255, 255, 255, 0);
+  --scrollbar-fg: rgba(255, 255, 255, 0.3);
 }
 
 :root {
@@ -287,6 +293,16 @@
   :root {
     @include prefer-dark;
   }
+}
+
+.kanpas-light {
+  @include prefer-light;
+  color-scheme: only light;
+}
+
+.kanpas-dark {
+  @include prefer-dark;
+  color-scheme: only dark;
 }
 
 .kanpas-desktop {
@@ -302,13 +318,15 @@
 @import "./styles/mixins";
 
 ::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-  background: var(--kanpas-color-grey-200);
+  height: 2px;
+  width: 2px;
+  background: var(--scrollbar-bg);
+  border-radius: 1px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--kanpas-color-grey-500);
+  background: var(--scrollbar-fg);
+  //background: var(--kanpas-color-grey-500);
   -webkit-border-radius: 1ex;
 }
 
@@ -381,9 +399,8 @@ html, body {
 }
 
 .kanpas-acrylic-bg {
-  backdrop-filter: blur(32px);
+  backdrop-filter: blur(var(--kanpas-acrylic-blur));
   position: relative;
-  transition: all .2s ease-in-out;
 
   &:before {
     content: "";

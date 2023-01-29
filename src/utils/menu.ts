@@ -41,7 +41,7 @@ export function createCompactActionMenu(forAction: Action[]): WheelMenuItem[] {
         },
         {
           icon: 'crop_landscape',
-          label: 'Frame'
+          label: 'Section'
         },
       ],
     },

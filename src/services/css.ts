@@ -2,9 +2,43 @@ import { reactive, type Unsubscribe } from '@beerush/reactor';
 import { copy } from '@utils/clipboard';
 import { states, swatches, toCssVar, variables } from '@utils/colors';
 
+export type CSSVariableGroup = {
+  name: string;
+  label: string;
+  icon: string;
+  variables: CSSVariable[];
+}
+
+export type CSSVariable = {
+  name: string;
+  value: string | number;
+}
+
+const defaultGroups: CSSVariableGroup[] = [
+  {
+    name: 'font',
+    label: 'Typography',
+    icon: 'text_fields',
+    variables: []
+  },
+  {
+    name: 'space',
+    label: 'Spacing',
+    icon: 'space_bar',
+    variables: []
+  },
+  {
+    name: 'border',
+    label: 'Border',
+    icon: 'border_outer',
+    variables: []
+  },
+];
+
 export class Css {
   public cssColors = '';
   public colors = reactive({ swatches, variables, states }, true);
+  public variableGroups = reactive<CSSVariableGroup[]>(defaultGroups, true);
 
   private unsubColors?: Unsubscribe;
   private exportTimeout?: number;

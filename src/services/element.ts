@@ -1,8 +1,11 @@
+import type { Reactivities } from '@beerush/reactor';
+import { reactive } from '@beerush/reactor';
 import { createStyles } from '@utils/panel';
 import { nanoid } from 'nanoid';
+import type { Component, Slot } from './component';
 
 export type ActionTag = 'a' | 'button';
-export type FrameTag = 'header' | 'main' | 'footer' | 'section' | 'nav' | 'aside' | 'details' | 'div';
+export type SectionTag = 'header' | 'main' | 'footer' | 'section' | 'nav' | 'aside' | 'details' | 'div';
 export type InlineTag = 'span' | 'br';
 export type InputTag = 'form' | 'input' | 'select' | 'option' | 'textarea';
 export type ListTag = 'ul' | 'ol' | 'li';
@@ -32,8 +35,8 @@ export const ACTION_TAGS: Array<{
   name: ActionTag;
 } & TagRef> = [];
 
-export const FRAME_TAGS: Array<{
-  name: FrameTag;
+export const SECTION_TAGS: Array<{
+  name: SectionTag;
 } & TagRef> = [];
 
 export const INLINE_TAGS: Array<{
@@ -64,23 +67,23 @@ export class Element {
   public name?: string;
   public description?: string;
   public attributes: { [key: string]: unknown } = {};
-  public children: Element[] = [];
+  public children: Array<Element | Slot | Component> = [];
   public styles = createStyles();
   public stateStyles = {};
   public value?: unknown;
 
   constructor(
     public id = nanoid(8),
-    public tagName = 'div',
+    public tagName = 'section',
     public classList: string[] = []
   ) {}
 
-  public append(child: Element) {
+  public append(child: Element | Component | Slot) {
     this.children.push(child);
   }
 
-  public prepend(child: Element) {
-    this.children.splice(0, 0, child);
+  public prepend(child: Element | Component | Slot) {
+    this.children.unshift(child);
   }
 
   public set(name: string, value: unknown) {
@@ -105,3 +108,27 @@ export class TextElement extends Element {
     super(id, tagName, classList);
   }
 }
+
+export class ElementStore {
+  public elements: Reactivities<Element>[] = reactive([], true);
+
+  public get(id: string) {
+    return this.elements.find(e => e.id === id);
+  }
+
+  public create(tag: string = 'div', classList: string[] = []): Reactivities<Element> {
+    const element = reactive<Element, true>(new Element(nanoid(), tag, classList));
+    this.elements.push(element);
+    return element;
+  }
+
+  public delete(id: string) {
+    const e = this.get(id);
+
+    if (e) {
+      this.elements.splice(this.elements.indexOf(e), 1);
+    }
+  }
+}
+
+export const elements = new ElementStore();

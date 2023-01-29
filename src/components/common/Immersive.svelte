@@ -3,6 +3,7 @@
   import Icon from '@components/common/Icon.svelte';
   import PopUp from '@components/common/PopUp.svelte';
   import Logo from '@components/Logo.svelte';
+  import ThemeSwitch from '@components/ThemeSwitch.svelte';
   import UserAvatar from '@components/UserAvatar.svelte';
   import { mockup } from '@services/mockup';
   import { navigation, type Route } from '@services/navigation.js';
@@ -101,6 +102,7 @@
             on:click={() => mockup.toggleMax()}>
         {$mockup?.fullScreen ? 'close_fullscreen' : 'open_in_full'}
       </Icon>
+      <ThemeSwitch xDir="after" yDir="between" class="header-menu-icon"/>
       <Icon clickable
             xDir="after"
             yDir="between"

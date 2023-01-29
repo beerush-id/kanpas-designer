@@ -2,7 +2,7 @@
   import type { Reactive, Unsubscribe } from '@beerush/reactor';
   import { reactive } from '@beerush/reactor';
   import type { ColorInput } from '@utils/colors';
-  import { colorName } from '@utils/colors';
+  import { colorName, rawColorName } from '@utils/colors';
   import { states, swatches, theme, variables } from '@utils/colors.js';
   import { createEventDispatcher } from 'svelte';
   import ColorPicker from 'svelte-awesome-color-picker';
@@ -32,7 +32,7 @@
 
   const updateColor = (group: string, color: string, name: string) => {
     value = color;
-    variable = colorName(group, name);
+    variable = rawColorName(group, name);
     dispatch('input', { color: value, variable });
   };
 
@@ -106,11 +106,11 @@
             {#each group.colors as item}
               <div
                 class="kanpas-color-view"
-                style="background-color: {$theme.scheme === 'dark' ? item.darkColor : item.color}"
+                style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
                 <PopUp performance>
-                  {colorName(group, item)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
+                  {colorName(group, item)} ({$theme.darkMode ? item.darkColor : item.color})
                 </PopUp>
               </div>
             {/each}
@@ -125,11 +125,11 @@
             {#each group.colors as item}
               <div
                 class="kanpas-color-view"
-                style="background-color: {$theme.scheme === 'dark' ? item.darkColor : item.color}"
+                style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
                 <PopUp performance>
-                  {colorName(group, item)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
+                  {colorName(group, item)} ({$theme.darkMode ? item.darkColor : item.color})
                 </PopUp>
               </div>
             {/each}
@@ -144,11 +144,11 @@
             {#each group.colors as item}
               <div
                 class="kanpas-color-view"
-                style="background-color: {$theme.scheme === 'dark' ? item.darkColor : item.color}"
+                style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
                 <PopUp performance>
-                  {colorName(group, item)} ({$theme.scheme === 'dark' ? item.darkColor : item.color})
+                  {colorName(group, item)} ({$theme.darkMode ? item.darkColor : item.color})
                 </PopUp>
               </div>
             {/each}

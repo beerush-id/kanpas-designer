@@ -72,7 +72,7 @@
   {#each $colors as input}
     <div class="mdb-10 flex-row-center-y">
       <div class="flex">
-        {#if $theme.scheme === 'dark'}
+        {#if $theme.darkMode}
           <Input group={name}
                  bind:name={input.name}
                  bind:value={input.darkColor}

@@ -24,6 +24,10 @@
 
   let showDelay: number;
   const activate = () => {
+    if (active) {
+      return;
+    }
+
     if (role === 'overlay') {
       parent.style.position = 'relative';
       element.classList.add('active');
@@ -134,7 +138,7 @@
 
     if (parent) {
       if (trigger === 'hover' || trigger === 'mixed') {
-        parent.addEventListener('mouseenter', activate);
+        parent.addEventListener('mousemove', activate);
         parent.addEventListener('mouseleave', deactivate);
 
         if (trigger === 'hover') {
@@ -156,7 +160,7 @@
     }
 
     if (parent) {
-      parent.removeEventListener('mouseenter', activate);
+      parent.removeEventListener('mousemove', activate);
       parent.removeEventListener('mouseleave', deactivate);
       parent.removeEventListener('click', syncPos);
     }

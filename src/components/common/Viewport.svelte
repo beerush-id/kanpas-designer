@@ -20,7 +20,7 @@
 </script>
 
 <div class="kanpas-viewport" bind:this={viewport}>
-  <div class="kanpas-html kanpas-root" class:dark-mode={$theme?.scheme === 'dark'}>
+  <div class="kanpas-html kanpas-root" class:dark-mode={$theme?.darkMode}>
     <div
       class="kanpas-body"
       on:click|preventDefault|stopPropagation={focus}

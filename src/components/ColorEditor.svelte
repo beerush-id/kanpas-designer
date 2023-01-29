@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Toggle from '@components/common/Toggle.svelte';
+  import ThemeSwitch from '@components/ThemeSwitch.svelte';
   import { toast } from '@services/toast';
   import { copy } from '@utils/clipboard';
   import {
@@ -7,10 +9,10 @@
     randomize,
     states,
     swatches,
+    theme,
     toCssVar,
     variables
   } from '@utils/colors';
-  import { theme } from '@utils/colors.js';
   import ColorList from './colors/ColorList.svelte';
   import ColorVariables from './colors/ColorVariables.svelte';
   import Icon from './common/Icon.svelte';
@@ -86,25 +88,13 @@
     const css = toCssVar([ ...fromList ]);
     copy(css, 'CSS copied to clipboard.');
   };
-
-  export const copyAllCss = () => {
-    const css = toCssVar([ ...swatches, ...states, ...variables ]);
-    copy(css, 'CSS copied to clipboard');
-  };
-
-  const toggleDarkMode = () => {
-    if (theme.scheme === 'dark') {
-      theme.scheme = 'light';
-    } else {
-      theme.scheme = 'dark';
-    }
-  };
 </script>
 <div class="full-height flex-row kanpas-reset">
   <div class="color-variables p-2 kanpas-scroll-y">
     <h3 class="flex-row-center-y mdb-24">
       <Icon class="mdr-10" size="medium">css</Icon>
       <span class="flex">Variables</span>
+      <ThemeSwitch role="toggle" size="medium" class="mdr-16"/>
       <Icon clickable="true"
             size="medium"
             tooltip="Add Group"
@@ -119,14 +109,6 @@
             yDir="above"
             class="mdl-16"
             on:click={() => copyCss(variables)}>code
-      </Icon>
-      <Icon clickable
-            size="medium"
-            tooltip={$theme.scheme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-            xDir="between"
-            yDir="above"
-            class="{$theme.scheme} mdl-16"
-            on:click={toggleDarkMode}>{$theme.scheme}_mode
       </Icon>
     </h3>
     {#each $variables as custom}
