@@ -47,7 +47,6 @@
         role="popup"
         xDir="left"
         yDir="below"
-        performance
         reset>
         <div class="kanpas-acrylic">
           <ColorPicker bind:value bind:variable on:input={input}/>
@@ -62,7 +61,7 @@
     <span class="kanpas-color-palette-value" style="color: {foreground(value)}"
     >{variable ? prefixColor(variable) : value}</span>
     {#if !pickerActive}
-      <PopUp yDir="above" role="popup" delay={100} performance>
+      <PopUp yDir="above" role="popup" delay={100}>
         <div class="flex-row-center-y">
           <span class="kanpas-color-variable">{variableName}</span>
           <Icon class="mdx-6" clickable tooltip="Copy Color" on:click={() => copy(value)}

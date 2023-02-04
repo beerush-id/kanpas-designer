@@ -311,12 +311,23 @@
       color: var(--kanpas-color-foreground);
 
       &:hover {
-        color: var(--kanpas-color-icon-button-active);
+        //color: var(--kanpas-color-icon-button-active);
       }
     }
 
-    :global(.immersive-menu-button.active) {
-      color: var(--kanpas-color-icon-button-active);
+    :global(.immersive-menu-button:hover .kanpas-icon) {
+      background-image: var(--kanpas-button-gradient);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    :global(.immersive-menu-button.active .kanpas-icon) {
+      //color: var(--kanpas-color-icon-button-active);
+      background-image: var(--kanpas-button-gradient);
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
     }
 
     :global(.kanpas-separator-y) {

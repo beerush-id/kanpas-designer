@@ -34,7 +34,7 @@
   </div>
 </Portal>
 <Canvas>
-  <div class="tree-panel kanpas-acrylic-bg" slot="canvas-panel-left" class:expanded={$mockup.fullScreen}>
+  <div class="tree-panel kanpas-acrylic-bg" slot="canvas-panel-left" class:expanded={$mockup?.fullScreen}>
     <div class="tree-header pd-16 flex-row-center-y">
       <h5>HTML Elements</h5>
       <span class="flex"></span>
@@ -169,7 +169,7 @@
       {/each}
     </div>
   </Mockup>
-  <div class="style-panel kanpas-acrylic-bg" slot="canvas-panel-right" class:expanded={$mockup.fullScreen}>
+  <div class="style-panel kanpas-acrylic-bg" slot="canvas-panel-right" class:expanded={$mockup?.fullScreen}>
     <EditorPanel></EditorPanel>
   </div>
 </Canvas>

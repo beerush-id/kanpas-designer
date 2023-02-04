@@ -111,8 +111,41 @@
     transition: all .2s ease-in-out;
     height: 24px;
 
+    &:before, &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      z-index: 0;
+      border-radius: var(--kanpas-radius-small);
+      pointer-events: none;
+      transition: all .2s ease-in-out;
+      opacity: 0;
+    }
+
+    &:before {
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      top: -1px;
+      left: -1px;
+      background-image: var(--kanpas-button-gradient);
+    }
+
+    &:after {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: var(--kanpas-color-input-bg);
+      border-radius: 2px;
+    }
+
     &.changed {
-      border-color: var(--kanpas-color-icon-button-active);
+      //border-color: var(--kanpas-color-icon-button-active);
+      //filter: drop-shadow(-2px -2px 48px var(--kanpas-color-red-500)) drop-shadow(2px 2px 48px var(--kanpas-color-blue-500));
+
+      &:before, &:after {
+        opacity: 1;
+      }
     }
 
     &.disabled {
@@ -126,10 +159,20 @@
 
     &.focus {
       border-color: var(--kanpas-color-input-line-active);
+      //filter: drop-shadow(-1px 0 2px var(--kanpas-color-red-500)) drop-shadow(1px 0 2px var(--kanpas-color-blue-500));
     }
 
     &.small input {
       width: 32px;
+    }
+
+    input {
+      background: transparent;
+    }
+
+    span, input, div {
+      position: relative;
+      z-index: 1;
     }
   }
 

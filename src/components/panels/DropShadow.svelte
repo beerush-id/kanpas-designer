@@ -38,19 +38,19 @@
        collapsed={!$options.dropShadows.length}>
   <svelte:fragment slot="panel-head">
     {#if $options.dropShadows.length}
-      <Icon clickable tooltip="Clear Shadows" on:click={reset}>settings_backup_restore</Icon>
+      <Icon clickable tooltip="Clear Shadows" active on:click={reset}>settings_backup_restore</Icon>
     {/if}
     <Icon clickable tooltip="Add Shadow" class="mdl-10" on:click={() => options.dropShadows.push({})}>add</Icon>
   </svelte:fragment>
   {#each $options.dropShadows as shadow}
     <div class="kanpas-panel-section flex-row-center-y">
-      <InputUnit class="flex mdr-6" hideUnit placeholder="X" bind:value={shadow.x} on:input={updateShadow}>
+      <InputUnit class="flex mdr-6" placeholder="X" bind:value={shadow.x} on:input={updateShadow}>
         <PopUp>Horizontal Offset</PopUp>
       </InputUnit>
-      <InputUnit class="flex mdr-6" hideUnit placeholder="Y" bind:value={shadow.y} on:input={updateShadow}>
+      <InputUnit class="flex mdr-6" placeholder="Y" bind:value={shadow.y} on:input={updateShadow}>
         <PopUp>Vertical Offset</PopUp>
       </InputUnit>
-      <InputUnit class="flex mdr-6" hideUnit placeholder="Blur" bind:value={shadow.b} on:input={updateShadow}>
+      <InputUnit class="flex mdr-6" placeholder="Blur" bind:value={shadow.b} on:input={updateShadow}>
         <PopUp>Blur Radius</PopUp>
       </InputUnit>
       <ColorPickerTrigger tooltip="Shadow Color"

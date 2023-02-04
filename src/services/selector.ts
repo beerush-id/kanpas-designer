@@ -6,7 +6,6 @@ import { canvas } from './canvas';
 
 export class SelectorAssist {
   public styles?: Reactive<StyleDeclarations>;
-  public focusStyles = reactive<StyleDeclarations>({} as never);
   public hoverStyles = reactive<StyleDeclarations>({} as never);
 
   public viewport?: HTMLElement;
@@ -22,9 +21,9 @@ export class SelectorAssist {
     let queue: number;
     viewport.addEventListener('wheel', (e) => {
       if (this.focusBounds.length) {
-        this.focusBounds.forEach(bound => {
+        this.focusBounds.forEach((bound) => {
           const top = parseInt(bound.top || '');
-          bound.top = `${ top - e.deltaY }px`;
+          bound.top = `${top - e.deltaY}px`;
         });
       }
 
@@ -50,10 +49,10 @@ export class SelectorAssist {
 
     const { width, height, left, top } = offsetRect(element, this.viewport, canvas.scale);
 
-    this.hoverStyles.width = `${ width }px`;
-    this.hoverStyles.height = `${ height }px`;
-    this.hoverStyles.left = `${ left }px`;
-    this.hoverStyles.top = `${ top }px`;
+    this.hoverStyles.width = `${width}px`;
+    this.hoverStyles.height = `${height}px`;
+    this.hoverStyles.left = `${left}px`;
+    this.hoverStyles.top = `${top}px`;
   }
 
   public addFocus(elem: HTMLElement, append?: boolean) {
@@ -64,7 +63,7 @@ export class SelectorAssist {
         this.focusedElements.push(elem);
       }
     } else {
-      this.focusedElements = [ elem ];
+      this.focusedElements = [elem];
     }
 
     this.placeFocuses();
@@ -81,10 +80,10 @@ export class SelectorAssist {
     for (const elem of this.focusedElements) {
       const { width, height, left, top } = offsetRect(elem, this.viewport, canvas.scale);
       bounds.push({
-        width: `${ width }px`,
-        height: `${ height }px`,
-        left: `${ left }px`,
-        top: `${ top }px`
+        width: `${width}px`,
+        height: `${height}px`,
+        left: `${left}px`,
+        top: `${top}px`,
       });
     }
 
@@ -183,10 +182,10 @@ export const dragmove = (elem: HTMLElement, styles: Reactive<StyleDeclarations>)
 
   const rectUnsub = rect.subscribe(() => {
     if (rect.x) {
-      css[xProp] = `${ rect.x }px`;
+      css[xProp] = `${rect.x}px`;
     }
     if (rect.y) {
-      css[yProp] = `${ rect.y }px`;
+      css[yProp] = `${rect.y}px`;
     }
 
     if (!rect.e) {
@@ -201,6 +200,6 @@ export const dragmove = (elem: HTMLElement, styles: Reactive<StyleDeclarations>)
     destroy: () => {
       rectUnsub();
       cssUnsub();
-    }
+    },
   };
 };

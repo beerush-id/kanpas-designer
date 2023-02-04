@@ -44,7 +44,6 @@
       <PopUp
         expanded
         bind:active={pickerActive}
-        performance
         role="popup"
         xDir="right"
         yDir="below"

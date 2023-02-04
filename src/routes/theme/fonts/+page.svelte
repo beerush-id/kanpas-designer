@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { resistant } from '@beerush/reactor';
+  import { resistant, watch } from '@beerush/reactor';
   import Canvas from '@components/Canvas.svelte';
   import CanvasSwitch from '@components/CanvasSwitch.svelte';
   import Icon from '@components/common/Icon.svelte';
   import ImmersiveOption from '@components/common/ImmersiveOption.svelte';
   import Portal from '@components/common/Portal.svelte';
   import EditorPanel from '@components/EditorPanel.svelte';
+  import HistorySwitch from '@components/HistorySwitch.svelte';
   import Mockup from '@components/Mockup.svelte';
   import MockupSwitch from '@components/MockupSwitch.svelte';
   import VariableShortcuts from '@components/VariableShortcuts.svelte';
@@ -63,6 +64,9 @@
     options = elements.body.options;
   };
 
+  const history = watch(elements);
+  console.log(history);
+
   let styleElement = document.querySelector('#css-variables');
 
   if (!styleElement) {
@@ -73,9 +77,9 @@
   document.head.appendChild(styleElement);
 
   const createCSS = (
-    root: string = '.kanpas-root',
-    body: string = '.kanpas-body',
-    darkClass: string = '.dark-mode'
+    root = '.kanpas-root',
+    body = '.kanpas-body',
+    darkClass = '.dark-mode'
   ): string => {
     let elemCSS = '';
 
@@ -95,7 +99,7 @@
           if (!key.endsWith('Var') && [ 'string', 'number' ].includes(typeof elem.styles[key])) {
             let value = elem.styles[key];
 
-            if (elem.styles[`${ key }Var`]) {
+            if (elem.styles[`${ key }Var`] && elem.styles[`${ key }Var`].startsWith('--')) {
               value = cssVarName(elem.styles[`${ key }Var`]);
               // value = elem.styles[`${ key }Var`].replace(/--[\w\d_-]+/g, m => `var(${ m })`);
             }
@@ -139,6 +143,7 @@
   });
 
   onDestroy(() => {
+    history.forget();
     unsubCSS();
     if (styleElement) {
       styleElement.remove();
@@ -153,6 +158,10 @@
       <VariableShortcuts></VariableShortcuts>
       <div class="kanpas-separator-y"></div>
       <Icon class="tool-icon" clickable tooltip="Copy CSS" on:click={copyCSS}>css</Icon>
+    </div>
+    <div class="mx-1"></div>
+    <div class="kanpas-tool-group">
+      <HistorySwitch {history}></HistorySwitch>
     </div>
     <div class="mx-1"></div>
     <div class="kanpas-tool-group">

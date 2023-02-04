@@ -109,7 +109,7 @@
                 style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
-                <PopUp performance>
+                <PopUp>
                   {colorName(group, item)} ({$theme.darkMode ? item.darkColor : item.color})
                 </PopUp>
               </div>
@@ -128,7 +128,7 @@
                 style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
-                <PopUp performance>
+                <PopUp>
                   {colorName(group, item)} ({$theme.darkMode ? item.darkColor : item.color})
                 </PopUp>
               </div>
@@ -147,7 +147,7 @@
                 style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
-                <PopUp performance>
+                <PopUp>
                   {colorName(group, item)} ({$theme.darkMode ? item.darkColor : item.color})
                 </PopUp>
               </div>

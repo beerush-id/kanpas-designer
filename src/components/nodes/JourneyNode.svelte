@@ -200,7 +200,6 @@
       xDir="between"
       yDir="between"
       trigger="click"
-      performance
       reset
       dismiss
       on:dismiss={dismissEditMenus}>
@@ -251,7 +250,6 @@
         xDir="between"
         yDir="between"
         trigger="click"
-        performance
         reset
         dismiss
         on:dismiss={dismissMainMenus}>

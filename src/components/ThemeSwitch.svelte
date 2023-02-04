@@ -48,7 +48,7 @@
 
 <style lang="scss">
   :global(.theme-switch.dark) {
-    color: var(--kanpas-color-blue-300);
+    color: var(--kanpas-color-green-300);
   }
 
   :global(.theme-switch.light) {

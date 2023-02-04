@@ -21,7 +21,7 @@
     <Icon size="thin">{rightIcon}</Icon>
   {/if}
   {#if tooltip}
-    <PopUp performance>{tooltip}</PopUp>
+    <PopUp>{tooltip}</PopUp>
   {/if}
 </div>
 
@@ -31,7 +31,7 @@
       left: 50%;
       width: 50%;
     }
-    50% {
+    25% {
       left: 0;
       width: 100%;
     }
@@ -45,7 +45,7 @@
       left: 0;
       width: 50%;
     }
-    50% {
+    25% {
       left: 0;
       width: 100%;
     }
@@ -106,7 +106,9 @@
     }
 
     &.positive {
+      background-image: linear-gradient(45deg, var(--kanpas-color-warn-normal), var(--kanpas-color-primary-normal));
       background-color: var(--kanpas-color-success-normal);
+      //filter: drop-shadow(-4px 0 20px var(--kanpas-color-red-500)) drop-shadow(4px 0 20px var(--kanpas-color-blue-500));
 
       &:hover {
         background-color: var(--kanpas-color-success-hover);

@@ -58,7 +58,16 @@
     }
 
     &.active {
-      color: var(--kanpas-color-icon-button-active);
+      //color: var(--kanpas-color-icon-button-active);
+      //background-image: var(--kanpas-button-gradient);
+
+      .kanpas-icon-symbol {
+        background-image: var(--kanpas-button-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        //filter: drop-shadow(-4px 0 20px var(--kanpas-color-blue-500)) drop-shadow(4px 0 20px var(--kanpas-color-red-500));
+      }
     }
 
     &.disabled {
@@ -80,6 +89,8 @@
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+    transition: all .2s ease-in-out;
+    user-select: none;
   }
 
   .kanpas-icon-thin {

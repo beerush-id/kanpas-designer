@@ -77,7 +77,7 @@
        collapsed={!$options.gradients.length}>
   <svelte:fragment slot="panel-head">
     {#if $options.gradients.length}
-      <Icon clickable tooltip="Clear Gradients" class="mdr-10"
+      <Icon clickable tooltip="Clear Gradients" class="mdr-10" active
             on:click={clear}>settings_backup_restore
       </Icon>
     {/if}

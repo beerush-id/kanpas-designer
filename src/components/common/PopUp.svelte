@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DirectionX, DirectionY } from '@utils/popup';
+  import type { DirectionX, DirectionY } from '@beerush/browser-utils';
   import { linkPopUpPosition, unlinkPopUp } from '@utils/popup';
   import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 
@@ -217,21 +217,8 @@
     visibility: hidden;
 
     &:not(.reset) {
-      backdrop-filter: blur(25px);
-
-      &:before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        pointer-events: none;
-        background-color: var(--kanpas-color-acrylic);
-        opacity: 0.8;
-      }
+      backdrop-filter: blur(var(--kanpas-acrylic-blur));
+      background-color: var(--kanpas-color-acrylic);
     }
 
     &.active {

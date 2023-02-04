@@ -143,9 +143,19 @@
       styles.textTransform = item.name;
     }
   };
+
+  const toggleWrap = () => {
+    if (styles.whiteSpace === 'nowrap') {
+      styles.whiteSpace = 'wrap';
+    } else if (styles.whiteSpace === 'wrap') {
+      delete styles.whiteSpace;
+    } else {
+      styles.whiteSpace = 'nowrap';
+    }
+  };
 </script>
 
-<Panel title="Character" collapsible {collapsed}>
+<Panel title="Text" collapsible {collapsed}>
   <svelte:fragment slot="panel-head">
     <InputUnit class="mdl-4"
                name="height"
@@ -158,6 +168,12 @@
                         tooltip="Text Color"
                         bind:value={$styles.color}
                         bind:variable={$styles.colorVar}></ColorPickerTrigger>
+    <div class="kanpas-separator-y"></div>
+    <Icon clickable
+          tooltip={$styles.whiteSpace ? ($styles.whiteSpace === 'wrap' ? 'Wrap Text' : 'No Wrap') : 'Default White Space'}
+          active={$styles.whiteSpace}
+          on:click={toggleWrap}>{$styles.whiteSpace ? ($styles.whiteSpace === 'wrap' ? 'format_text_wrap' : 'format_text_clip') : 'wrap_text'}
+    </Icon>
   </svelte:fragment>
   <div class="kanpas-panel-section flex-row-center-y">
     <div class="kanpas-input flex flex-row-center-y">

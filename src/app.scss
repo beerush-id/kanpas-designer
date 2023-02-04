@@ -143,7 +143,7 @@
   --kanpas-color-node-tips-line: var(--kanpas-color-orange-400);
   --kanpas-color-node-tips-line-alt: var(--kanpas-color-green-400);
 
-  --kanpas-color-acrylic: #ffffff;
+  --kanpas-color-acrylic: #ffffff90;
   --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.3);
   --kanpas-acrylic-blur: 25px;
 
@@ -175,6 +175,8 @@
   --kanpas-color-input-line-hover: var(--kanpas-color-primary-hover);
   --kanpas-color-input-line-active: var(--kanpas-color-primary-active);
 
+  --kanpas-color-placeholder: linear-gradient(45deg, #00000005 50%, #00000050 50%);
+
   /* Typography - Base */
   --kanpas-font: "Poppins";
   --kanpas-font-body: 14px;
@@ -197,6 +199,7 @@
 
   --kanpas-button-space: var(--kanpas-space-small) var(--kanpas-space-medium);
   --kanpas-button-radius: var(--kanpas-radius-small);
+  --kanpas-button-gradient: linear-gradient(90deg, var(--kanpas-color-red-400), var(--kanpas-color-blue-400));
 
   --kanpas-effect-fast: all .2ms ease-in-out;
   --kanpas-effect-medium: .4ms;
@@ -249,7 +252,7 @@
 
   --kanpas-color-header-bg: var(--kanpas-color-grey-900);
 
-  --kanpas-color-acrylic: var(--kanpas-color-grey-950);
+  --kanpas-color-acrylic: #1c1b2290;
   --kanpas-color-acrylic-line: rgba(0, 0, 0, 0.3);
 
   --kanpas-color-background-card: var(--kanpas-color-grey-900);
@@ -278,6 +281,10 @@
 
   --kanpas-color-input-bg: var(--kanpas-color-grey-700);
   --kanpas-color-input-line: var(--kanpas-color-grey-950);
+
+  --kanpas-color-placeholder: linear-gradient(45deg, #ffffff05 50%, #ffffff50 50%);
+  --kanpas-button-gradient: linear-gradient(90deg, var(--kanpas-color-red-500), var(--kanpas-color-blue-500));
+
   --kanpas-toolbar-bg: var(--kanpas-color-grey-950);
   --kanpas-toolbar-line: var(--kanpas-color-grey-1000);
   --kanpas-toogroup-bg: var(--kanpas-color-grey-900);
@@ -399,21 +406,9 @@ html, body {
 }
 
 .kanpas-acrylic-bg {
-  backdrop-filter: blur(var(--kanpas-acrylic-blur));
   position: relative;
-
-  &:before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-color: var(--kanpas-color-acrylic);
-    opacity: 0.85;
-  }
+  backdrop-filter: blur(var(--kanpas-acrylic-blur));
+  background-color: var(--kanpas-color-acrylic);
 
   .kanpas-separator-x, .kanpas-separator-x, .kanpas-tab-button, .kanpas-tab-head {
     border-color: var(--kanpas-toolbar-line) !important;
@@ -434,6 +429,7 @@ html, body {
   background-color: var(--kanpas-toogroup-bg);
   border: 1px solid var(--kanpas-toolbar-line);
   border-radius: var(--kanpas-radius);
+  user-select: none;
 }
 
 .kanpas-card-rounded {

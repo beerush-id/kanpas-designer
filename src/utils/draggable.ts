@@ -4,7 +4,7 @@ export type DragRect = {
   x?: number;
   y?: number;
   e?: MouseEvent;
-}
+};
 
 export function capture(element: HTMLElement, scale = 1): Reactive<DragRect> {
   const subscribers: Subscriber<DragRect>[] = [];
@@ -41,8 +41,8 @@ export function capture(element: HTMLElement, scale = 1): Reactive<DragRect> {
         r.y = val.y || 0;
         y = r.y;
       }
-    }
-  };
+    },
+  } as Reactive<DragRect>;
 
   let s: MouseEvent;
   let x = 0;

@@ -17,11 +17,11 @@
 
 <div class="kanpas-root kanpas-color-picker-trigger {className}"
      class:dark-mode={$theme.darkMode}
-     style:background-color={variable ? cssVarName(variable) : value}>
+     style:background-color={variable ? cssVarName(variable) : (value||'transparent')}>
   {#if !active}
     <PopUp>{tooltip}</PopUp>
   {/if}
-  <PopUp expanded role="popup" xDir="right" yDir="below" trigger="click" bind:active performance reset>
+  <PopUp expanded role="popup" xDir="right" yDir="below" trigger="click" bind:active reset>
     <div class="kanpas-acrylic">
       <ColorPicker bind:value bind:variable on:input={() => dispatch('change')}></ColorPicker>
     </div>
@@ -44,9 +44,10 @@
       top: 0;
       left: 0;
       z-index: -1;
-      border-radius: var(--kanpas-radius-small);
-      background-image: linear-gradient(90deg, #00000010 50%, #00000040 50%), linear-gradient(180deg, #00000010 50%, #00000040 50%);
-      background-size: 15px 15px;
+      //border-radius: var(--kanpas-radius-small);
+      //background-image: linear-gradient(90deg, #00000010 50%, #00000040 50%), linear-gradient(180deg, #00000010 50%, #00000040 50%);
+      background-image: var(--kanpas-color-placeholder);
+      //background-size: 15px 15px;
     }
   }
 </style>
