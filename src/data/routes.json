@@ -1,6 +1,22 @@
 {
   "main": [
     {
+      "name": "designer-preview",
+      "title": "Designer",
+      "endpoint": "designer-preview",
+      "visible": true,
+      "icon": "style",
+      "children": []
+    },
+    {
+      "name": "workflow-preview",
+      "title": "Journey",
+      "endpoint": "workflow-preview",
+      "icon": "account_tree",
+      "visible": true,
+      "children": []
+    },
+    {
       "name": "feature",
       "title": "Features",
       "endpoint": "features",

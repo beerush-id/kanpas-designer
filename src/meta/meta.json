@@ -1,0 +1,26 @@
+{
+  "name": "Kanpas",
+  "version": "1.0.0",
+  "description": "Kanpas Design System.",
+  "tokens": [
+    {
+      "kind": "collection",
+      "name": "color",
+      "description": "Color tokens",
+      "records": [
+        {
+          "name": "primary",
+          "value": "#FF0000"
+        },
+        {
+          "name": "secondary",
+          "value": "#00FF00"
+        },
+        {
+          "name": "tertiary",
+          "value": "#0000FF"
+        }
+      ]
+    }
+  ]
+}

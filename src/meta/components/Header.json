@@ -1,0 +1,108 @@
+{
+  "name": "Header",
+  "description": "Header Component",
+  "inputs": [],
+  "outputs": [],
+  "children": [
+    {
+      "kind": "element",
+      "name": "header",
+      "children": [
+        {
+          "kind": "element",
+          "name": "div",
+          "attributes": {
+            "class": "logo"
+          },
+          "children": [
+            {
+              "kind": "element",
+              "name": "img",
+              "attributes": {
+                "src": "/assets/logo.png"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "element",
+          "name": "div",
+          "attributes": {
+            "class": "menu"
+          },
+          "children": [
+            {
+              "kind": "iterator",
+              "inputs": [
+                {
+                  "kind": "context",
+                  "name": "main-menu"
+                }
+              ],
+              "outputs": [
+                {
+                  "kind": "context",
+                  "name": "item"
+                },
+                {
+                  "kind": "index",
+                  "name": "i"
+                }
+              ],
+              "children": [
+                {
+                  "kind": "element",
+                  "name": "a",
+                  "attributes": {
+                    "href": "{{item.url}}"
+                  },
+                  "children": [
+                    {
+                      "kind": "element",
+                      "name": "span",
+                      "children": [
+                        {
+                          "kind": "text",
+                          "value": "{{item.title}}"
+                        }
+                      ]
+                    },
+                    {
+                      "kind": "switch",
+                      "inputs": [
+                        {
+                          "kind": "context",
+                          "name": "item.icon"
+                        }
+                      ],
+                      "children": [
+                        {
+                          "kind": "switch:on",
+                          "children": [
+                            {
+                              "kind": "element",
+                              "name": "span",
+                              "attributes": {
+                                "class": "icon icon-{{item.icon}}"
+                              },
+                              "children": [
+                                {
+                                  "kind": "text",
+                                  "value": "{{item.icon}}"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

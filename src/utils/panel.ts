@@ -1,6 +1,6 @@
 import { type Reactive, reactive } from '@beerush/reactor';
+import { dash } from '@beerush/utils';
 import type { StyleDeclarations } from './colors';
-import { dash } from './string';
 
 export type Unit = 'px' | '%' | 'em' | 'rem' | 'vw' | 'vh' | string;
 
@@ -10,8 +10,8 @@ export type Shadow = {
   b: string;
   c: string;
   s: string;
-  v: string
-}
+  v: string;
+};
 
 export type Filters = {
   blur: string;
@@ -23,28 +23,34 @@ export type Filters = {
   opacity: string;
   saturate: string;
   sepia: string;
-}
+};
 
 export type GradientValue = {
   stop: number;
   color: string;
   colorVar?: string;
-}
+};
 
 export type Gradient = {
   type: 'linear' | 'radial';
   values: GradientValue[];
   angle?: number;
-  shape?: 'circle' | 'ellipse' | 'closest-side' | 'closest-corner' | 'farthest-side' | 'farthest-corner';
+  shape?:
+    | 'circle'
+    | 'ellipse'
+    | 'closest-side'
+    | 'closest-corner'
+    | 'farthest-side'
+    | 'farthest-corner';
   value?: string;
   repeat?: boolean;
-}
+};
 
 export type Transform = {
   x?: string;
   y?: string;
   z?: string;
-}
+};
 
 export type StylerOptions = {
   dropShadows: Shadow[];
@@ -60,12 +66,12 @@ export type StylerOptions = {
     x?: string;
     y?: string;
     v?: string;
-  }
+  };
   backgroundSize: {
     x?: string;
     y?: string;
     v?: string;
-  }
+  };
   origin: {
     x?: string;
     y?: string;
@@ -80,7 +86,7 @@ export type StylerOptions = {
     duration: string;
     easing: string;
     delay: string;
-  }[]
+  }[];
 };
 
 export const filterUnits: Filters = {
@@ -92,7 +98,7 @@ export const filterUnits: Filters = {
   invert: '%',
   opacity: '%',
   saturate: '%',
-  sepia: '%'
+  sepia: '%',
 };
 
 export function createOptions(): Reactive<StylerOptions> {
@@ -123,9 +129,9 @@ export function createStyles(styles: StyleDeclarations = {} as never): Reactive<
 export function joinFilters(filters: Filters, shadows: Shadow[]) {
   const activeFilters = [];
 
-  for (const [ prop, value ] of Object.entries(filters)) {
+  for (const [prop, value] of Object.entries(filters)) {
     if (typeof value !== 'undefined' && value !== '') {
-      activeFilters.push(`${ dash(prop) }(${ value }${ filterUnits[prop as never] })`);
+      activeFilters.push(`${dash(prop)}(${value}${filterUnits[prop as never]})`);
     }
   }
 
@@ -134,10 +140,10 @@ export function joinFilters(filters: Filters, shadows: Shadow[]) {
     colorVar?: string;
   }[] = shadows.map(({ x, y, b, c, s, v }: Shadow) => {
     if (x && y && b && c) {
-      const color = `${ x } ${ y } ${ b }${ s ? ' ' + s : '' } ${ c }`;
+      const color = `${x} ${y} ${b}${s ? ' ' + s : ''} ${c}`;
 
       if (v) {
-        return { color, colorVar: `${ x } ${ y } ${ b }${ s ? ' ' + s : '' } ${ v }` };
+        return { color, colorVar: `${x} ${y} ${b}${s ? ' ' + s : ''} ${v}` };
       } else {
         return { color };
       }
@@ -146,14 +152,18 @@ export function joinFilters(filters: Filters, shadows: Shadow[]) {
 
   const filter = activeFilters.join(' ');
 
-  const color = activeShadows.filter(item => item).map(({ color }) => `drop-shadow(${ color })`).join(' ');
-  const colorVar = activeShadows.filter(item => item)
-    .map((item) => `drop-shadow(${ item.colorVar || item.color })`)
+  const color = activeShadows
+    .filter((item) => item)
+    .map(({ color }) => `drop-shadow(${color})`)
+    .join(' ');
+  const colorVar = activeShadows
+    .filter((item) => item)
+    .map((item) => `drop-shadow(${item.colorVar || item.color})`)
     .join(' ');
 
   return {
-    filter: [ filter, color ].filter(item => item).join(' '),
-    filterVar: [ filter, colorVar ].filter(item => item).join(' ')
+    filter: [filter, color].filter((item) => item).join(' '),
+    filterVar: [filter, colorVar].filter((item) => item).join(' '),
   };
 }
 
@@ -166,8 +176,8 @@ export function joinBackgrounds({ gradients, backgroundImage }: StylerOptions): 
     }
   }
 
-  const gradient = gradients.map(item => item.value).join(',');
-  return [ backgroundImage, gradient ].filter(item => item).join(', ');
+  const gradient = gradients.map((item) => item.value).join(',');
+  return [backgroundImage, gradient].filter((item) => item).join(', ');
 }
 
 export function joinTransforms({ scale, rotate, translate, skew }: StylerOptions): string {
@@ -175,42 +185,45 @@ export function joinTransforms({ scale, rotate, translate, skew }: StylerOptions
 
   if (scale.x || scale.y || scale.z) {
     if (scale.z) {
-      transforms.push(`scale3d(${ scale.x || 1 }, ${ scale.y || 1 }, ${ scale.z || 1 })`);
+      transforms.push(`scale3d(${scale.x || 1}, ${scale.y || 1}, ${scale.z || 1})`);
     } else {
-      transforms.push(`scale(${ scale.x || 1 }, ${ scale.y || 1 })`);
+      transforms.push(`scale(${scale.x || 1}, ${scale.y || 1})`);
     }
   }
 
   if (rotate.x) {
     if (!rotate.y && !rotate.z) {
-      transforms.push(`rotate(${ rotate.x })`);
+      transforms.push(`rotate(${rotate.x})`);
     } else {
-      transforms.push(`rotateX(${ rotate.x })`);
+      transforms.push(`rotateX(${rotate.x})`);
     }
   }
 
   if (rotate.y) {
-    transforms.push(`rotateY(${ rotate.y })`);
+    transforms.push(`rotateY(${rotate.y})`);
   }
 
   if (rotate.z) {
-    transforms.push(`rotateZ(${ rotate.z })`);
+    transforms.push(`rotateZ(${rotate.z})`);
   }
 
   if (translate.x || translate.y || translate.z) {
-    transforms.push(`translate3d(${ translate.x || 0 }, ${ translate.y || 0 }, ${ translate.z || 0 })`);
+    transforms.push(`translate3d(${translate.x || 0}, ${translate.y || 0}, ${translate.z || 0})`);
   }
 
   if (skew.x || skew.y) {
-    transforms.push(`skew(${ skew.x || 0 }, ${ skew.y || 0 })`);
+    transforms.push(`skew(${skew.x || 0}, ${skew.y || 0})`);
   }
 
   return transforms.join(' ');
 }
 
-const gradientString = ({ type, angle, shape, values }: Gradient) => {
+export function gradientString({ type, angle, shape, values }: Gradient): string {
   const key = type === 'linear' ? 'linear-gradient' : 'radial-gradient';
-  const value = values.sort((a, b) => a.stop - b.stop).map(item => `${ item.color } ${ item.stop }%`).join(', ');
+  const value = values
+    .sort((a, b) => a.stop - b.stop)
+    .map((item) => `${item.color} ${item.stop}%`)
+    .join(', ');
 
-  return `${ key }(${ type === 'linear' ? angle + 'deg' : shape }, ${ value })`;
-};
+  return `${key}(${type === 'linear' ? angle + 'deg' : shape}, ${value})`;
+}

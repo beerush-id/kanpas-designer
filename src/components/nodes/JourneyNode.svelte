@@ -18,7 +18,7 @@
   export let step: Reactive<VisitStep> = reactive({ actions: [] } as never);
   export let parent: Reactive<VisitStep> = null as never;
   export let color = '';
-  export let domain: string = '';
+  export let domain = '';
 
   const dispatch = createEventDispatcher();
 
@@ -164,6 +164,8 @@
   const dismissEditMenus = () => {
     editMenus.forEach((menu) => (menu.active = false));
   };
+
+  console.log(step);
 </script>
 
 <Node

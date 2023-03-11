@@ -55,40 +55,42 @@
        class:collapse={$mockup?.fullScreen}>
     <div class="kanpas-immersive-menu-list pdy-4">
       {#each $main || [] as route}
-        <div class="immersive-menu-item">
-          <a href={route.path} class="kanpas-tool-button immersive-menu-button" class:active={route.active}>
-            <Icon>{route.icon}</Icon>
-            {#if !route.children || (route.children && !route.children.length)}
-              <PopUp xDir="after" yDir="between">{route.title}</PopUp>
+        {#if route.visible}
+          <div class="immersive-menu-item">
+            <a href={route.path} class="kanpas-tool-button immersive-menu-button" class:active={route.active}>
+              <Icon>{route.icon}</Icon>
+              {#if !route.children || (route.children && !route.children.length)}
+                <PopUp xDir="after" yDir="between">{route.title}</PopUp>
+              {/if}
+              {#if route.children && route.children.length && !route.active}
+                <PopUp xDir="after" yDir="top" role="popup" dismiss>
+                  <div class="flex-column pd-4">
+                    {#each route.children as child}
+                      <a href={child.path} class="header-submenu flex-row-center-y" class:active={child.active}>
+                        {#if child.icon}
+                          <Icon>{child.icon}</Icon>
+                        {/if}
+                        <span class="mdl-10">{child.title}</span>
+                      </a>
+                    {/each}
+                  </div>
+                </PopUp>
+              {/if}
+            </a>
+            {#if route.active && route.children && route.children.length}
+              <div class="kanpas-separator-x"></div>
+              {#each route.children as child}
+                <a href={child.path} class="kanpas-tool-button immersive-menu-button" class:active={child.active}>
+                  <Icon>{child.icon}</Icon>
+                  {#if !child.children || (child.children && !child.children.length)}
+                    <PopUp xDir="after" yDir="between">{child.title}</PopUp>
+                  {/if}
+                </a>
+              {/each}
+              <div class="kanpas-separator-x"></div>
             {/if}
-            {#if route.children && route.children.length && !route.active}
-              <PopUp xDir="after" yDir="top" role="popup" dismiss>
-                <div class="flex-column pd-4">
-                  {#each route.children as child}
-                    <a href={child.path} class="header-submenu flex-row-center-y" class:active={child.active}>
-                      {#if child.icon}
-                        <Icon>{child.icon}</Icon>
-                      {/if}
-                      <span class="mdl-10">{child.title}</span>
-                    </a>
-                  {/each}
-                </div>
-              </PopUp>
-            {/if}
-          </a>
-          {#if route.active && route.children && route.children.length}
-            <div class="kanpas-separator-x"></div>
-            {#each route.children as child}
-              <a href={child.path} class="kanpas-tool-button immersive-menu-button" class:active={child.active}>
-                <Icon>{child.icon}</Icon>
-                {#if !child.children || (child.children && !child.children.length)}
-                  <PopUp xDir="after" yDir="between">{child.title}</PopUp>
-                {/if}
-              </a>
-            {/each}
-            <div class="kanpas-separator-x"></div>
-          {/if}
-        </div>
+          </div>
+        {/if}
       {/each}
     </div>
     <div id="immersive-menu"></div>
@@ -103,14 +105,14 @@
         {$mockup?.fullScreen ? 'close_fullscreen' : 'open_in_full'}
       </Icon>
       <ThemeSwitch xDir="after" yDir="between" class="header-menu-icon"/>
-      <Icon clickable
-            xDir="after"
-            yDir="between"
-            tooltip="Settings"
-            class="header-menu-icon"
-            on:click={() => navigation.goto('/settings')}>
-        settings
-      </Icon>
+      <!--      <Icon clickable-->
+      <!--            xDir="after"-->
+      <!--            yDir="between"-->
+      <!--            tooltip="Settings"-->
+      <!--            class="header-menu-icon"-->
+      <!--            on:click={() => navigation.goto('/settings')}>-->
+      <!--        settings-->
+      <!--      </Icon>-->
     </div>
   </div>
   <div class="kanpas-immersive-body">

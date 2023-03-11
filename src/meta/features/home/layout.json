@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "component",
+    "name": "Header",
+    "attributes": {},
+    "children": []
+  },
+  {
+    "kind": "element",
+    "name": "main",
+    "attributes": {
+      "id": "hero",
+      "class": ["kds-section", "kds-hero"]
+    }
+  },
+  {
+    "kind": "component",
+    "name": "Footer",
+    "attributes": {},
+    "children": []
+  }
+]

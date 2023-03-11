@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DirectionX, DirectionY } from '@utils/popup';
+  import type { DirectionX, DirectionY } from '@beerush/browser-utils';
   import PopUp from './PopUp.svelte';
 
   export let size: 'thin' | 'small' | 'medium' | 'large' | 'strong' = 'small';
