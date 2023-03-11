@@ -14,10 +14,11 @@
       "DOM"
     ],
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@utils/*": ["./src/utils/*"],
-      "@services/*": ["./src/services/*"],
-      "@actions/*": ["./src/actions/*"],
+      "@components/*": ["./src/lib/components/*"],
+      "@utils/*": ["./src/lib/utils/*"],
+      "@styles/*": ["./src/lib/styles/*"],
+      "@services/*": ["./src/lib/services/*"],
+      "@actions/*": ["./src/lib/actions/*"],
       "@templates/*": ["./src/templates/*"],
       "@data/*": ["./src/data/*"],
       "$lib": ["./src/lib"],
