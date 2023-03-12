@@ -14,21 +14,21 @@
   bind:this={element}
   role={href && !disabled ? 'button' : undefined}
   href={href && !disabled ? href : undefined}
-  class="kanpas-button style-{variant} color-{color} {className}"
+  class="kds-button style-{variant} color-{color} {className}"
   on:click
   {...$$restProps}>
-  <slot />
+  <slot/>
 </svelte:element>
 
 <style lang="scss">
-  .kanpas-button {
+  .kds-button {
     display: inline-flex;
     font-weight: 600;
     appearance: none;
     border: 1px solid transparent;
     outline: none;
     background-color: transparent;
-    border-radius: var(--kanpas-radius);
+    border-radius: var(--kds-radius);
     padding: 8px 16px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -41,23 +41,23 @@
   }
 
   .color-primary:not(.style-borderless) {
-    background-color: var(--kanpas-color-primary-normal);
-    color: var(--kanpas-white);
+    background-color: var(--kds-color-primary-normal);
+    color: var(--kds-white);
 
     &:hover {
-      background-color: var(--kanpas-color-primary-hover);
+      background-color: var(--kds-color-primary-hover);
     }
 
     &:active {
-      background-color: var(--kanpas-color-primary-active);
+      background-color: var(--kds-color-primary-active);
     }
 
     &:focus {
-      border-color: var(--kanpas-color-primary-active);
+      border-color: var(--kds-color-primary-active);
     }
   }
 
-  .kanpas-button :global(.kanpas-icon:not(:last-child)) {
+  .kds-button :global(.kds-icon:not(:last-child)) {
     margin-right: 6px;
   }
 </style>

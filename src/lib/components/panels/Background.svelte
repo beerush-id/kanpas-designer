@@ -120,16 +120,16 @@
     <ColorPickerTrigger tooltip="Background Color"
                         bind:value={$styles.backgroundColor}
                         bind:variable={$styles.backgroundColorVar}></ColorPickerTrigger>
-    <div class="kanpas-separator-y"></div>
+    <div class="kds-separator-y"></div>
     <Icon clickable tooltip="Clip Text"
           active={$options.backgroundClip} on:click={toggleClip}>join_inner
     </Icon>
-    <div class="kanpas-separator-y"></div>
+    <div class="kds-separator-y"></div>
     <Icon clickable tooltip="Reset Backgrounds"
           on:click={clear}>settings_backup_restore
     </Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row">
+  <div class="kds-panel-section flex-row">
     <div class="background-image flex-column-center"
          style:background-image={$styles.backgroundImage||''}
          style:background-size={$styles.backgroundSize||''}
@@ -147,8 +147,8 @@
       settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center">
-    <div class="flex kanpas-panel-prop-label">Size</div>
+  <div class="kds-panel-section flex-row-center">
+    <div class="flex kds-panel-prop-label">Size</div>
     <select style:width="90px"
             bind:value={$options.backgroundSize.v}
             on:change={useVarSize}>
@@ -176,8 +176,8 @@
       settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center">
-    <div class="flex kanpas-panel-prop-label">Position</div>
+  <div class="kds-panel-section flex-row-center">
+    <div class="flex kds-panel-prop-label">Position</div>
     <select style:width="90px"
             bind:value={$options.backgroundPosition.v}
             on:change={useVarPos}>
@@ -206,8 +206,8 @@
       settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center">
-    <div class="flex kanpas-panel-prop-label">Repeat</div>
+  <div class="kds-panel-section flex-row-center">
+    <div class="flex kds-panel-prop-label">Repeat</div>
     <select style:width="108px"
             bind:value={$styles.backgroundRepeat}>
       <option value={undefined}>Default</option>
@@ -228,11 +228,11 @@
   .background-image {
     width: 100%;
     height: 128px;
-    background-color: var(--kanpas-color-input-bg);
-    border-radius: var(--kanpas-radius-small);
+    background-color: var(--kds-color-input-bg);
+    border-radius: var(--kds-radius-small);
     position: relative;
-    border: 1px solid var(--kanpas-color-input-line);
-    font-size: var(--kanpas-font-subtitle);
+    border: 1px solid var(--kds-color-input-line);
+    font-size: var(--kds-font-subtitle);
   }
 
   input[type="file"] {

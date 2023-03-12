@@ -23,50 +23,50 @@
 
   .full {
     .primary-fill {
-      fill: var(--kanpas-color-logo-primary);
+      fill: var(--kds-color-logo-primary);
     }
 
     .secondary-fill {
-      fill: var(--kanpas-color-logo-secondary);
+      fill: var(--kds-color-logo-secondary);
     }
   }
 
   .mono .primary-fill, .mono .secondary-fill {
-    fill: var(--kanpas-color-foreground);
+    fill: var(--kds-color-foreground);
   }
 
   .black {
     .primary-fill {
-      fill: var(--kanpas-color-grey-950);
+      fill: var(--kds-color-grey-950);
     }
 
     .secondary-fill {
-      fill: var(--kanpas-color-grey-800);
+      fill: var(--kds-color-grey-800);
     }
   }
 
   .white {
     .primary-fill {
-      fill: var(--kanpas-color-grey-10);
+      fill: var(--kds-color-grey-10);
     }
 
     .secondary-fill {
-      fill: var(--kanpas-color-grey-300);
+      fill: var(--kds-color-grey-300);
     }
   }
 
   .adaptive {
     .primary-fill {
-      fill: var(--kanpas-color-adaptive-primary);
+      fill: var(--kds-color-adaptive-primary);
     }
 
     .secondary-fill {
-      fill: var(--kanpas-color-adaptive-secondary);
+      fill: var(--kds-color-adaptive-secondary);
     }
   }
 
   .loading {
     animation: fadeIn .5s cubic-bezier(.47, 1.64, .41, .8) infinite;
-    color: var(--kanpas-color-logo-secondary);
+    color: var(--kds-color-logo-secondary);
   }
 </style>

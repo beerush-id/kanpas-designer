@@ -77,8 +77,8 @@
   document.head.appendChild(styleElement);
 
   const createCSS = (
-    root = '.kanpas-root',
-    body = '.kanpas-body',
+    root = '.kds-root',
+    body = '.kds-body',
     darkClass = '.dark-mode'
   ): string => {
     let elemCSS = '';
@@ -114,7 +114,7 @@
 
       if (propCSS) {
         if (root) {
-          elemCSS += `.kanpas-root ${ elem.name === 'body' ? '.kanpas-body' : elem.name } {\r\n${ propCSS }}\r\n`;
+          elemCSS += `.kds-root ${ elem.name === 'body' ? '.kds-body' : elem.name } {\r\n${ propCSS }}\r\n`;
         } else {
           elemCSS += `${ elem.name === 'body' ? body : elem.name } {\r\n${ propCSS }}\r\n`;
         }
@@ -154,21 +154,21 @@
 <ImmersiveOption title="Typography" collapsible></ImmersiveOption>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <div class="kanpas-tool-group flex-row-center-y">
+    <div class="kds-tool-group flex-row-center-y">
       <VariableShortcuts></VariableShortcuts>
-      <div class="kanpas-separator-y"></div>
+      <div class="kds-separator-y"></div>
       <Icon class="tool-icon" clickable tooltip="Copy CSS" on:click={copyCSS}>css</Icon>
     </div>
     <div class="mx-1"></div>
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <HistorySwitch {history}></HistorySwitch>
     </div>
     <div class="mx-1"></div>
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <CanvasSwitch></CanvasSwitch>
     </div>
     <div class="mx-1"></div>
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <MockupSwitch></MockupSwitch>
     </div>
   </div>
@@ -212,7 +212,7 @@
           on:click={() => switchElem(elements.separator)}>
     {/each}
   </Mockup>
-  <div class="editor-panel kanpas-acrylic-bg" class:expanded={$mockup.fullScreen} slot="canvas-panel-right">
+  <div class="editor-panel kds-acrylic-bg" class:expanded={$mockup.fullScreen} slot="canvas-panel-right">
     <EditorPanel {styles} {options} textMode></EditorPanel>
   </div>
 </Canvas>
@@ -221,7 +221,7 @@
   .editor-panel {
     border-radius: 0;
     height: 100%;
-    border-left: 1px solid var(--kanpas-toolbar-line);
+    border-left: 1px solid var(--kds-toolbar-line);
 
     &:before {
       border-radius: 0;

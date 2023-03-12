@@ -54,10 +54,10 @@
     }
   });
 </script>
-<div class="kanpas-color-variables {className}">
-  <div class="kanpas-color-variables-head flex-row-center-y">
+<div class="kds-color-variables {className}">
+  <div class="kds-color-variables-head flex-row-center-y">
     <h6 contenteditable bind:innerHTML={name} bind:this={nameInput}>{name}</h6>
-    <span class="kanpas-color-head-count">&nbsp;({$colors.length} Colors)</span>
+    <span class="kds-color-head-count">&nbsp;({$colors.length} Colors)</span>
     <span class="flex"></span>
     <Icon tooltip="Add Variable" yDir="above" clickable="true" on:click={addColor}>add</Icon>
     <Icon tooltip="Copy CSS" yDir="above" clickable="true" on:click={copyCss} class="mdl-10">code</Icon>
@@ -91,22 +91,22 @@
 </div>
 
 <style lang="scss">
-  .kanpas-color-variables-head {
+  .kds-color-variables-head {
     margin-bottom: 10px;
   }
 
   .empty-colors {
     background-color: rgba(0, 0, 0, 0.1);
-    padding: var(--kanpas-space);
-    border-radius: var(--kanpas-radius);
-    color: var(--kanpas-color-subtitle);
-    font-size: var(--kanpas-font-subtitle);
+    padding: var(--kds-space);
+    border-radius: var(--kds-radius);
+    color: var(--kds-color-subtitle);
+    font-size: var(--kds-font-subtitle);
   }
 
-  .kanpas-color-head-count {
-    font-size: var(--kanpas-font-subtitle);
+  .kds-color-head-count {
+    font-size: var(--kds-font-subtitle);
     font-weight: 500;
-    color: var(--kanpas-color-subtitle);
+    color: var(--kds-color-subtitle);
     margin-left: 4px;
   }
 </style>

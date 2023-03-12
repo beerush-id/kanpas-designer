@@ -7,27 +7,27 @@ export type FontDefinition = {
   weightMaps: {
     name: string;
     label: string;
-    value: string
+    value: string;
   }[];
-}
+};
 
 export class WebFont {
   public fonts: FontDefinition[] = fonts as never;
   public activeFonts: string[] = [];
 
   public exportCss() {
-    let style = document.querySelector('#kanpas-fonts');
+    let style = document.querySelector('#kds-fonts');
 
     if (!style) {
       style = document.createElement('style');
-      style.id = 'kanpas-fonts';
+      style.id = 'kds-fonts';
       document.head.appendChild(style);
     }
 
     let css = '';
 
     for (const font of this.fonts) {
-      css += `${ font.css }\r\n`;
+      css += `${font.css}\r\n`;
     }
 
     style.innerHTML = css;

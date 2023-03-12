@@ -9,7 +9,7 @@
 
 {#if route.name === 'tt'}
   <Portal slot="#immersive-menu">
-    <div class="kanpas-acrylic my-2">
+    <div class="kds-acrylic my-2">
       {#each $route.children as menu}
         <a href={menu.path} class="immersive-menu-button" class:active={menu.active}>
           <Icon size="medium">{menu.icon}</Icon>

@@ -8,7 +8,7 @@
   };
 </script>
 
-<div class="kanpas-mockup-switch flex-row-center">
+<div class="kds-mockup-switch flex-row-center">
   <slot></slot>
   <div class="mdl-8"></div>
   <ThemeSwitch role="toggle"></ThemeSwitch>
@@ -18,7 +18,7 @@
         active={!$mockup.enabled}
         on:click={() => mockup.enabled = !mockup.enabled}>document_scanner
   </Icon>
-  <div class="kanpas-separator-y"></div>
+  <div class="kds-separator-y"></div>
   <Icon clickable
         tooltip="Desktop Mode"
         class="tool-icon"
@@ -43,7 +43,7 @@
         active={$mockup.active.name === 'mobile'}
         on:click={() => use('mobile')}>phone_iphone
   </Icon>
-  <div class="kanpas-separator-y"></div>
+  <div class="kds-separator-y"></div>
   <Icon clickable
         tooltip="Show Notch"
         class="tool-icon"
@@ -66,7 +66,7 @@
 </div>
 
 <style lang="scss">
-  .kanpas-mockup-switch :global(.kanpas-icon.light) {
-    color: var(--kanpas-color-orange-300);
+  .kds-mockup-switch :global(.kds-icon.light) {
+    color: var(--kds-color-orange-300);
   }
 </style>

@@ -27,13 +27,13 @@
 </script>
 
 {#if $mockup.enabled}
-  <div bind:this={device} class="kanpas-device {$mockup.active.name} {$mockup.mode}" class:full-view={!$mockup.enabled}>
-    <div class="kanpas-device-layer" use:blurAssist></div>
+  <div bind:this={device} class="kds-device {$mockup.active.name} {$mockup.mode}" class:full-view={!$mockup.enabled}>
+    <div class="kds-device-layer" use:blurAssist></div>
     <div class="flex"></div>
-    <div class="kanpas-device-frame" class:view-3d={$mockup.view3d}>
-      <div class="kanpas-device-side-frame"></div>
+    <div class="kds-device-frame" class:view-3d={$mockup.view3d}>
+      <div class="kds-device-side-frame"></div>
       <div bind:this={screen}
-           class="kanpas-device-screen"
+           class="kds-device-screen"
            style:width="{$mockup.width}px"
            style:height="{$mockup.height}px" on:wheel={captureWheel}>
         {#if viewport === 'browser'}
@@ -41,19 +41,19 @@
             <slot></slot>
           </Viewport>
         {:else}
-          <div class="kanpas-desktop {$theme.scheme}">
+          <div class="kds-desktop {$theme.scheme}">
             <slot></slot>
           </div>
         {/if}
-        <div class="kanpas-device-notch" class:active={$mockup.notch}></div>
+        <div class="kds-device-notch" class:active={$mockup.notch}></div>
       </div>
     </div>
     <div class="flex"></div>
     {#if showPanel}
-      <div class="kanpas-device-control kanpas-reset"
+      <div class="kds-device-control kds-reset"
            class:collapse={$mockup.controlHide}
            class:full-screen={$mockup.fullScreen}>
-        <div class="kanpas-device-control-handle kanpas-acrylic"
+        <div class="kds-device-control-handle kds-acrylic"
              on:click={() => $mockup.controlHide = !$mockup.controlHide} on:keypress>
           <Icon>{$mockup.controlHide ? 'chevron_left' : 'chevron_right'}</Icon>
           <PopUp xDir="before" yDir="between">{$mockup.controlHide ? 'Show' : 'Hide'}</PopUp>
@@ -63,8 +63,8 @@
     {/if}
   </div>
 {:else}
-  <div class="kanpas-preview" style:width="{$mockup.width}px">
-    <div class="kanpas-preview-body kanpas-acrylic {$theme.scheme}">
+  <div class="kds-preview" style:width="{$mockup.width}px">
+    <div class="kds-preview-body kds-acrylic {$theme.scheme}">
       {#if viewport === 'browser'}
         <Viewport {styles} on:focus={bodyFocus}>
           <slot></slot>
@@ -77,18 +77,18 @@
 {/if}
 
 <style lang="scss">
-  .kanpas-preview {
+  .kds-preview {
     width: 100%;
     height: 100%;
 
-    .kanpas-preview-body {
+    .kds-preview-body {
       min-height: calc(100% - 56px - 8px);
       margin-top: 56px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
   }
 
-  .kanpas-device {
+  .kds-device {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -98,35 +98,35 @@
     position: relative;
     transform: translateZ(0);
 
-    &.mobile .kanpas-device-notch {
+    &.mobile .kds-device-notch {
       border-radius: 32px;
       top: 16px;
       height: 36px;
     }
 
     &.laptop {
-      .kanpas-device-frame:before, .kanpas-device-side-frame {
+      .kds-device-frame:before, .kds-device-side-frame {
         border-radius: 26px;
       }
 
-      .kanpas-device-frame.view-3d .kanpas-device-side-frame {
+      .kds-device-frame.view-3d .kds-device-side-frame {
         width: calc(100% + 28px);
         border-radius: 26px;
         top: -12px;
         left: -22px;
       }
 
-      .kanpas-device-screen {
+      .kds-device-screen {
         border-radius: 10px;
       }
 
-      .kanpas-device-notch {
+      .kds-device-notch {
         transform: translate3d(0, -60px, 0);
       }
     }
 
     &.desktop {
-      .kanpas-device-frame:before, .kanpas-device-side-frame {
+      .kds-device-frame:before, .kds-device-side-frame {
         width: calc(100% + 48px);
         height: calc(100% + 48px);
         top: -22px;
@@ -134,7 +134,7 @@
         border-radius: 10px;
       }
 
-      .kanpas-device-frame.view-3d .kanpas-device-side-frame {
+      .kds-device-frame.view-3d .kds-device-side-frame {
         width: calc(100% + 32px);
         height: calc(100% + 46px);
         border-radius: 10px;
@@ -142,17 +142,17 @@
         left: -30px;
       }
 
-      .kanpas-device-screen {
+      .kds-device-screen {
         border-radius: 0;
       }
 
-      .kanpas-device-notch {
+      .kds-device-notch {
         transform: translate3d(0, -60px, 0);
       }
     }
   }
 
-  .kanpas-device-layer {
+  .kds-device-layer {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -161,7 +161,7 @@
     z-index: 0;
   }
 
-  .kanpas-device-frame {
+  .kds-device-frame {
     position: relative;
     z-index: 0;
     transition: all .3s ease-in-out;
@@ -169,7 +169,7 @@
     &.view-3d {
       transform: perspective(3000px) rotate3d(1, 1, -1, 60deg);
 
-      .kanpas-device-side-frame {
+      .kds-device-side-frame {
         width: calc(100% + 48px);
         height: calc(100% + 30px);
         top: -10px;
@@ -212,7 +212,7 @@
     }
   }
 
-  .kanpas-device-side-frame {
+  .kds-device-side-frame {
     position: absolute;
     width: calc(100% + 32px);
     height: calc(100% + 32px);
@@ -225,7 +225,7 @@
     transition: all .3s ease-in-out;
   }
 
-  .kanpas-device-screen {
+  .kds-device-screen {
     position: relative;
     z-index: 1;
     border-radius: 56px;
@@ -235,7 +235,7 @@
     max-height: 100%;
   }
 
-  .kanpas-device-notch {
+  .kds-device-notch {
     width: 150px;
     height: 32px;
     background-color: #000;
@@ -288,16 +288,16 @@
     }
   }
 
-  .kanpas-desktop {
+  .kds-desktop {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: var(--kanpas-color-background);
-    color: var(--kanpas-color-foreground);
+    background-color: var(--kds-color-background);
+    color: var(--kds-color-foreground);
     transition: color .2s ease-in-out, background-color .2s ease-in-out;
   }
 
-  .kanpas-device-control {
+  .kds-device-control {
     height: 100%;
     position: relative;
     transition: all .2s ease-in-out;
@@ -320,7 +320,7 @@
     }
   }
 
-  .kanpas-device-control-handle {
+  .kds-device-control-handle {
     position: absolute;
     top: 50%;
     left: 0;
@@ -335,7 +335,7 @@
     transition: all .2s ease-in-out;
 
     &:hover {
-      background-color: var(--kanpas-color-success-hover);
+      background-color: var(--kds-color-success-hover);
     }
   }
 

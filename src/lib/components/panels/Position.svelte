@@ -55,33 +55,33 @@
       </div>
     {/if}
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-input-group flex mdr-16">
-      <div class="kanpas-input flex-row-center-y flex mdb-10">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Left</span>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-input-group flex mdr-16">
+      <div class="kds-input flex-row-center-y flex mdb-10">
+        <span class="kds-panel-prop-label mdr-10 flex">Left</span>
         <InputUnit name="left"
                    placeholder="auto"
                    disabled={!$styles.position}
                    bind:value={$styles.left}></InputUnit>
       </div>
-      <div class="kanpas-input flex-row-center-y flex">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Right</span>
+      <div class="kds-input flex-row-center-y flex">
+        <span class="kds-panel-prop-label mdr-10 flex">Right</span>
         <InputUnit name="right"
                    placeholder="auto"
                    disabled={!$styles.position}
                    bind:value={$styles.right}></InputUnit>
       </div>
     </div>
-    <div class="kanpas-input-group flex">
-      <div class="kanpas-input flex-row-center-y flex mdb-10">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Top</span>
+    <div class="kds-input-group flex">
+      <div class="kds-input flex-row-center-y flex mdb-10">
+        <span class="kds-panel-prop-label mdr-10 flex">Top</span>
         <InputUnit name="top"
                    placeholder="auto"
                    disabled={!$styles.position}
                    bind:value={$styles.top}></InputUnit>
       </div>
-      <div class="kanpas-input flex-row-center-y flex">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Bottom</span>
+      <div class="kds-input flex-row-center-y flex">
+        <span class="kds-panel-prop-label mdr-10 flex">Bottom</span>
         <InputUnit name="bottom"
                    placeholder="auto"
                    disabled={!$styles.position}

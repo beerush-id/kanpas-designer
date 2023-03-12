@@ -3,8 +3,8 @@
 
   export let action: Action;
 </script>
-<div class="kanpas-action-view">
-  <div class="kanpas-action-head"></div>
-  <div class="kanpas-action-body"></div>
-  <div class="kanpas-action-foot"></div>
+<div class="kds-action-view">
+  <div class="kds-action-head"></div>
+  <div class="kds-action-body"></div>
+  <div class="kds-action-foot"></div>
 </div>

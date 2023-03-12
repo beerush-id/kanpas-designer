@@ -168,16 +168,16 @@
                         tooltip="Text Color"
                         bind:value={$styles.color}
                         bind:variable={$styles.colorVar}></ColorPickerTrigger>
-    <div class="kanpas-separator-y"></div>
+    <div class="kds-separator-y"></div>
     <Icon clickable
           tooltip={$styles.whiteSpace ? ($styles.whiteSpace === 'wrap' ? 'Wrap Text' : 'No Wrap') : 'Default White Space'}
           active={$styles.whiteSpace}
           on:click={toggleWrap}>{$styles.whiteSpace ? ($styles.whiteSpace === 'wrap' ? 'format_text_wrap' : 'format_text_clip') : 'wrap_text'}
     </Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10">Font</span>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10">Font</span>
       <select name="font-family" bind:value={$styles.fontFamily} on:change={changeFont}>
         <option value={undefined}>Default</option>
         {#each webFonts.fonts.sort((a, b) => a.name.localeCompare(b.name)) as font}
@@ -194,7 +194,7 @@
             active={$styles.fontStyle === 'italic'}
             on:click={toggleItalic}>format_italic
       </Icon>
-      <div class="kanpas-separator-y"></div>
+      <div class="kds-separator-y"></div>
       <Icon clickable
             tooltip="Underlined Text"
             active={$styles.textDecoration === 'underline'}
@@ -207,7 +207,7 @@
       </Icon>
     </div>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
+  <div class="kds-panel-section flex-row-center-y">
     {#each alignments as align}
       <Icon clickable
             tooltip={align.label}
@@ -215,7 +215,7 @@
             on:click={() => toggleAlign(align)}>{align.icon}
       </Icon>
     {/each}
-    <span class="kanpas-separator-y"></span>
+    <span class="kds-separator-y"></span>
     {#each cases as align}
       <Icon clickable
             tooltip={align.label}
@@ -229,8 +229,8 @@
           on:click={() => styles.textDecoration = 'none'}>format_clear
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-input flex-row-center-y">
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-input flex-row-center-y">
       <Icon tooltip="Font Weight" class="mdr-4">line_weight</Icon>
       <select name="font-weight" bind:value={$styles.fontWeight}>
         <option value={undefined}>Default</option>
@@ -240,12 +240,12 @@
       </select>
     </div>
     <div class="flex"></div>
-    <div class="kanpas-input flex-row-center-y mdl-4">
+    <div class="kds-input flex-row-center-y mdl-4">
       <Icon tooltip="Line Height" class="mdr-4">format_line_spacing</Icon>
       <input type="text" placeholder="auto" name="line-height" bind:value={$styles.lineHeight}>
     </div>
     <div class="flex"></div>
-    <div class="kanpas-input flex-row-center-y mdl-4">
+    <div class="kds-input flex-row-center-y mdl-4">
       <Icon tooltip="Letter Spacing" class="mdr-4">format_indent_increase</Icon>
       <input type="text" placeholder="auto" name="line-height" bind:value={$styles.letterSpacing}>
     </div>

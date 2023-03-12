@@ -23,14 +23,14 @@
   {/if}
 </svelte:head>
 
-<div class="kanpas-immersive" class:expanded={$mockup?.fullScreen} class:with-statusbar={statusbar}>
-  <div class="kanpas-immersive-header kanpas-acrylic-bg kanpas-reset" class:maximize={$mockup?.fullScreen}>
-    <div class="kanpas-header-menu flex-row-center" use:blurAssist>
+<div class="kds-immersive" class:expanded={$mockup?.fullScreen} class:with-statusbar={statusbar}>
+  <div class="kds-immersive-header kds-acrylic-bg kds-reset" class:maximize={$mockup?.fullScreen}>
+    <div class="kds-header-menu flex-row-center" use:blurAssist>
       <a href="/" class="header-menu header-menu-icon">
         <Logo></Logo>
       </a>
     </div>
-    <div class="kanpas-immersive-breadcrumb kanpas-tool-group pdy-6 pdx-12 flex-row-center-y kanpas-accept-events mdl-12">
+    <div class="kds-immersive-breadcrumb kds-tool-group pdy-6 pdx-12 flex-row-center-y kds-accept-events mdl-12">
       {#each $navigation.routes.filter(route => route.active) as route}
         <a href={route.path} class="flex-row-center-y">
           <span>{route.title}</span>
@@ -38,26 +38,26 @@
       {/each}
     </div>
     <div class="flex"></div>
-    <div id="immersive-header" class="kanpas-header-extras flex-row-center-y" use:blurAssist>
+    <div id="immersive-header" class="kds-header-extras flex-row-center-y" use:blurAssist>
       <slot name="header"></slot>
     </div>
     <div class="flex"></div>
-    <div class="kanpas-tool-group flex-row-center-y kanpas-accept-events">
+    <div class="kds-tool-group flex-row-center-y kds-accept-events">
       <span class="mdx-16">Dev Server</span>
-      <div class="kanpas-separator-y"></div>
+      <div class="kds-separator-y"></div>
       <Icon clickable tooltip="Restart Dev Server" class="tool-icon" active>replay</Icon>
     </div>
-    <div class="kanpas-header-tools flex-row-center-y" use:blurAssist>
+    <div class="kds-header-tools flex-row-center-y" use:blurAssist>
       <UserAvatar class="mx-1"></UserAvatar>
     </div>
   </div>
-  <div class="kanpas-immersive-menu kanpas-accept-events kanpas-acrylic-bg kanpas-reset"
+  <div class="kds-immersive-menu kds-accept-events kds-acrylic-bg kds-reset"
        class:collapse={$mockup?.fullScreen}>
-    <div class="kanpas-immersive-menu-list pdy-4">
+    <div class="kds-immersive-menu-list pdy-4">
       {#each $main || [] as route}
         {#if route.visible}
           <div class="immersive-menu-item">
-            <a href={route.path} class="kanpas-tool-button immersive-menu-button" class:active={route.active}>
+            <a href={route.path} class="kds-tool-button immersive-menu-button" class:active={route.active}>
               <Icon>{route.icon}</Icon>
               {#if !route.children || (route.children && !route.children.length)}
                 <PopUp xDir="after" yDir="between">{route.title}</PopUp>
@@ -78,16 +78,16 @@
               {/if}
             </a>
             {#if route.active && route.children && route.children.length}
-              <div class="kanpas-separator-x"></div>
+              <div class="kds-separator-x"></div>
               {#each route.children as child}
-                <a href={child.path} class="kanpas-tool-button immersive-menu-button" class:active={child.active}>
+                <a href={child.path} class="kds-tool-button immersive-menu-button" class:active={child.active}>
                   <Icon>{child.icon}</Icon>
                   {#if !child.children || (child.children && !child.children.length)}
                     <PopUp xDir="after" yDir="between">{child.title}</PopUp>
                   {/if}
                 </a>
               {/each}
-              <div class="kanpas-separator-x"></div>
+              <div class="kds-separator-x"></div>
             {/if}
           </div>
         {/if}
@@ -115,12 +115,12 @@
       <!--      </Icon>-->
     </div>
   </div>
-  <div class="kanpas-immersive-body">
+  <div class="kds-immersive-body">
     <slot></slot>
   </div>
   {#if statusbar}
-    <div class="kanpas-immersive-footer kanpas-acrylic-bg kanpas-reset" class:expanded={$mockup?.fullScreen}>
-      <div class="kanpas-immersive-breadcrumb flex-row-center-y kanpas-accept-events">
+    <div class="kds-immersive-footer kds-acrylic-bg kds-reset" class:expanded={$mockup?.fullScreen}>
+      <div class="kds-immersive-breadcrumb flex-row-center-y kds-accept-events">
         {#each $navigation.routes.filter(route => route.active) as route}
           <a href={route.path} class="flex-row-center-y">
             <span>{route.title}</span>
@@ -132,20 +132,20 @@
     </div>
   {/if}
 </div>
-<div class="minimize kanpas-acrylic flex-row-center" class:maximize={$mockup?.fullScreen}>
+<div class="minimize kds-acrylic flex-row-center" class:maximize={$mockup?.fullScreen}>
   <Icon clickable tooltip="Collapse" class="tool-icon" on:click={() => mockup.minimize()}>
     close_fullscreen
   </Icon>
 </div>
 
 <style lang="scss">
-  .kanpas-immersive {
+  .kds-immersive {
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding-top: var(--kanpas-toolbar-height);
-    padding-left: var(--kanpas-sidemenu-width);
+    padding-top: var(--kds-toolbar-height);
+    padding-left: var(--kds-sidemenu-width);
     transition: all .2s ease-in-out;
 
     &.expanded {
@@ -153,17 +153,17 @@
     }
 
     &.with-statusbar:not(.expanded) {
-      padding-bottom: var(--kanpas-statusbar-height);
+      padding-bottom: var(--kds-statusbar-height);
     }
 
     &.with-statusbar {
-      .kanpas-immersive-menu {
-        height: calc(100% - var(--kanpas-toolbar-height) - var(--kanpas-statusbar-height));
+      .kds-immersive-menu {
+        height: calc(100% - var(--kds-toolbar-height) - var(--kds-statusbar-height));
       }
     }
   }
 
-  .kanpas-immersive-body {
+  .kds-immersive-body {
     width: 100%;
     height: 100%;
     display: flex;
@@ -174,8 +174,8 @@
     z-index: 0;
   }
 
-  .kanpas-immersive-header, .kanpas-immersive-menu, .kanpas-immersive-footer {
-    //background-color: var(--kanpas-toolbar-bg);
+  .kds-immersive-header, .kds-immersive-menu, .kds-immersive-footer {
+    //background-color: var(--kds-toolbar-bg);
     position: fixed;
     z-index: 1;
     border-radius: 0;
@@ -185,15 +185,15 @@
     }
   }
 
-  .kanpas-immersive-header {
+  .kds-immersive-header {
     width: 100%;
-    height: var(--kanpas-toolbar-height);
+    height: var(--kds-toolbar-height);
     display: flex;
     flex-direction: row;
     align-items: center;
     pointer-events: none;
     transition: transform .2s ease-in-out;
-    border-bottom: 1px solid var(--kanpas-toolbar-line);
+    border-bottom: 1px solid var(--kds-toolbar-line);
     top: 0;
     left: 0;
     z-index: 2;
@@ -203,30 +203,30 @@
     }
 
     :global(.header-menu-icon) {
-      width: var(--kanpas-tool-size);
-      height: var(--kanpas-tool-size);
+      width: var(--kds-tool-size);
+      height: var(--kds-tool-size);
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
     }
 
-    :global(.kanpas-separator-y) {
+    :global(.kds-separator-y) {
       margin: 0;
     }
   }
 
-  .kanpas-immersive-footer {
-    //background-color: var(--kanpas-toolbar-bg);
+  .kds-immersive-footer {
+    //background-color: var(--kds-toolbar-bg);
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: var(--kanpas-statusbar-height);
-    font-size: var(--kanpas-font-hints);
-    padding: 0 var(--kanpas-space-tight);
+    height: var(--kds-statusbar-height);
+    font-size: var(--kds-font-hints);
+    padding: 0 var(--kds-space-tight);
     border-radius: 0;
-    border-top: 1px solid var(--kanpas-toolbar-line);
+    border-top: 1px solid var(--kds-toolbar-line);
     transition: all .2s ease-in-out;
     left: 0;
     bottom: 0;
@@ -240,28 +240,28 @@
     }
   }
 
-  .kanpas-header-menu,
-  .kanpas-header-tools,
-  .kanpas-header-extras {
+  .kds-header-menu,
+  .kds-header-tools,
+  .kds-header-extras {
     pointer-events: fill;
   }
 
   .header-menu {
-    color: var(--kanpas-color-foreground);
+    color: var(--kds-color-foreground);
     padding: 6px;
 
     &:hover {
-      color: var(--kanpas-color-menu-hover);
+      color: var(--kds-color-menu-hover);
     }
   }
 
-  .kanpas-header-menu {
-    width: var(--kanpas-sidemenu-width);
-    height: var(--kanpas-tool-size);
+  .kds-header-menu {
+    width: var(--kds-sidemenu-width);
+    height: var(--kds-tool-size);
   }
 
   .header-submenu {
-    color: var(--kanpas-color-menu);
+    color: var(--kds-color-menu);
     margin-bottom: 18px;
 
     &:last-child {
@@ -269,39 +269,39 @@
     }
 
     &:hover {
-      color: var(--kanpas-color-menu-hover);
+      color: var(--kds-color-menu-hover);
     }
 
     &.active {
-      color: var(--kanpas-color-menu-active);
+      color: var(--kds-color-menu-active);
     }
   }
 
-  .kanpas-immersive-menu {
-    width: var(--kanpas-sidemenu-width);
+  .kds-immersive-menu {
+    width: var(--kds-sidemenu-width);
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(100% - var(--kanpas-toolbar-height));
-    border-right: 1px solid var(--kanpas-toolbar-line);
+    height: calc(100% - var(--kds-toolbar-height));
+    border-right: 1px solid var(--kds-toolbar-line);
     transition: transform .2s ease-in-out;
     left: 0;
-    top: var(--kanpas-toolbar-height);
+    top: var(--kds-toolbar-height);
 
     &.collapse {
       transform: translate3d(-100%, 0, 0);
     }
 
     :global(.header-menu-icon) {
-      width: var(--kanpas-tool-size);
-      height: var(--kanpas-tool-size);
+      width: var(--kds-tool-size);
+      height: var(--kds-tool-size);
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
     }
 
-    :global(.kanpas-separator-y) {
+    :global(.kds-separator-y) {
       margin: 0;
     }
 
@@ -310,40 +310,40 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      color: var(--kanpas-color-foreground);
+      color: var(--kds-color-foreground);
 
       &:hover {
-        //color: var(--kanpas-color-icon-button-active);
+        //color: var(--kds-color-icon-button-active);
       }
     }
 
-    :global(.immersive-menu-button:hover .kanpas-icon) {
-      background-image: var(--kanpas-button-gradient);
+    :global(.immersive-menu-button:hover .kds-icon) {
+      background-image: var(--kds-button-gradient);
       color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
     }
 
-    :global(.immersive-menu-button.active .kanpas-icon) {
-      //color: var(--kanpas-color-icon-button-active);
-      background-image: var(--kanpas-button-gradient);
+    :global(.immersive-menu-button.active .kds-icon) {
+      //color: var(--kds-color-icon-button-active);
+      background-image: var(--kds-button-gradient);
       color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
     }
 
-    :global(.kanpas-separator-y) {
+    :global(.kds-separator-y) {
       margin: 0;
     }
   }
 
-  .kanpas-immersive-breadcrumb {
+  .kds-immersive-breadcrumb {
     a {
       font-weight: 500;
-      color: var(--kanpas-color-menu);
+      color: var(--kds-color-menu);
 
       &:not(:last-of-type):hover {
-        color: var(--kanpas-color-menu-hover);
+        color: var(--kds-color-menu-hover);
       }
 
       &:not(:last-of-type):after {
@@ -351,7 +351,7 @@
         font-family: "Material Symbols Rounded", sans-serif;
         margin: 0 6px;
         opacity: 0.5;
-        color: var(--kanpas-color-menu);
+        color: var(--kds-color-menu);
       }
 
       &:last-of-type {
@@ -365,15 +365,15 @@
     bottom: 0;
     left: 0;
     z-index: 999999;
-    width: var(--kanpas-tool-size);
-    height: var(--kanpas-tool-size);
+    width: var(--kds-tool-size);
+    height: var(--kds-tool-size);
     transform: translate3d(-100%, 100%, 0);
     transition: all .2s ease-in-out;
 
     &.maximize {
       transform: translate3d(0, 0, 0);
-      bottom: var(--kanpas-space-tight);
-      left: var(--kanpas-space-tight);
+      bottom: var(--kds-space-tight);
+      left: var(--kds-space-tight);
     }
   }
 </style>

@@ -20,19 +20,19 @@
   };
 </script>
 
-<div out:scaleOut class="kanpas-node kanpas-scale-in" class:root class:aside
-     style:--kanpas-color-node-line={color}>
-  <div class="kanpas-node-self"
+<div out:scaleOut class="kds-node kds-scale-in" class:root class:aside
+     style:--kds-color-node-line={color}>
+  <div class="kds-node-self"
        class:has-children={hasChildren}
        class:has-aside={hasAside}
        class:expanded>
     {#if root}
-      <div class="kanpas-node-root-flag">
+      <div class="kds-node-root-flag">
         <Icon>label</Icon>
       </div>
     {/if}
-    <div class="kanpas-node-head">
-      <div class="kanpas-node-icon mdb-10">
+    <div class="kds-node-head">
+      <div class="kds-node-icon mdb-10">
         <slot name="node-icon">
           <Icon size="medium">{icons[type]}</Icon>
         </slot>
@@ -77,30 +77,30 @@
       </div>
     </div>
     {#if expanded}
-      <div class="kanpas-node-children">
+      <div class="kds-node-children">
         <slot></slot>
       </div>
     {/if}
   </div>
-  <div class="kanpas-node-aside flex-row" class:has-aside={hasAside}>
+  <div class="kds-node-aside flex-row" class:has-aside={hasAside}>
     <slot name="node-aside"></slot>
   </div>
 </div>
 
 <style lang="scss">
-  .kanpas-node {
+  .kds-node {
     margin: 172px 32px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     position: relative;
 
-    & > .kanpas-node-self > .kanpas-node-head:before {
+    & > .kds-node-self > .kds-node-head:before {
       content: "";
       display: block;
       width: 2px;
       height: calc(100% + 174px);
-      background-color: var(--kanpas-color-node-line);
+      background-color: var(--kds-color-node-line);
       position: absolute;
       left: 50%;
       bottom: 0;
@@ -109,19 +109,19 @@
       z-index: -1;
     }
 
-    & > .kanpas-node-self:not(.has-children) > .kanpas-node-head:before,
-    & > .kanpas-node-self:not(.expanded) > .kanpas-node-head:before {
+    & > .kds-node-self:not(.has-children) > .kds-node-head:before,
+    & > .kds-node-self:not(.expanded) > .kds-node-head:before {
       height: calc(100% + 132px);
       margin-bottom: -54px;
     }
 
-    &:first-child > .kanpas-node-self > .kanpas-node-head:before,
-    &:last-child > .kanpas-node-self > .kanpas-node-head:before,
-    &.aside:last-child > .kanpas-node-self > .kanpas-node-head:before {
+    &:first-child > .kds-node-self > .kds-node-head:before,
+    &:last-child > .kds-node-self > .kds-node-head:before,
+    &.aside:last-child > .kds-node-self > .kds-node-head:before {
       height: calc(100% + 128px - 22px);
     }
 
-    & > .kanpas-node-self:after {
+    & > .kds-node-self:after {
       content: "";
       display: block;
       width: calc(100% + 172px);
@@ -130,38 +130,38 @@
       left: 50%;
       bottom: calc(100% + 128px - 74px - 15px);
       transform: translate3d(-50%, 0, 0);
-      border-top: 2px solid var(--kanpas-color-node-line);
+      border-top: 2px solid var(--kds-color-node-line);
     }
 
-    &:first-child > .kanpas-node-self:after {
+    &:first-child > .kds-node-self:after {
       width: calc(50% + 64px);
       transform: none;
-      border-left: 2px solid var(--kanpas-color-node-line);
+      border-left: 2px solid var(--kds-color-node-line);
       border-top-left-radius: 15px;
       margin-left: -1px;
     }
 
-    &:last-child > .kanpas-node-self:after {
+    &:last-child > .kds-node-self:after {
       width: calc(50% + 64px);
       transform: none;
       left: unset;
       right: 50%;
-      border-right: 2px solid var(--kanpas-color-node-line);
+      border-right: 2px solid var(--kds-color-node-line);
       border-top-right-radius: 15px;
       margin-right: -1px;
     }
 
-    &:not(.aside):first-child:last-child > .kanpas-node-self:after,
-    &.root > .kanpas-node-self:after,
-    &.aside > .kanpas-node-self:after {
+    &:not(.aside):first-child:last-child > .kds-node-self:after,
+    &.root > .kds-node-self:after,
+    &.aside > .kds-node-self:after {
       width: 2px;
       height: 41px;
       border: none;
-      background-color: var(--kanpas-color-node-line);
+      background-color: var(--kds-color-node-line);
     }
   }
 
-  .kanpas-node-root-flag {
+  .kds-node-root-flag {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
@@ -173,31 +173,31 @@
     bottom: 100%;
     left: 50%;
     margin-bottom: 78px;
-    background-color: var(--kanpas-color-node-bg);
-    box-shadow: 0 0 0 2px var(--kanpas-color-node-line);
+    background-color: var(--kds-color-node-bg);
+    box-shadow: 0 0 0 2px var(--kds-color-node-line);
     border-radius: 50%;
     z-index: 1;
   }
 
-  .kanpas-node-self, .kanpas-node-head {
+  .kds-node-self, .kds-node-head {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
     position: relative;
   }
 
-  .kanpas-node-self.has-aside:before {
+  .kds-node-self.has-aside:before {
     content: "";
     display: block;
     width: calc(50% + 64px);
-    border-top: 2px solid var(--kanpas-color-node-line);
+    border-top: 2px solid var(--kds-color-node-line);
     position: absolute;
     left: calc(50% + 32px);
     top: 52px;
     transition: all .3s ease-in-out;
   }
 
-  .kanpas-node-aside {
+  .kds-node-aside {
     margin-top: -40px;
     position: relative;
 
@@ -209,8 +209,8 @@
     }
 
     &.has-aside:before {
-      border-top: 2px solid var(--kanpas-color-node-line);
-      border-right: 2px solid var(--kanpas-color-node-line);
+      border-top: 2px solid var(--kds-color-node-line);
+      border-right: 2px solid var(--kds-color-node-line);
       top: 92px;
       width: calc(100% - 32px);
       right: 32px;
@@ -219,7 +219,7 @@
     &.has-aside:after {
       width: 2px;
       height: 12px;
-      background-color: var(--kanpas-color-node-line);
+      background-color: var(--kds-color-node-line);
       position: absolute;
       right: 32px;
       top: 87px;
@@ -227,9 +227,9 @@
     }
   }
 
-  .kanpas-node-head {
-    padding: var(--kanpas-space-small);
-    background-color: var(--kanpas-color-node-bg);
+  .kds-node-head {
+    padding: var(--kds-space-small);
+    background-color: var(--kds-color-node-bg);
     border-radius: 10px;
     white-space: nowrap;
     min-width: 150px;
@@ -246,9 +246,9 @@
     position: absolute;
     left: 50%;
     transform: translate3d(-50%, 0, 0);
-    background-color: var(--kanpas-color-node-tips-bg);
-    font-size: var(--kanpas-font-hints);
-    padding: var(--kanpas-space-tight) var(--kanpas-space-small);
+    background-color: var(--kds-color-node-tips-bg);
+    font-size: var(--kds-font-hints);
+    padding: var(--kds-space-tight) var(--kds-space-small);
     border-radius: 20px;
     text-transform: uppercase;
   }
@@ -263,13 +263,13 @@
   .node-prefix {
     bottom: 100%;
     margin-bottom: 10px;
-    box-shadow: 0 0 0 2px var(--kanpas-color-node-tips-line);
+    box-shadow: 0 0 0 2px var(--kds-color-node-tips-line);
   }
 
   .node-suffix {
     top: 100%;
     margin-top: 10px;
-    box-shadow: 0 0 0 2px var(--kanpas-color-node-tips-line-alt);
+    box-shadow: 0 0 0 2px var(--kds-color-node-tips-line-alt);
   }
 
   .node-action {
@@ -279,8 +279,8 @@
     justify-content: center;
     width: 24px;
     min-height: 24px;
-    background-color: var(--kanpas-color-node-tips-bg);
-    border: 2px solid var(--kanpas-color-node-line);
+    background-color: var(--kds-color-node-tips-bg);
+    border: 2px solid var(--kds-color-node-line);
     position: absolute;
     z-index: 1;
     border-radius: 12px;
@@ -338,18 +338,18 @@
     }
   }
 
-  .kanpas-node-icon {
+  .kds-node-icon {
     width: 48px;
     height: 48px;
     display: inline-flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--kanpas-color-node-bg-alt);
+    background-color: var(--kds-color-node-bg-alt);
     border-radius: 50%;
   }
 
-  .kanpas-node-children {
+  .kds-node-children {
     display: flex;
     flex-direction: row;
     justify-content: center;

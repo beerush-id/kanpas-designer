@@ -278,7 +278,7 @@
 
   .visit-base,
   .visit-path {
-    font-size: var(--kanpas-font-subtitle);
+    font-size: var(--kds-font-subtitle);
     border-radius: 3px;
     padding: 4px 6px;
     display: inline-flex;
@@ -288,25 +288,25 @@
   }
 
   .visit-base {
-    background-color: var(--kanpas-color-node-line);
-    color: var(--kanpas-color-grey-10);
+    background-color: var(--kds-color-node-line);
+    color: var(--kds-color-grey-10);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
 
   .visit-path {
-    background-color: var(--kanpas-color-node-bg-alt);
+    background-color: var(--kds-color-node-bg-alt);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     border: 1px solid transparent;
 
     &[contenteditable]:focus {
       padding: 4px 6px;
-      border-color: var(--kanpas-color-node-line);
+      border-color: var(--kds-color-node-line);
     }
 
     &[contenteditable]:hover {
-      color: var(--kanpas-color-node-line);
+      color: var(--kds-color-node-line);
     }
 
     &[contenteditable]:before {

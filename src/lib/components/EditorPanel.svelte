@@ -12,24 +12,24 @@
 
 <Tab name="editor-tab">
   <TabContent of="editor-tab" name="style" label="Style" icon="style">
-    <div class="kanpas-editor-content">
+    <div class="kds-editor-content">
       <StylePanel {styles} {options} {textMode}></StylePanel>
     </div>
   </TabContent>
   <TabContent of="editor-tab" name="css" label="CSS" icon="function">
-    <div class="kanpas-editor-content">
+    <div class="kds-editor-content">
       <CSSPanel {styles}></CSSPanel>
     </div>
   </TabContent>
 </Tab>
 
 <style lang="scss">
-  .kanpas-editor-content {
+  .kds-editor-content {
     width: 320px;
-    padding: var(--kanpas-space-small) 0;
+    padding: var(--kds-space-small) 0;
   }
 
-  .kanpas-editor-content :global(.kanpas-panel) {
-    padding: 0 var(--kanpas-space-16);
+  .kds-editor-content :global(.kds-panel) {
+    padding: 0 var(--kds-space-16);
   }
 </style>

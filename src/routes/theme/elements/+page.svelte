@@ -24,17 +24,17 @@
 <ImmersiveOption title="Components" collapsible></ImmersiveOption>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <CanvasSwitch></CanvasSwitch>
     </div>
     <div class="mdr-24"></div>
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <MockupSwitch></MockupSwitch>
     </div>
   </div>
 </Portal>
 <Canvas>
-  <div class="tree-panel kanpas-acrylic-bg" slot="canvas-panel-left" class:expanded={$mockup?.fullScreen}>
+  <div class="tree-panel kds-acrylic-bg" slot="canvas-panel-left" class:expanded={$mockup?.fullScreen}>
     <div class="tree-header pd-16 flex-row-center-y">
       <h5>HTML Elements</h5>
       <span class="flex"></span>
@@ -43,7 +43,7 @@
     <div class="tree-groups flex">
       {#each groups as group, i}
         <Panel icon={group.icon} title={group.label} collapsible collapsed>
-          <div class="kanpas-panel-section pdl-4">
+          <div class="kds-panel-section pdl-4">
             {#each group.elements as elem}
               <div class="tree-item">
                 <div class="tree-item-head flex-row-center-y">
@@ -55,7 +55,7 @@
           </div>
         </Panel>
         {#if i < (groups.length - 1)}
-          <div class="kanpas-separator-x"></div>
+          <div class="kds-separator-x"></div>
         {/if}
       {/each}
     </div>
@@ -169,7 +169,7 @@
       {/each}
     </div>
   </Mockup>
-  <div class="style-panel kanpas-acrylic-bg" slot="canvas-panel-right" class:expanded={$mockup?.fullScreen}>
+  <div class="style-panel kds-acrylic-bg" slot="canvas-panel-right" class:expanded={$mockup?.fullScreen}>
     <EditorPanel></EditorPanel>
   </div>
 </Canvas>
@@ -178,11 +178,11 @@
   .tree-panel {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid var(--kanpas-toolbar-line);
+    border-right: 1px solid var(--kds-toolbar-line);
   }
 
   .tree-item:not(:last-child) {
-    margin-bottom: var(--kanpas-space-tight);
+    margin-bottom: var(--kds-space-tight);
   }
 
   .style-panel, .tree-panel {
@@ -201,7 +201,7 @@
   }
 
   .style-panel {
-    border-left: 1px solid var(--kanpas-toolbar-line);
+    border-left: 1px solid var(--kds-toolbar-line);
   }
 
   .tree-groups {
@@ -214,15 +214,15 @@
     transition: all .2s ease-in-out;
 
     &:hover {
-      color: var(--kanpas-color-icon-button-active);
+      color: var(--kds-color-icon-button-active);
     }
   }
 
   .tree-tag {
-    background-color: var(--kanpas-color-icon-button-active);
-    font-size: var(--kanpas-font-subtitle);
+    background-color: var(--kds-color-icon-button-active);
+    font-size: var(--kds-font-subtitle);
     padding: 3px 6px;
-    border-radius: var(--kanpas-radius-small);
-    color: var(--kanpas-white);
+    border-radius: var(--kds-radius-small);
+    color: var(--kds-white);
   }
 </style>

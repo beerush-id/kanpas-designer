@@ -31,11 +31,11 @@
 
   const unsubScheme = theme.subscribe((o, f, v, a, path) => {
     const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.body.classList.remove('kanpas-light');
-    document.body.classList.remove('kanpas-dark');
+    document.body.classList.remove('kds-light');
+    document.body.classList.remove('kds-dark');
 
     if ([ 'light', 'dark' ].includes(theme.scheme as never)) {
-      document.body.classList.add(`kanpas-${ theme.scheme }`);
+      document.body.classList.add(`kds-${ theme.scheme }`);
     }
 
     if (!path || path === 'scheme') {
@@ -64,6 +64,6 @@
 <Immersive>
   <slot/>
 </Immersive>
-<div id="kanpas-popup" class="kanpas-reset">
+<div id="kds-popup" class="kds-reset">
   <Toast/>
 </div>

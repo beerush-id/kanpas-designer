@@ -29,17 +29,17 @@
 </script>
 
 {#if of}
-  <div class="kanpas-tab-content {className}" class:active={$state.active === name}>
-    <slot />
+  <div class="kds-tab-content {className}" class:active={$state.active === name}>
+    <slot/>
   </div>
 {:else}
-  <div class="kanpas-tab-content-error">
+  <div class="kds-tab-content-error">
     "of" property is required and must be the same with the tab name to display a Tab Content.
   </div>
 {/if}
 
 <style lang="scss">
-  .kanpas-tab-content {
+  .kds-tab-content {
     &:not(.active) {
       display: none;
     }

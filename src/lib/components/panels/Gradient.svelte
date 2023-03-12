@@ -84,7 +84,7 @@
     <Icon clickable tooltip="Add Gradient" on:click={add}>add</Icon>
   </svelte:fragment>
   {#each $options.gradients as grad}
-    <div class="kanpas-panel-section flex-row-center-y">
+    <div class="kds-panel-section flex-row-center-y">
       <Icon clickable
             tooltip={grad.type === 'linear' ? 'Switch to Radial' : 'Switch to Linear'}
             class="mdr-16" on:click={() => toggleMode(grad)}>{grad.type === 'linear' ? 'contrast' : 'blur_on'}</Icon>
@@ -106,7 +106,7 @@
                        max="100"
                        bind:value={step.stop}
                        on:input={updateCssValues} style:width="52px">
-                <span class="mdl-4 kanpas-prop-unit">%</span>
+                <span class="mdl-4 kds-prop-unit">%</span>
                 <Icon clickable tooltip="Remove" class="mdl-10"
                       on:click={() => remStep(grad,step)}>delete
                 </Icon>
@@ -123,7 +123,7 @@
                style:width="52px"
                bind:value={grad.angle}
                on:input={updateCssValues}/>
-        <span class="mdl-4 kanpas-prop-unit">deg</span>
+        <span class="mdl-4 kds-prop-unit">deg</span>
       {:else}
         <select class="mdl-16" bind:value={grad.shape} on:change={updateCssValues} style:width="80px">
           {#each shapes as shape}
@@ -139,8 +139,8 @@
 <style lang="scss">
   .gradient-preview {
     height: 24px;
-    border: 1px solid var(--kanpas-color-input-line);
-    border-radius: var(--kanpas-radius-small);
+    border: 1px solid var(--kds-color-input-line);
+    border-radius: var(--kds-radius-small);
     position: relative;
     z-index: 0;
 
@@ -149,8 +149,8 @@
     }
   }
 
-  .kanpas-prop-unit {
-    font-size: var(--kanpas-font-subtitle);
+  .kds-prop-unit {
+    font-size: var(--kds-font-subtitle);
     opacity: 0.5;
   }
 
@@ -164,7 +164,7 @@
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.3);
   }
 
-  :global(.gradient-step .kanpas-color-picker-trigger) {
+  :global(.gradient-step .kds-color-picker-trigger) {
     top: 50%;
     left: 50%;
     opacity: 0;

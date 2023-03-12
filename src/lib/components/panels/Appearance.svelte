@@ -61,10 +61,10 @@
           on:click={toggleNoAppearance}>disabled_visible
     </Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y" slot="panel-body">
-    <span class="kanpas-panel-prop-label mdr-10">Opacity</span>
+  <div class="kds-panel-section flex-row-center-y" slot="panel-body">
+    <span class="kds-panel-prop-label mdr-10">Opacity</span>
     <Range max="1" step="0.01" fill="1" class="flex" bind:value={$styles.opacity}></Range>
-    <span class="kanpas-prop-unit">{typeof $styles.opacity === 'undefined' ? 'auto' : $styles.opacity}</span>
+    <span class="kds-prop-unit">{typeof $styles.opacity === 'undefined' ? 'auto' : $styles.opacity}</span>
     <Icon clickable
           tooltip="Revert"
           class="mdl-10"
@@ -73,8 +73,8 @@
       settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <span class="kanpas-panel-prop-label mdr-10 flex">Blending Mode</span>
+  <div class="kds-panel-section flex-row-center-y">
+    <span class="kds-panel-prop-label mdr-10 flex">Blending Mode</span>
     <select class="flex" bind:value={$styles.mixBlendMode}>
       <option value={undefined}>Default</option>
       {#each blendings as mode}
@@ -89,8 +89,8 @@
       settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <span class="kanpas-panel-prop-label mdr-10 flex">Background Blend</span>
+  <div class="kds-panel-section flex-row-center-y">
+    <span class="kds-panel-prop-label mdr-10 flex">Background Blend</span>
     <select class="flex" bind:value={$styles.backgroundBlendMode}>
       <option value={undefined}>Default</option>
       {#each blendings as mode}
@@ -108,10 +108,10 @@
 </Panel>
 
 <style lang="scss">
-  .kanpas-prop-unit {
+  .kds-prop-unit {
     width: 36px;
     text-align: right;
-    font-size: var(--kanpas-font-subtitle);
+    font-size: var(--kds-font-subtitle);
     opacity: 0.5;
   }
 </style>

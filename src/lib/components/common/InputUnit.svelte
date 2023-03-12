@@ -63,7 +63,7 @@
     dispatch('input', event.target);
   };
 </script>
-<div class="kanpas-input-unit flex-row-center-y {className}"
+<div class="kds-input-unit flex-row-center-y {className}"
      class:focus
      class:disabled
      class:changed={count}>
@@ -81,7 +81,7 @@
          on:blur={()=> focus = false}
          class:expand={!count}>
   {#if !hideUnit}
-    <div class="kanpas-panel-value-unit flex-row-center">
+    <div class="kds-panel-value-unit flex-row-center">
       <span>{units}</span>
       {#if !lockUnit}
         <PopUp role="popup" xDir="right" yDir="below" trigger="click" expanded bind:active={unitMenuOpen}>
@@ -103,11 +103,11 @@
 </div>
 
 <style lang="scss">
-  .kanpas-input-unit {
+  .kds-input-unit {
     position: relative;
-    background-color: var(--kanpas-color-input-bg);
-    border: 1px solid var(--kanpas-color-input-line);
-    border-radius: var(--kanpas-radius-small);
+    background-color: var(--kds-color-input-bg);
+    border: 1px solid var(--kds-color-input-line);
+    border-radius: var(--kds-radius-small);
     transition: all .2s ease-in-out;
     height: 24px;
 
@@ -116,7 +116,7 @@
       display: block;
       position: absolute;
       z-index: 0;
-      border-radius: var(--kanpas-radius-small);
+      border-radius: var(--kds-radius-small);
       pointer-events: none;
       transition: all .2s ease-in-out;
       opacity: 0;
@@ -127,7 +127,7 @@
       height: calc(100% + 2px);
       top: -1px;
       left: -1px;
-      background-image: var(--kanpas-button-gradient);
+      background-image: var(--kds-button-gradient);
     }
 
     &:after {
@@ -135,13 +135,13 @@
       height: 100%;
       top: 0;
       left: 0;
-      background-color: var(--kanpas-color-input-bg);
+      background-color: var(--kds-color-input-bg);
       border-radius: 2px;
     }
 
     &.changed {
-      //border-color: var(--kanpas-color-icon-button-active);
-      //filter: drop-shadow(-2px -2px 48px var(--kanpas-color-red-500)) drop-shadow(2px 2px 48px var(--kanpas-color-blue-500));
+      //border-color: var(--kds-color-icon-button-active);
+      //filter: drop-shadow(-2px -2px 48px var(--kds-color-red-500)) drop-shadow(2px 2px 48px var(--kds-color-blue-500));
 
       &:before, &:after {
         opacity: 1;
@@ -154,12 +154,12 @@
     }
 
     &:hover {
-      border-color: var(--kanpas-color-input-line-hover);
+      border-color: var(--kds-color-input-line-hover);
     }
 
     &.focus {
-      border-color: var(--kanpas-color-input-line-active);
-      //filter: drop-shadow(-1px 0 2px var(--kanpas-color-red-500)) drop-shadow(1px 0 2px var(--kanpas-color-blue-500));
+      border-color: var(--kds-color-input-line-active);
+      //filter: drop-shadow(-1px 0 2px var(--kds-color-red-500)) drop-shadow(1px 0 2px var(--kds-color-blue-500));
     }
 
     &.small input {
@@ -176,7 +176,7 @@
     }
   }
 
-  .kanpas-panel-value-unit {
+  .kds-panel-value-unit {
     width: 24px;
     height: 100%;
     cursor: pointer;
@@ -188,30 +188,30 @@
   }
 
   .unit-menu {
-    background-color: var(--kanpas-color-input-bg);
-    border-radius: var(--kanpas-radius);
+    background-color: var(--kds-color-input-bg);
+    border-radius: var(--kds-radius);
     padding: 6px 0;
   }
 
   .unit-item {
-    font-size: var(--kanpas-font-subtitle);
+    font-size: var(--kds-font-subtitle);
     cursor: pointer;
     transition: all .2s ease-in-out;
     padding: 8px 16px;
-    color: var(--kanpas-color-foreground);
+    color: var(--kds-color-foreground);
 
     &:hover {
-      color: var(--kanpas-color-icon-button-active-fg);
-      background-color: var(--kanpas-color-icon-button-active);
+      color: var(--kds-color-icon-button-active-fg);
+      background-color: var(--kds-color-icon-button-active);
 
       span {
-        color: var(--kanpas-color-icon-button-active-fg);
+        color: var(--kds-color-icon-button-active-fg);
       }
     }
 
     span {
       font-weight: 600;
-      color: var(--kanpas-color-success-normal);
+      color: var(--kds-color-success-normal);
       transition: all .2s ease-in-out;
     }
   }

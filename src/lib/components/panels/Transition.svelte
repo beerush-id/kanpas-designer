@@ -50,7 +50,7 @@
     <Icon clickable tooltip="Add Transition" on:click={options.transitions.push({})}>add</Icon>
   </svelte:fragment>
   {#each $options.transitions as trans}
-    <div class="kanpas-panel-section flex-row">
+    <div class="kds-panel-section flex-row">
       <div class="flex mdr-10">
         <select name="property" bind:value={trans.property} on:change={update}>
           <option value={undefined}>Property</option>

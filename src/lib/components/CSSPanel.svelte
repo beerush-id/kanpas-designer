@@ -43,7 +43,7 @@
     <div class="flex"></div>
     <Icon clickable tooltip="Add" on:click={addProp}>playlist_add</Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
+  <div class="kds-panel-section flex-row-center-y">
     <select name="property" class="mdr-4" bind:value={selectedProp} on:change={selectProp}>
       <option value={undefined}>Select Property</option>
       {#each Object.entries(props) as [ prop, opt ]}
@@ -58,9 +58,9 @@
            on:keyup={inputKeyUp}>
   </div>
   {#if selectedOptn}
-    <div class="kanpas-panel-section flex-row">
-      <div class="kanpas-panel-prop-label mdr-10 mdt-2">Value Syntax:</div>
-      <div class="kanpas-prop-values flex">
+    <div class="kds-panel-section flex-row">
+      <div class="kds-panel-prop-label mdr-10 mdt-2">Value Syntax:</div>
+      <div class="kds-prop-values flex">
         {#each selectedOptn.syntax.split('|') as hint, i}
           <span on:keypress
                 on:click={() => selectedValue = hint.replace(/[()]/g, '')}>{hint.replace(/[()]/g, '')}</span>
@@ -69,12 +69,12 @@
     </div>
   {/if}
 </Panel>
-<div class="kanpas-separator-x"></div>
+<div class="kds-separator-x"></div>
 <Panel title="CSS Properties" collapsible>
   {#each Object.entries($styles) as [ prop, value ]}
     {#if value && !prop.endsWith('Var')}
-      <div class="kanpas-panel-section flex-row-center-y">
-        <div class="kanpas-panel-prop-label flex">{prop.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}</div>
+      <div class="kds-panel-section flex-row-center-y">
+        <div class="kds-panel-prop-label flex">{prop.replace(/[A-Z]/g, m => `-${m.toLowerCase()}`)}</div>
         <input type="text" placeholder="value" class="flex" bind:value={$styles[prop]}>
         <Icon clickable tooltip="Remove" class="mdl-10" on:click={() => delete styles[prop]}>remove</Icon>
       </div>
@@ -92,20 +92,20 @@
     max-width: 180px;
   }
 
-  .kanpas-prop-values {
+  .kds-prop-values {
     span {
       cursor: pointer;
       transition: all .2s ease-in-out;
 
       &:hover {
-        color: var(--kanpas-color-icon-button-active);
+        color: var(--kds-color-icon-button-active);
       }
     }
 
     span:not(:last-child):after {
       content: " | ";
       opacity: 0.2;
-      color: var(--kanpas-color-foreground);
+      color: var(--kds-color-foreground);
     }
   }
 </style>

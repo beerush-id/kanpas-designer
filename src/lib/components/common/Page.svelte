@@ -25,46 +25,46 @@
 </svelte:head>
 
 <div
-  class="kanpas-page {role === 'main' ? 'kanpas-card' : 'kanpas-card-bg-alt'} {role} {className}"
+  class="kds-page {role === 'main' ? 'kds-card' : 'kds-card-bg-alt'} {role} {className}"
   class:expanded>
-  <div class="kanpas-page-body flex-row">
+  <div class="kds-page-body flex-row">
     {#if leftSidebar}
       <div
-        class="kanpas-sidebar kanpas-sidebar-left kanpas-reset"
+        class="kds-sidebar kds-sidebar-left kds-reset"
         class:expanded={expandedLeftSidebar}>
         {#if title}
-          <div class="kanpas-page-head">
+          <div class="kds-page-head">
             <svelte:element this={role === 'main' ? 'h2' : 'h3'} class="flex-row-center-y flex">
               {#if icon}
                 <Icon size="medium" class="mdr-10">{icon}</Icon>
               {/if}
               <span>{title}</span>
             </svelte:element>
-            <slot name="head-suffix" />
+            <slot name="head-suffix"/>
           </div>
         {/if}
-        <slot name="left-sidebar" />
+        <slot name="left-sidebar"/>
       </div>
     {/if}
-    <div class="kanpas-page-content flex" use:focusAssist={captureFocus}>
+    <div class="kds-page-content flex" use:focusAssist={captureFocus}>
       {#if !leftSidebar && title}
-        <div class="kanpas-page-head kanpas-reset">
+        <div class="kds-page-head kds-reset">
           <svelte:element this={role === 'main' ? 'h2' : 'h3'} class="flex-row-center-y flex">
             {#if icon}
               <Icon size="medium" class="mdr-10">{icon}</Icon>
             {/if}
             <span>{title}</span>
           </svelte:element>
-          <slot name="head-suffix" />
+          <slot name="head-suffix"/>
         </div>
       {/if}
-      <slot />
+      <slot/>
     </div>
     {#if rightSidebar}
       <div
-        class="kanpas-sidebar kanpas-sidebar-right kanpas-reset"
+        class="kds-sidebar kds-sidebar-right kds-reset"
         class:expanded={expandedRightSidebar}>
-        <slot name="right-sidebar" />
+        <slot name="right-sidebar"/>
       </div>
     {/if}
   </div>
@@ -80,14 +80,14 @@
     }
   }
 
-  .kanpas-page {
+  .kds-page {
     width: 100%;
     height: 100%;
     padding-bottom: 0;
     animation: slideUpFull 0.3s ease-in-out;
     overflow: hidden;
 
-    &.expanded > .kanpas-page-body > .kanpas-page-content {
+    &.expanded > .kds-page-body > .kds-page-content {
       padding: 0;
       overflow: hidden;
     }
@@ -100,8 +100,8 @@
     }
   }
 
-  .kanpas-sidebar {
-    padding: var(--kanpas-space);
+  .kds-sidebar {
+    padding: var(--kds-space);
     overflow: auto;
 
     &.expanded {
@@ -109,31 +109,31 @@
     }
   }
 
-  .kanpas-sidebar-left {
-    border-right: 1px solid var(--kanpas-color-line);
-    background-color: var(--kanpas-color-background-side);
+  .kds-sidebar-left {
+    border-right: 1px solid var(--kds-color-line);
+    background-color: var(--kds-color-background-side);
     z-index: 1;
   }
 
-  .kanpas-sidebar-right {
-    background-color: var(--kanpas-color-background-side);
-    border-left: 1px solid var(--kanpas-color-line);
+  .kds-sidebar-right {
+    background-color: var(--kds-color-background-side);
+    border-left: 1px solid var(--kds-color-line);
     z-index: 1;
   }
 
-  .kanpas-page-head {
+  .kds-page-head {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: var(--kanpas-space);
+    margin-bottom: var(--kds-space);
   }
 
-  .kanpas-page-body {
+  .kds-page-body {
     height: 100%;
   }
 
-  .kanpas-page-content {
-    padding: var(--kanpas-space);
+  .kds-page-content {
+    padding: var(--kds-space);
     overflow: auto;
     height: 100%;
     z-index: 0;

@@ -4,8 +4,8 @@
   export let variants = [];
 </script>
 
-<div class="kanpas-elements">
-  <div class="kanpas-element-head">
+<div class="kds-elements">
+  <div class="kds-element-head">
     <h3>Standard</h3>
     <p>Button styles when used without any class.</p>
   </div>

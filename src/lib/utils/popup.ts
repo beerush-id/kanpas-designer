@@ -10,5 +10,5 @@ export function linkPopUpPosition(
   xDir: DirectionX,
   yDir: DirectionY
 ) {
-  return popTo('#kanpas-popup', { element, parent, xDir, yDir });
+  return popTo('#kds-popup', { element, parent, xDir, yDir });
 }

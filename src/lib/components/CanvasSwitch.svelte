@@ -22,7 +22,7 @@
   <Icon clickable class="tool-icon" tooltip="Zoom In"
         on:click={() => canvas.zoomIn()}>zoom_in
   </Icon>
-  <div class="kanpas-separator-y"></div>
+  <div class="kds-separator-y"></div>
   <Icon clickable class="tool-icon" tooltip="Reset Zoom"
         on:click={() => canvas.resetZoom()} active={$canvas.scale !== 1}>zoom_in_map
   </Icon>

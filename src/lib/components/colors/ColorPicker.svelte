@@ -93,19 +93,19 @@
   filter();
 </script>
 
-<div class="kanpas-color-picker-wrap {className}" on:wheel|stopPropagation>
-  <div class="kanpas-color-picker">
-    <div class="kanpas-color-variables">
-      <div class="kanpas-color-search mdb-12">
+<div class="kds-color-picker-wrap {className}" on:wheel|stopPropagation>
+  <div class="kds-color-picker">
+    <div class="kds-color-variables">
+      <div class="kds-color-search mdb-12">
         <input type="text" placeholder="Search color" bind:value={query} style:width="100%" on:input={filter}>
       </div>
       {#if $fVariables.length}
-        <div class="kanpas-color-list-label">Common</div>
-        <div class="kanpas-color-list flex-row">
+        <div class="kds-color-list-label">Common</div>
+        <div class="kds-color-list flex-row">
           {#each $fVariables as group}
             {#each group.colors as item}
               <div
-                class="kanpas-color-view"
+                class="kds-color-view"
                 style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
@@ -116,15 +116,15 @@
             {/each}
           {/each}
         </div>
-        <div class="kanpas-separator-x"></div>
+        <div class="kds-separator-x"></div>
       {/if}
       {#if $fStates.length}
         {#each $fStates as group}
-          <div class="kanpas-color-list-label">{group.name}</div>
-          <div class="kanpas-color-list flex-row">
+          <div class="kds-color-list-label">{group.name}</div>
+          <div class="kds-color-list flex-row">
             {#each group.colors as item}
               <div
-                class="kanpas-color-view"
+                class="kds-color-view"
                 style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
@@ -135,15 +135,15 @@
             {/each}
           </div>
         {/each}
-        <div class="kanpas-separator-x"></div>
+        <div class="kds-separator-x"></div>
       {/if}
       {#if $fSwatches.length}
         {#each $fSwatches as group}
-          <div class="kanpas-color-list-label">{group.name}</div>
-          <div class="kanpas-color-list flex-row">
+          <div class="kds-color-list-label">{group.name}</div>
+          <div class="kds-color-list flex-row">
             {#each group.colors as item}
               <div
-                class="kanpas-color-view"
+                class="kds-color-view"
                 style="background-color: {$theme.darkMode ? item.darkColor : item.color}"
                 on:click={() => selectSwatch(group.name, item)}
                 on:keypress>
@@ -156,7 +156,7 @@
         {/each}
       {/if}
     </div>
-    <div class="kanpas-color-drawer">
+    <div class="kds-color-drawer">
       <ColorPicker
         isInput={false}
         isTextInput={false}
@@ -174,14 +174,14 @@
 </div>
 
 <style lang="scss">
-  .kanpas-color-picker-wrap {
+  .kds-color-picker-wrap {
     display: inline-flex;
     flex-direction: column;
     position: relative;
-    color: var(--kanpas-color-foreground);
+    color: var(--kds-color-foreground);
   }
 
-  .kanpas-color-picker {
+  .kds-color-picker {
     height: 276px;
     display: flex;
     flex-direction: row;
@@ -189,40 +189,40 @@
     z-index: 99;
   }
 
-  .kanpas-color-variables,
-  .kanpas-color-drawer {
-    padding: var(--kanpas-space-20);
+  .kds-color-variables,
+  .kds-color-drawer {
+    padding: var(--kds-space-20);
   }
 
-  .kanpas-color-variables {
+  .kds-color-variables {
     width: 200px;
-    height: calc(100% - (var(--kanpas-space-20) * 2));
-    margin-top: var(--kanpas-space-20);
+    height: calc(100% - (var(--kds-space-20) * 2));
+    margin-top: var(--kds-space-20);
     padding-top: 0;
     padding-bottom: 0;
     overflow-y: scroll;
   }
 
-  .kanpas-color-drawer {
+  .kds-color-drawer {
     padding-left: 0;
   }
 
-  .kanpas-color-list {
+  .kds-color-list {
     flex-wrap: wrap;
     margin-bottom: 16px;
-    filter: drop-shadow(0 0 1px var(--kanpas-color-line));
+    filter: drop-shadow(0 0 1px var(--kds-color-line));
 
     &:last-child {
       margin-bottom: 0;
     }
   }
 
-  .kanpas-color-list-label {
-    font-size: var(--kanpas-font-subtitle);
+  .kds-color-list-label {
+    font-size: var(--kds-font-subtitle);
     margin-bottom: 6px;
   }
 
-  .kanpas-color-view {
+  .kds-color-view {
     width: 20px;
     height: 20px;
     transition: box-shadow 0.2s ease-in-out;
@@ -232,7 +232,7 @@
     }
   }
 
-  .kanpas-color-picker :global(.wrapper) {
+  .kds-color-picker :global(.wrapper) {
     border: none !important;
     border-radius: 0 !important;
     padding: 0 !important;
@@ -240,12 +240,12 @@
     background-color: transparent !important;
   }
 
-  .kanpas-color-picker :global(.picker-wrapper) {
+  .kds-color-picker :global(.picker-wrapper) {
     outline: none !important;
     border-radius: 0 !important;
   }
 
-  .kanpas-color-picker :global(.slider-wrapper:last-child) {
+  .kds-color-picker :global(.slider-wrapper:last-child) {
     margin: 0;
   }
 </style>

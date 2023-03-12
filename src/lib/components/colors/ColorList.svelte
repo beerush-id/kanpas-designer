@@ -74,16 +74,16 @@
   });
 </script>
 
-<div class="kanpas-color-list {className}">
-  <div class="kanpas-color-head flex-row-center-y">
+<div class="kds-color-list {className}">
+  <div class="kds-color-head flex-row-center-y">
     {#if color}
-      <div class="kanpas-color-view" style="background-color: {color}">
+      <div class="kds-color-view" style="background-color: {color}">
         <input type="color" bind:value={color} on:input={regenerateColors}/>
         <PopUp>Change Base Color</PopUp>
       </div>
     {/if}
-    <h6 class="kanpas-color-name" contenteditable bind:innerHTML={name} bind:this={nameInput}></h6>
-    <span class="kanpas-color-head-count">&nbsp;({$colors?.length} Colors)</span>
+    <h6 class="kds-color-name" contenteditable bind:innerHTML={name} bind:this={nameInput}></h6>
+    <span class="kds-color-head-count">&nbsp;({$colors?.length} Colors)</span>
     <span class="flex"></span>
     <Icon
       clickable
@@ -104,7 +104,7 @@
       class="mdl-10">delete
     </Icon>
   </div>
-  <div class="kanpas-color-group flex-row">
+  <div class="kds-color-group flex-row">
     {#if $colors}
       {#each $colors as group}
         {#if $theme?.scheme === 'light' || monotone}
@@ -131,12 +131,12 @@
 </div>
 
 <style lang="scss">
-  .kanpas-color-head {
+  .kds-color-head {
     margin-bottom: 10px;
     line-height: 1;
   }
 
-  .kanpas-color-view {
+  .kds-color-view {
     width: 16px;
     height: 16px;
     margin-right: 8px;
@@ -149,16 +149,16 @@
     }
   }
 
-  .kanpas-color-head-count {
-    font-size: var(--kanpas-font-subtitle);
+  .kds-color-head-count {
+    font-size: var(--kds-font-subtitle);
     font-weight: 500;
-    color: var(--kanpas-color-subtitle);
+    color: var(--kds-color-subtitle);
     margin-left: 4px;
   }
 
-  .kanpas-color-group {
+  .kds-color-group {
     width: 100%;
-    border-radius: var(--kanpas-radius);
-    box-shadow: 0 0 0 2px var(--kanpas-color-shadow);
+    border-radius: var(--kds-radius);
+    box-shadow: 0 0 0 2px var(--kds-color-shadow);
   }
 </style>

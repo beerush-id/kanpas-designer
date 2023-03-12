@@ -18,14 +18,14 @@
 </script>
 
 <div
-  class="kanpas-icon kanpas-icon-{size}{clickable ? ' clickable' : ''} {className}"
+  class="kds-icon kds-icon-{size}{clickable ? ' clickable' : ''} {className}"
   class:active
   class:disabled
   style:width="{width || boxSize || ''}px"
   style:height="{height || boxSize || ''}px"
   on:click
   on:keypress>
-  <span class="kanpas-icon-symbol">
+  <span class="kds-icon-symbol">
     <slot/>
   </span>
   {#if tooltip}
@@ -35,7 +35,7 @@
 </div>
 
 <style lang="scss">
-  .kanpas-icon {
+  .kds-icon {
     position: relative;
     display: inline-flex;
     flex-direction: row;
@@ -53,20 +53,20 @@
     }
 
     &.tool-icon {
-      width: var(--kanpas-tool-size);
-      height: var(--kanpas-tool-button-size);
+      width: var(--kds-tool-size);
+      height: var(--kds-tool-button-size);
     }
 
     &.active {
-      //color: var(--kanpas-color-icon-button-active);
-      //background-image: var(--kanpas-button-gradient);
+      //color: var(--kds-color-icon-button-active);
+      //background-image: var(--kds-button-gradient);
 
-      .kanpas-icon-symbol {
-        background-image: var(--kanpas-button-gradient);
+      .kds-icon-symbol {
+        background-image: var(--kds-button-gradient);
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-        //filter: drop-shadow(-4px 0 20px var(--kanpas-color-blue-500)) drop-shadow(4px 0 20px var(--kanpas-color-red-500));
+        //filter: drop-shadow(-4px 0 20px var(--kds-color-blue-500)) drop-shadow(4px 0 20px var(--kds-color-red-500));
       }
     }
 
@@ -76,7 +76,7 @@
     }
   }
 
-  .kanpas-icon-symbol {
+  .kds-icon-symbol {
     font-family: 'Material Symbols Rounded', sans-serif;
     font-weight: normal;
     font-style: normal;
@@ -93,31 +93,31 @@
     user-select: none;
   }
 
-  .kanpas-icon-thin {
+  .kds-icon-thin {
     font-size: 14px;
   }
 
-  .kanpas-icon-small {
+  .kds-icon-small {
     font-size: 18px;
   }
 
-  .kanpas-icon-medium {
+  .kds-icon-medium {
     font-size: 24px;
   }
 
-  .kanpas-icon-large {
+  .kds-icon-large {
     font-size: 32px;
   }
 
-  .kanpas-icon-xl {
+  .kds-icon-xl {
     font-size: 48px;
   }
 
-  .kanpas-icon-xxl {
+  .kds-icon-xxl {
     font-size: 72px;
   }
 
-  .kanpas-icon-strong {
+  .kds-icon-strong {
     font-size: 128px;
   }
 </style>

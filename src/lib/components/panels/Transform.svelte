@@ -128,8 +128,8 @@
       </Icon>
     {/if}
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Origin</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Origin</div>
     <span class="flex"></span>
     <div class="origin-box"
          on:mousedown={orgStart}
@@ -148,8 +148,8 @@
     </Icon>
   </div>
   {#each properties as prop}
-    <div class="kanpas-panel-section flex-row-center-y">
-      <div class="kanpas-panel-prop-label flex">{prop.label}</div>
+    <div class="kds-panel-section flex-row-center-y">
+      <div class="kds-panel-prop-label flex">{prop.label}</div>
       {#each prop.inputs as input}
         <InputUnit unit={prop.unit} min={prop.min} max={prop.max}
                    class="mdl-4 small"
@@ -162,8 +162,8 @@
       </Icon>
     </div>
   {/each}
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Style</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Style</div>
     <select bind:value={$styles.transformStyle}>
       <option value={undefined}>Default</option>
       <option value="flat">Flat</option>
@@ -179,7 +179,7 @@
   .origin-box {
     width: 56px;
     height: 56px;
-    border: 1px solid var(--kanpas-color-input-line);
+    border: 1px solid var(--kds-color-input-line);
     position: relative;
     user-select: none;
   }
@@ -187,7 +187,7 @@
   .origin-point {
     width: 8px;
     height: 8px;
-    border: 1px solid var(--kanpas-color-input-line-active);
+    border: 1px solid var(--kds-color-input-line-active);
     border-radius: 50%;
     position: absolute;
     transform: translate3d(-50%, -50%, 0);
@@ -196,7 +196,7 @@
     &:before, &:after {
       content: "";
       display: block;
-      background-color: var(--kanpas-color-input-line-active);
+      background-color: var(--kds-color-input-line-active);
       position: absolute;
     }
 

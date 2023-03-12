@@ -31,12 +31,12 @@
 </script>
 
 {#if name}
-  <div class="kanpas-tab {className}">
-    <div class="kanpas-tab-head flex-row-center-y">
+  <div class="kds-tab {className}">
+    <div class="kds-tab-head flex-row-center-y">
       {#if $state}
         {#each $state.tabs as tab}
           <div
-            class="kanpas-tab-button flex-row-center"
+            class="kds-tab-button flex-row-center"
             class:active={state.active === tab.name}
             on:keypress
             on:click={() => (state.active = tab.name)}>
@@ -49,33 +49,33 @@
           </div>
         {/each}
       {/if}
-      <slot name="tab-head" />
+      <slot name="tab-head"/>
     </div>
-    <div class="kanpas-tab-body">
-      <slot />
+    <div class="kds-tab-body">
+      <slot/>
     </div>
   </div>
 {:else}
-  <div class="kanpas-tab-error">Name is required to display a Tab!</div>
+  <div class="kds-tab-error">Name is required to display a Tab!</div>
 {/if}
 
 <style lang="scss">
-  .kanpas-tab {
+  .kds-tab {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
 
-  .kanpas-tab-body {
+  .kds-tab-body {
     flex: 1;
     overflow: auto;
   }
 
-  .kanpas-tab-head {
-    border-bottom: 1px solid var(--kanpas-color-line);
+  .kds-tab-head {
+    border-bottom: 1px solid var(--kds-color-line);
   }
 
-  .kanpas-tab-button {
+  .kds-tab-button {
     padding: 8px 24px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
@@ -83,12 +83,12 @@
     flex: 1;
 
     &:not(:last-child) {
-      border-right: 1px solid var(--kanpas-color-line);
+      border-right: 1px solid var(--kds-color-line);
     }
 
     &:hover,
     &.active {
-      color: var(--kanpas-color-icon-button-active);
+      color: var(--kds-color-icon-button-active);
     }
   }
 </style>

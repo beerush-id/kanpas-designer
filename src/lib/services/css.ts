@@ -7,31 +7,31 @@ export type CSSVariableGroup = {
   label: string;
   icon: string;
   variables: CSSVariable[];
-}
+};
 
 export type CSSVariable = {
   name: string;
   value: string | number;
-}
+};
 
 const defaultGroups: CSSVariableGroup[] = [
   {
     name: 'font',
     label: 'Typography',
     icon: 'text_fields',
-    variables: []
+    variables: [],
   },
   {
     name: 'space',
     label: 'Spacing',
     icon: 'space_bar',
-    variables: []
+    variables: [],
   },
   {
     name: 'border',
     label: 'Border',
     icon: 'border_outer',
-    variables: []
+    variables: [],
   },
 ];
 
@@ -74,11 +74,11 @@ export class Css {
         document.head.appendChild(style);
       }
 
-      style.innerHTML = toCssVar(
-        [ ...swatches, ...states, ...variables ],
-        { className: '.kanpas-root', darkClass: '.dark-mode' }
-      );
-      this.cssColors = toCssVar([ ...swatches, ...states, ...variables ]);
+      style.innerHTML = toCssVar([...swatches, ...states, ...variables], {
+        className: '.kds-root',
+        darkClass: '.dark-mode',
+      });
+      this.cssColors = toCssVar([...swatches, ...states, ...variables]);
     }, 50) as never;
   }
 }

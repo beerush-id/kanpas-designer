@@ -22,46 +22,46 @@
   export let textMode = false;
 </script>
 
-<div class="kanpas-style-editor">
+<div class="kds-style-editor">
   {#if textMode}
     <Character {styles}></Character>
-    <div class="kanpas-separator-x"></div>
+    <div class="kds-separator-x"></div>
   {/if}
   <Display {styles}></Display>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Dimension {styles}></Dimension>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Appearance {styles}></Appearance>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Background {styles} {options}></Background>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   {#if !textMode}
     <Character {styles} collapsed></Character>
-    <div class="kanpas-separator-x"></div>
+    <div class="kds-separator-x"></div>
   {/if}
   <Margin {styles}></Margin>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Padding {styles}></Padding>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Position {styles}></Position>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Border {styles}></Border>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <BorderRadius {styles}></BorderRadius>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Transform {styles} {options}></Transform>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Gradient {styles} {options}></Gradient>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <DropShadow {styles} {options}></DropShadow>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Shadow role="text" {styles} {options}></Shadow>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Shadow role="box" {styles} {options}></Shadow>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Transition {styles} {options}></Transition>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Filter {styles} {options}></Filter>
-  <div class="kanpas-separator-x"></div>
+  <div class="kds-separator-x"></div>
   <Filter role="backdrop" {styles} {options}></Filter>
 </div>

@@ -23,14 +23,14 @@
 <ImmersiveOption title="Colors" collapsible></ImmersiveOption>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <CanvasSwitch></CanvasSwitch>
     </div>
     <div class="mdr-24"></div>
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <MockupSwitch>
         <Icon clickable tooltip="Copy All CSS" on:click={copyAllCss} class="tool-icon">css</Icon>
-        <div class="kanpas-separator-y"></div>
+        <div class="kds-separator-y"></div>
       </MockupSwitch>
     </div>
   </div>

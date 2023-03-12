@@ -1,7 +1,7 @@
 <script lang="ts">
+  import type { Step } from '@services/journey';
   import Icon from '../common/Icon.svelte';
   import Node from '../Node.svelte';
-  import type { Step } from '@services/journey';
 
   export let step: Step;
 </script>
@@ -127,7 +127,7 @@
 </Node>
 <style lang="scss">
   .visit-base, .visit-path {
-    font-size: var(--kanpas-font-hints);
+    font-size: var(--kds-font-hints);
     border-radius: 3px;
     padding: 4px 6px;
     display: inline-flex;
@@ -137,12 +137,12 @@
   }
 
   .visit-base {
-    background-color: var(--kanpas-color-green-700);
-    color: var(--kanpas-color-grey-10);
+    background-color: var(--kds-color-green-700);
+    color: var(--kds-color-grey-10);
   }
 
   .visit-path {
-    background-color: var(--kanpas-color-node-bg-alt);
+    background-color: var(--kds-color-node-bg-alt);
     margin-left: 4px;
   }
 

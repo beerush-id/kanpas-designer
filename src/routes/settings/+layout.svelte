@@ -8,13 +8,13 @@
 </script>
 <Page title="Settings" icon="settings" expanded="true" leftSidebar="true">
   <svelte:fragment slot="left-sidebar">
-    <div class="kanpas-side-menu">
-      <a href="{path}" class="kanpas-side-menu-item flex-row-center-y">
+    <div class="kds-side-menu">
+      <a href="{path}" class="kds-side-menu-item flex-row-center-y">
         <Icon class="mdr-10">{icon}</Icon>
         <span>General</span>
       </a>
       {#each $children as child}
-        <a href="{child.path}" class="kanpas-side-menu-item flex-row-center-y" class:active={child.active}>
+        <a href="{child.path}" class="kds-side-menu-item flex-row-center-y" class:active={child.active}>
           <Icon class="mdr-10">{child.icon}</Icon>
           <span>{child.title}</span>
         </a>
@@ -24,15 +24,15 @@
   <slot></slot>
 </Page>
 <style lang="scss">
-  .kanpas-side-menu {
+  .kds-side-menu {
     min-width: 200px;
-    padding-right: var(--kanpas-space);
+    padding-right: var(--kds-space);
   }
 
-  .kanpas-side-menu-item {
-    padding: var(--kanpas-space-12);
+  .kds-side-menu-item {
+    padding: var(--kds-space-12);
     padding-left: 0;
-    color: var(--kanpas-color-menu);
+    color: var(--kds-color-menu);
     font-weight: 500;
 
     &:not(:last-child) {
@@ -40,11 +40,11 @@
     }
 
     &:hover {
-      color: var(--kanpas-color-menu-hover);
+      color: var(--kds-color-menu-hover);
     }
 
     &.active {
-      color: var(--kanpas-color-menu-active);
+      color: var(--kds-color-menu-active);
     }
   }
 </style>

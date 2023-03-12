@@ -83,8 +83,8 @@
 @mixin resets {
   @each $h in (h1, h2, h3, h4, h5, h6) {
     #{$h} {
-      font-size: var(--kanpas-font-#{$h});
-      color: var(--kanpas-color-title);
+      font-size: var(--kds-font-#{$h});
+      color: var(--kds-color-title);
       margin: 0;
     }
   }
@@ -104,32 +104,32 @@
   }
 
   select.active {
-    border-color: var(--kanpas-color-success-active);
+    border-color: var(--kds-color-success-active);
   }
 
   select, textarea, input {
     outline: none;
-    color: var(--kanpas-color-foreground);
-    background-color: var(--kanpas-color-input-bg);
-    font-family: var(--kanpas-font-body);
-    font-size: var(--kanpas-font-subtitle);
+    color: var(--kds-color-foreground);
+    background-color: var(--kds-color-input-bg);
+    font-family: var(--kds-font-body);
+    font-size: var(--kds-font-subtitle);
     line-height: 1;
-    border: 1px solid var(--kanpas-color-input-line);
-    border-radius: var(--kanpas-radius-small);
+    border: 1px solid var(--kds-color-input-line);
+    border-radius: var(--kds-radius-small);
     min-width: 0;
 
     &::placeholder {
-      font-family: var(--kanpas-font-body);
-      color: var(--kanpas-color-foreground);
+      font-family: var(--kds-font-body);
+      color: var(--kds-color-foreground);
       opacity: 0.75;
     }
 
     &:hover {
-      border-color: var(--kanpas-color-input-line-hover);
+      border-color: var(--kds-color-input-line-hover);
     }
 
     &:focus {
-      border-color: var(--kanpas-color-input-line-active);
+      border-color: var(--kds-color-input-line-active);
     }
 
     &.disabled, &[disabled] {
@@ -146,7 +146,7 @@
   }
 
   input, textarea {
-    font-family: var(--kanpas-font), sans-serif;
+    font-family: var(--kds-font), sans-serif;
     overflow: unset;
     padding: 2px 8px;
   }
@@ -157,7 +157,7 @@
     position: relative;
 
     &:hover {
-      color: var(--kanpas-color-input-line-active);
+      color: var(--kds-color-input-line-active);
     }
 
     &:before {
@@ -168,9 +168,9 @@
       position: absolute;
       top: 0;
       left: -2px;
-      border: 1px solid var(--kanpas-color-input-line-active);
+      border: 1px solid var(--kds-color-input-line-active);
       margin-top: -4px;
-      border-radius: var(--kanpas-radius-small);
+      border-radius: var(--kds-radius-small);
       opacity: 0;
       visibility: visible;
       z-index: 0;
@@ -192,79 +192,79 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    font-family: var(--kanpas-font-body);
-    padding: var(--kanpas-space-tight) var(--kanpas-space-small);
+    font-family: var(--kds-font-body);
+    padding: var(--kds-space-tight) var(--kds-space-small);
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 1px;
     appearance: none;
     border: 1px solid transparent;
     outline: none;
-    border-radius: var(--kanpas-radius-small);
+    border-radius: var(--kds-radius-small);
     background-color: transparent;
     cursor: pointer;
 
-    .kanpas-icon:first-child:not(:last-child) {
+    .kds-icon:first-child:not(:last-child) {
       margin-right: 8px;
     }
 
-    .kanpas-icon:last-child:not(:first-child) {
+    .kds-icon:last-child:not(:first-child) {
       margin-left: 8px;
     }
 
     &.elevate {
-      box-shadow: 0 0 5px var(--kanpas-color-shadow);
+      box-shadow: 0 0 5px var(--kds-color-shadow);
     }
 
     &.primary {
-      background-color: var(--kanpas-color-primary-normal);
-      color: var(--kanpas-color-primary-fg);
+      background-color: var(--kds-color-primary-normal);
+      color: var(--kds-color-primary-fg);
 
       &:hover {
-        background-color: var(--kanpas-color-primary-hover);
+        background-color: var(--kds-color-primary-hover);
       }
 
       &:focus, &:active {
-        background-color: var(--kanpas-color-primary-active);
+        background-color: var(--kds-color-primary-active);
       }
     }
 
     &.positive {
-      background-color: var(--kanpas-color-success-normal);
-      color: var(--kanpas-color-success-fg);
+      background-color: var(--kds-color-success-normal);
+      color: var(--kds-color-success-fg);
 
       &:hover {
-        background-color: var(--kanpas-color-success-hover);
+        background-color: var(--kds-color-success-hover);
       }
 
       &:focus, &:active {
-        background-color: var(--kanpas-color-success-active);
+        background-color: var(--kds-color-success-active);
       }
     }
 
     &.negative {
-      background-color: var(--kanpas-color-accent-normal);
-      color: var(--kanpas-color-accent-fg);
+      background-color: var(--kds-color-accent-normal);
+      color: var(--kds-color-accent-fg);
 
       &:hover {
-        background-color: var(--kanpas-color-accent-hover);
+        background-color: var(--kds-color-accent-hover);
       }
 
       &:focus, &:active {
-        background-color: var(--kanpas-color-accent-active);
+        background-color: var(--kds-color-accent-active);
       }
     }
 
     &.destructive {
-      background-color: var(--kanpas-color-warn-normal);
-      color: var(--kanpas-color-warn-fg);
+      background-color: var(--kds-color-warn-normal);
+      color: var(--kds-color-warn-fg);
 
       &:hover {
-        background-color: var(--kanpas-color-warn-hover);
+        background-color: var(--kds-color-warn-hover);
       }
 
       &:focus, &:active {
-        background-color: var(--kanpas-color-warn-active);
+        background-color: var(--kds-color-warn-active);
       }
     }
 
@@ -272,23 +272,23 @@
       background-color: transparent;
 
       &.primary:not(:hover) {
-        border-color: var(--kanpas-color-primary-normal);
-        color: var(--kanpas-color-primary-normal);
+        border-color: var(--kds-color-primary-normal);
+        color: var(--kds-color-primary-normal);
       }
 
       &.positive:not(:hover) {
-        border-color: var(--kanpas-color-success-normal);
-        color: var(--kanpas-color-success-normal);
+        border-color: var(--kds-color-success-normal);
+        color: var(--kds-color-success-normal);
       }
 
       &.negative:not(:hover) {
-        border-color: var(--kanpas-color-accent-normal);
-        color: var(--kanpas-color-accent-normal);
+        border-color: var(--kds-color-accent-normal);
+        color: var(--kds-color-accent-normal);
       }
 
       &.destructive:not(:hover) {
-        border-color: var(--kanpas-color-warn-normal);
-        color: var(--kanpas-color-warn-normal);
+        border-color: var(--kds-color-warn-normal);
+        color: var(--kds-color-warn-normal);
       }
     }
 
@@ -297,19 +297,19 @@
       background-color: transparent;
 
       &.primary:not(:hover) {
-        color: var(--kanpas-color-primary-normal);
+        color: var(--kds-color-primary-normal);
       }
 
       &.positive:not(:hover) {
-        color: var(--kanpas-color-success-normal);
+        color: var(--kds-color-success-normal);
       }
 
       &.negative:not(:hover) {
-        color: var(--kanpas-color-accent-normal);
+        color: var(--kds-color-accent-normal);
       }
 
       &.destructive:not(:hover) {
-        color: var(--kanpas-color-warn-normal);
+        color: var(--kds-color-warn-normal);
       }
     }
 
@@ -319,57 +319,57 @@
 
       &.primary {
         &:not(.borderless):not(.outline) {
-          background-color: var(--kanpas-color-primary-disabled);
+          background-color: var(--kds-color-primary-disabled);
         }
 
         &.outline {
-          border-color: var(--kanpas-color-primary-disabled);
+          border-color: var(--kds-color-primary-disabled);
         }
 
         &.outline, &.borderless {
-          color: var(--kanpas-color-primary-disabled);
+          color: var(--kds-color-primary-disabled);
         }
       }
 
       &.positive {
         &:not(.borderless):not(.outline) {
-          background-color: var(--kanpas-color-success-disabled);
+          background-color: var(--kds-color-success-disabled);
         }
 
         &.outline {
-          border-color: var(--kanpas-color-success-disabled);
+          border-color: var(--kds-color-success-disabled);
         }
 
         &.outline, &.borderless {
-          color: var(--kanpas-color-success-disabled);
+          color: var(--kds-color-success-disabled);
         }
       }
 
       &.negative {
         &:not(.borderless):not(.outline) {
-          background-color: var(--kanpas-color-accent-disabled);
+          background-color: var(--kds-color-accent-disabled);
         }
 
         &.outline {
-          border-color: var(--kanpas-color-accent-disabled);
+          border-color: var(--kds-color-accent-disabled);
         }
 
         &.outline, &.borderless {
-          color: var(--kanpas-color-accent-disabled);
+          color: var(--kds-color-accent-disabled);
         }
       }
 
       &.destructive {
         &:not(.borderless):not(.outline) {
-          background-color: var(--kanpas-color-warn-disabled);
+          background-color: var(--kds-color-warn-disabled);
         }
 
         &.outline {
-          border-color: var(--kanpas-color-warn-disabled);
+          border-color: var(--kds-color-warn-disabled);
         }
 
         &.outline, &.borderless {
-          color: var(--kanpas-color-warn-disabled);
+          color: var(--kds-color-warn-disabled);
         }
       }
     }
@@ -459,7 +459,7 @@
 }
 
 @mixin spacing {
-  @each $i, $size in (1:--kanpas-space-small, 2:--kanpas-space, 3:--kanpas-space-large) {
+  @each $i, $size in (1:--kds-space-small, 2:--kds-space, 3:--kds-space-large) {
     @each $n, $p in (p:padding, m:margin) {
       .#{$n}-#{$i} {
         #{$p}: var($size);

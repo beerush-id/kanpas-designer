@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Toggle from '@components/common/Toggle.svelte';
   import ThemeSwitch from '@components/ThemeSwitch.svelte';
   import { toast } from '@services/toast';
   import { copy } from '@utils/clipboard';
@@ -9,7 +8,6 @@
     randomize,
     states,
     swatches,
-    theme,
     toCssVar,
     variables
   } from '@utils/colors';
@@ -89,8 +87,8 @@
     copy(css, 'CSS copied to clipboard.');
   };
 </script>
-<div class="full-height flex-row kanpas-reset">
-  <div class="color-variables p-2 kanpas-scroll-y">
+<div class="full-height flex-row kds-reset">
+  <div class="color-variables p-2 kds-scroll-y">
     <h3 class="flex-row-center-y mdb-24">
       <Icon class="mdr-10" size="medium">css</Icon>
       <span class="flex">Variables</span>
@@ -118,8 +116,8 @@
                       on:remove={() => removeGroup(custom)}></ColorVariables>
     {/each}
   </div>
-  <div class="flex kanpas-scroll-y p-2">
-    <div class="kanpas-color-palettes kanpas-reset">
+  <div class="flex kds-scroll-y p-2">
+    <div class="kds-color-palettes kds-reset">
       <h3 class="flex-row-center-y mdb-24">
         <Icon class="mdr-10" size="medium">smart_button</Icon>
         <span class="flex">State Colors</span>
@@ -147,7 +145,7 @@
                    on:remove={() => removeState(group)}></ColorList>
       {/each}
     </div>
-    <div class="kanpas-color-palettes kanpas-reset">
+    <div class="kds-color-palettes kds-reset">
       <h3 class="flex-row-center-y mdb-24">
         <Icon class="mdr-10" size="medium">style</Icon>
         <span class="flex">Color Palettes</span>

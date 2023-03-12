@@ -1,6 +1,7 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./.svelte-kit",
     "allowJs": true,
     "checkJs": true,
     "esModuleInterop": true,
@@ -12,18 +13,7 @@
     "lib": [
       "ES2020",
       "DOM"
-    ],
-    "paths": {
-      "@components/*": ["./src/lib/components/*"],
-      "@utils/*": ["./src/lib/utils/*"],
-      "@styles/*": ["./src/lib/styles/*"],
-      "@services/*": ["./src/lib/services/*"],
-      "@actions/*": ["./src/lib/actions/*"],
-      "@templates/*": ["./src/templates/*"],
-      "@data/*": ["./src/data/*"],
-      "$lib": ["./src/lib"],
-      "$lib/*": ["./src/lib/*"]
-    }
+    ]
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //

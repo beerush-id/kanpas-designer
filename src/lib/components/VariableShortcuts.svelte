@@ -18,13 +18,13 @@
 </div>
 
 <Dialog bind:this={colorDialog} role="drawer" xDir="right">
-  <div class="color-drawer kanpas-acrylic">
+  <div class="color-drawer kds-acrylic">
     <ColorEditor></ColorEditor>
   </div>
 </Dialog>
 
 <Dialog bind:this={variableDialog} role="drawer" xDir="right">
-  <div class="variable-drawer kanpas-acrylic-bg">
+  <div class="variable-drawer kds-acrylic-bg">
     <CSSVariableEditor></CSSVariableEditor>
   </div>
 </Dialog>
@@ -41,11 +41,11 @@
 
   .variable-drawer {
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.2));
-    border-radius: var(--kanpas-radius);
+    border-radius: var(--kds-radius);
     border-top-left-radius: 0;
 
     &:before {
-      border-radius: var(--kanpas-radius);
+      border-radius: var(--kds-radius);
       border-top-left-radius: 0;
     }
   }

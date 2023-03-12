@@ -25,9 +25,9 @@
   let pickerActive = false;
 </script>
 
-<div class="kanpas-color-input flex-row-center-y {focused ? 'focus' : ''}">
-  <div class="kanpas-color-input-name flex flex-row-center-y">
-    <span class="kanpas-color-input-value mdr-4">{colorName(group)}-</span>
+<div class="kds-color-input flex-row-center-y {focused ? 'focus' : ''}">
+  <div class="kds-color-input-name flex flex-row-center-y">
+    <span class="kds-color-input-value mdr-4">{colorName(group)}-</span>
     <input
       class="flex"
       type="text"
@@ -36,8 +36,8 @@
       on:focus={() => (focused = true)}
       on:blur={() => (focused = false)}/>
   </div>
-  <div class="kanpas-color-input-trigger">
-    <div class="kanpas-color-input-pick" style="background-color: {value}">
+  <div class="kds-color-input-trigger">
+    <div class="kds-color-input-pick" style="background-color: {value}">
       {#if !pickerActive}
         <PopUp xDir="before" yDir="between">{variable ? prefixColor(variable) : value}</PopUp>
       {/if}
@@ -55,44 +55,44 @@
 </div>
 
 <style lang="scss">
-  .kanpas-color-input {
+  .kds-color-input {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: var(--kanpas-radius);
-    border: 1px solid var(--kanpas-color-input-line);
-    background-color: var(--kanpas-color-input-bg);
+    border-radius: var(--kds-radius);
+    border: 1px solid var(--kds-color-input-line);
+    background-color: var(--kds-color-input-bg);
     transition: all 0.2s ease-in-out;
     padding: 8px 12px 8px 8px;
 
     &:hover {
-      border-color: var(--kanpas-color-input-line-hover);
+      border-color: var(--kds-color-input-line-hover);
     }
 
     &.focus {
-      border-color: var(--kanpas-color-input-line-active);
+      border-color: var(--kds-color-input-line-active);
     }
   }
 
-  .kanpas-color-input-trigger {
+  .kds-color-input-trigger {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-left: 10px;
   }
 
-  .kanpas-color-input-value {
+  .kds-color-input-value {
     min-width: 68px;
     text-align: center;
     font-size: 11px;
-    color: var(--kanpas-color-tooltip);
-    background-color: var(--kanpas-color-tooltip-bg);
+    color: var(--kds-color-tooltip);
+    background-color: var(--kds-color-tooltip-bg);
     padding: 4px 8px;
     border-radius: 3px;
     white-space: nowrap;
   }
 
-  .kanpas-color-input-name {
+  .kds-color-input-name {
     flex: 1;
 
     input {
@@ -103,10 +103,10 @@
     }
   }
 
-  .kanpas-color-input-pick {
+  .kds-color-input-pick {
     width: 20px;
     height: 20px;
-    border: 1px solid var(--kanpas-color-line);
-    border-radius: var(--kanpas-radius-small);
+    border: 1px solid var(--kds-color-line);
+    border-radius: var(--kds-radius-small);
   }
 </style>

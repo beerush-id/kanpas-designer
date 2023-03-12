@@ -69,7 +69,7 @@
     <Icon clickable tooltip="Add Shadow" class="mdl-10" on:click={() => options[optKey].push({})}>add</Icon>
   </svelte:fragment>
   {#each $options[optKey] as shadow}
-    <div class="kanpas-panel-section flex-row-center-y">
+    <div class="kds-panel-section flex-row-center-y">
       <InputUnit class="flex mdr-6" placeholder="X" bind:value={shadow.x} on:input={updateShadow}>
         <PopUp>Horizontal Offset</PopUp>
       </InputUnit>
@@ -98,7 +98,7 @@
 </Panel>
 
 <style lang="scss">
-  .kanpas-panel-section :global(input) {
+  .kds-panel-section :global(input) {
     width: 24px;
   }
 </style>

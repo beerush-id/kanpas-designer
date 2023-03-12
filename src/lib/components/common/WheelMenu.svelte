@@ -98,7 +98,7 @@
   };
 </script>
 
-<div class="kanpas-wheel-stack" style="--wheel-size: {wheelSize}px" class:stacked>
+<div class="kds-wheel-stack" style="--wheel-size: {wheelSize}px" class:stacked>
   {#if activeWheel && activeWheel.active}
     <svelte:self
       stacked
@@ -107,11 +107,11 @@
       {...createChildProps(activeWheel)}/>
   {/if}
   <div
-    class="kanpas-wheel-menu"
+    class="kds-wheel-menu"
     out:spinOut
     class:stacked
     style="--wheel-size: {wheelSize}px; --wheel-angle: {wheelAngle}deg;">
-    <div class="kanpas-wheel-outer" style="--outer-angle: -{stacked ? outerAngle : 0}deg">
+    <div class="kds-wheel-outer" style="--outer-angle: -{stacked ? outerAngle : 0}deg">
       {#each $menuItems || [] as menu, i}
         <div
           class="wheel-menu-item"
@@ -156,7 +156,7 @@
     }
   }
 
-  .kanpas-wheel-stack {
+  .kds-wheel-stack {
     width: var(--wheel-size);
     height: var(--wheel-size);
     position: relative;
@@ -168,12 +168,12 @@
       transform: translate3d(-50%, -50%, 0);
     }
 
-    :global(.kanpas-wheel-menu.remove) {
+    :global(.kds-wheel-menu.remove) {
       animation: spinOut 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8);
     }
   }
 
-  .kanpas-wheel-menu {
+  .kds-wheel-menu {
     width: var(--wheel-size);
     height: var(--wheel-size);
     position: absolute;
@@ -183,7 +183,7 @@
     animation: spinIn 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8);
     z-index: 0;
     rotate: var(--wheel-angle);
-    background-color: var(--kanpas-color-node-bg);
+    background-color: var(--kds-color-node-bg);
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.4));
     transition: all 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8);
 
@@ -192,7 +192,7 @@
       display: block;
       width: calc(100% + -80px);
       height: calc(100% + -80px);
-      background-color: var(--kanpas-color-node-bg-alt);
+      background-color: var(--kds-color-node-bg-alt);
       position: absolute;
       top: 40px;
       left: 40px;
@@ -218,7 +218,7 @@
     }
   }
 
-  .kanpas-wheel-outer {
+  .kds-wheel-outer {
     width: 100%;
     height: 100%;
     position: relative;
@@ -233,12 +233,12 @@
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     text-align: center;
-    font-size: var(--kanpas-font-subtitle);
+    font-size: var(--kds-font-subtitle);
     width: calc(var(--wheel-size) - 100px);
     z-index: 1;
     border-radius: 50%;
     cursor: default;
-    color: var(--kanpas-color-foreground);
+    color: var(--kds-color-foreground);
   }
 
   .wheel-menu-item {
@@ -261,18 +261,18 @@
       position: absolute;
       top: 0;
       left: calc(50% - (var(--wheel-size) / 2));
-      border-top: 2px solid var(--kanpas-color-node-bg);
-      box-shadow: inset 0 0 0 40px var(--kanpas-color-node-bg);
+      border-top: 2px solid var(--kds-color-node-bg);
+      box-shadow: inset 0 0 0 40px var(--kds-color-node-bg);
       border-radius: 50%;
       transition: all .2s ease-in-out;
     }
 
     &:hover:before {
-      border-top: 2px solid var(--kanpas-color-node-bg-alt);
+      border-top: 2px solid var(--kds-color-node-bg-alt);
     }
 
     &.active:before {
-      border-top: 2px solid var(--kanpas-color-node-line);
+      border-top: 2px solid var(--kds-color-node-line);
     }
 
     &.placeholder {
@@ -291,7 +291,7 @@
     align-items: center;
     justify-content: center;
     pointer-events: fill;
-    color: var(--kanpas-color-foreground);
+    color: var(--kds-color-foreground);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     border-bottom-left-radius: 5px;

@@ -202,14 +202,14 @@
          style:left="{left?.offsetWidth}px">
       <slot name="canvas-control-prefix"></slot>
       <div class="flex"></div>
-      <div class="kanpas-acrylic">
+      <div class="kds-acrylic">
         <CanvasSwitch></CanvasSwitch>
       </div>
       <div class="flex"></div>
       <slot name="canvas-control-suffix"></slot>
     </div>
   {/if}
-  <div class="canvas-panel canvas-panel-left kanpas-reset"
+  <div class="canvas-panel canvas-panel-left kds-reset"
        bind:this={left}
        class:floating={floatingPanel}
        on:wheel={captureWheel}>
@@ -229,7 +229,7 @@
       <div class="canvas-drag-overlay"></div>
     {/if}
   </div>
-  <div class="canvas-panel canvas-panel-right kanpas-reset" class:floating={floatingPanel} on:wheel={captureWheel}>
+  <div class="canvas-panel canvas-panel-right kds-reset" class:floating={floatingPanel} on:wheel={captureWheel}>
     <slot name="canvas-panel-right"></slot>
   </div>
 </div>
@@ -249,7 +249,7 @@
     top: 0;
     left: 0;
     z-index: 1;
-    padding: var(--kanpas-space-tight);
+    padding: var(--kds-space-tight);
   }
 
   .canvas-content {
@@ -301,8 +301,8 @@
   }
 
   .canvas-paint-area {
-    width: calc(100% - var(--kanpas-canvas-prefix));
-    height: calc(100% - var(--kanpas-canvas-prefix));
+    width: calc(100% - var(--kds-canvas-prefix));
+    height: calc(100% - var(--kds-canvas-prefix));
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -310,8 +310,8 @@
     position: absolute;
     z-index: 0;
     transform: translate3d(0, 0, 0);
-    margin-left: var(--kanpas-canvas-prefix);
-    margin-top: var(--kanpas-canvas-prefix);
+    margin-left: var(--kds-canvas-prefix);
+    margin-top: var(--kds-canvas-prefix);
     -webkit-backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
     backface-visibility: hidden;
@@ -330,16 +330,16 @@
   }
 
   .canvas-ruler-h {
-    width: calc(100% - var(--kanpas-canvas-prefix));
+    width: calc(100% - var(--kds-canvas-prefix));
     height: 28px;
     top: 0;
-    left: var(--kanpas-canvas-prefix);
+    left: var(--kds-canvas-prefix);
   }
 
   .canvas-ruler-v {
-    height: calc(100% - var(--kanpas-canvas-prefix));
+    height: calc(100% - var(--kds-canvas-prefix));
     width: 28px;
-    top: var(--kanpas-canvas-prefix);
+    top: var(--kds-canvas-prefix);
     left: 0;
   }
 </style>

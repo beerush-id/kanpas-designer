@@ -49,8 +49,8 @@
     display: flex;
     flex-direction: column;
     width: 480px;
-    border: 1px solid var(--kanpas-color-line-alt);
-    border-radius: var(--kanpas-radius);
+    border: 1px solid var(--kds-color-line-alt);
+    border-radius: var(--kds-radius);
     border-top-left-radius: 0;
   }
 
@@ -58,16 +58,16 @@
     position: absolute;
     top: -1px;
     right: 100%;
-    border: 1px solid var(--kanpas-color-line-alt);
+    border: 1px solid var(--kds-color-line-alt);
     border-right: none;
-    border-top-left-radius: var(--kanpas-radius-small);
-    border-bottom-left-radius: var(--kanpas-radius-small);
-    padding: var(--kanpas-space-tight) 0;
-    background-color: var(--kanpas-color-background-alt);
+    border-top-left-radius: var(--kds-radius-small);
+    border-bottom-left-radius: var(--kds-radius-small);
+    padding: var(--kds-space-tight) 0;
+    background-color: var(--kds-color-background-alt);
   }
 
   .group-head, .group-body {
-    padding: var(--kanpas-space);
+    padding: var(--kds-space);
   }
 
   .group-body {
@@ -79,18 +79,18 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-radius: var(--kanpas-radius-small);
-    border: 1px solid var(--kanpas-color-input-line);
-    background-color: var(--kanpas-color-input-bg);
+    border-radius: var(--kds-radius-small);
+    border: 1px solid var(--kds-color-input-line);
+    background-color: var(--kds-color-input-bg);
     transition: all 0.2s ease-in-out;
     padding: 8px;
 
     &:hover {
-      border-color: var(--kanpas-color-input-line-hover);
+      border-color: var(--kds-color-input-line-hover);
     }
 
     &.focus {
-      border-color: var(--kanpas-color-input-line-active);
+      border-color: var(--kds-color-input-line-active);
     }
 
     input.name {
@@ -107,8 +107,8 @@
   .prefix {
     text-align: center;
     font-size: 11px;
-    color: var(--kanpas-color-tooltip);
-    background-color: var(--kanpas-color-tooltip-bg);
+    color: var(--kds-color-tooltip);
+    background-color: var(--kds-color-tooltip-bg);
     padding: 4px 8px;
     border-radius: 3px;
     white-space: nowrap;

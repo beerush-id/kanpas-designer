@@ -48,10 +48,10 @@
 
 <style lang="scss">
   :global(.theme-switch.dark) {
-    color: var(--kanpas-color-green-300);
+    color: var(--kds-color-green-300);
   }
 
   :global(.theme-switch.light) {
-    color: var(--kanpas-color-orange-300);
+    color: var(--kds-color-orange-300);
   }
 </style>

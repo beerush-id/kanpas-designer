@@ -11,12 +11,12 @@
   let className = '';
   export { className as class };
 </script>
-<div class="kanpas-toggle {color}{className ? ` ${className}` : ''}" on:click={() => checked = !checked} on:keypress>
+<div class="kds-toggle {color}{className ? ` ${className}` : ''}" on:click={() => checked = !checked} on:keypress>
   {#if leftIcon}
     <Icon size="thin">{leftIcon}</Icon>
   {/if}
   <div class="flex"></div>
-  <div class="kanpas-toggle-pin {color}" class:checked></div>
+  <div class="kds-toggle-pin {color}" class:checked></div>
   {#if rightIcon}
     <Icon size="thin">{rightIcon}</Icon>
   {/if}
@@ -55,63 +55,63 @@
     }
   }
 
-  .kanpas-toggle {
+  .kds-toggle {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 48px;
     height: 24px;
-    background-color: var(--kanpas-color-input-bg);
+    background-color: var(--kds-color-input-bg);
     padding: 4px;
     border-radius: 16px;
     position: relative;
     cursor: pointer;
-    border: 1px solid var(--kanpas-color-input-line);
+    border: 1px solid var(--kds-color-input-line);
   }
 
-  .kanpas-toggle-pin {
+  .kds-toggle-pin {
     position: absolute;
     left: 0;
     top: 0;
     width: 50%;
     height: 100%;
-    background-color: var(--kanpas-color-input-line);
+    background-color: var(--kds-color-input-line);
     border-radius: 16px;
     z-index: 1;
-    border: 2px solid var(--kanpas-color-input-bg);
+    border: 2px solid var(--kds-color-input-bg);
     transition: all .2s ease-in-out;
 
     &.primary {
-      background-color: var(--kanpas-color-primary-normal);
+      background-color: var(--kds-color-primary-normal);
 
       &:hover {
-        background-color: var(--kanpas-color-primary-hover);
+        background-color: var(--kds-color-primary-hover);
       }
     }
 
     &.accent {
-      background-color: var(--kanpas-color-accent-normal);
+      background-color: var(--kds-color-accent-normal);
 
       &:hover {
-        background-color: var(--kanpas-color-accent-hover);
+        background-color: var(--kds-color-accent-hover);
       }
     }
 
     &.warn {
-      background-color: var(--kanpas-color-warn-normal);
+      background-color: var(--kds-color-warn-normal);
 
       &:hover {
-        background-color: var(--kanpas-color-warn-hover);
+        background-color: var(--kds-color-warn-hover);
       }
     }
 
     &.positive {
-      background-image: linear-gradient(45deg, var(--kanpas-color-warn-normal), var(--kanpas-color-primary-normal));
-      background-color: var(--kanpas-color-success-normal);
-      //filter: drop-shadow(-4px 0 20px var(--kanpas-color-red-500)) drop-shadow(4px 0 20px var(--kanpas-color-blue-500));
+      background-image: linear-gradient(45deg, var(--kds-color-warn-normal), var(--kds-color-primary-normal));
+      background-color: var(--kds-color-success-normal);
+      //filter: drop-shadow(-4px 0 20px var(--kds-color-red-500)) drop-shadow(4px 0 20px var(--kds-color-blue-500));
 
       &:hover {
-        background-color: var(--kanpas-color-success-hover);
+        background-color: var(--kds-color-success-hover);
       }
     }
 

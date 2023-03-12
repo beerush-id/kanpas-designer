@@ -393,14 +393,14 @@
           on:click={toggleWrap}
           active={$styles.flexWrap||$styles.whiteSpace}>{wrapIcon}</Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
+  <div class="kds-panel-section flex-row-center-y">
     {#each alignments as align}
       <Icon clickable tooltip={align.label}
             active={alignH === align.value || alignV === align.value}
             on:click={() => alignContent(align.value)}>{align.icon}</Icon>
     {/each}
     {#if styles.display && styles.display.includes('flex')}
-      <span class="kanpas-separator-y"></span>
+      <span class="kds-separator-y"></span>
       <Icon clickable tooltip='Fill Horizontal Space'
             active={spanH}
             on:click={() => changeSpan('horizontal')}>horizontal_distribute

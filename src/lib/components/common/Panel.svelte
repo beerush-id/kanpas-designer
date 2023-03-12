@@ -11,11 +11,11 @@
   };
 </script>
 
-<div class="kanpas-panel">
+<div class="kds-panel">
   {#if title}
-    <div class="kanpas-panel-title flex-row-center-y">
+    <div class="kds-panel-title flex-row-center-y">
       {#if icon}
-        <Icon size="medium" class="kanpas-panel-head-icon mdr-10" on:click={toggle}>{icon}</Icon>
+        <Icon size="medium" class="kds-panel-head-icon mdr-10" on:click={toggle}>{icon}</Icon>
       {/if}
       {#if typeof title === 'string'}
         <span class="flex" on:click={toggle} on:keypress>{title}</span>
@@ -32,7 +32,7 @@
     </div>
   {/if}
   <slot name="panel-body"/>
-  <div class="kanpas-panel-body" class:collapsed>
+  <div class="kds-panel-body" class:collapsed>
     <slot/>
   </div>
 </div>

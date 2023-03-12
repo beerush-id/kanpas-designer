@@ -70,10 +70,10 @@
                bind:value={$styles.margin}
                on:input={useLinked}></InputUnit>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-input-group mdr-12">
-      <div class="kanpas-input flex-row-center-y">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Left</span>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-input-group mdr-12">
+      <div class="kds-input flex-row-center-y">
+        <span class="kds-panel-prop-label mdr-10 flex">Left</span>
         <InputUnit name="left"
                    placeholder='auto'
                    bind:value={$styles.marginLeft}
@@ -88,8 +88,8 @@
                 on:click={toggleLinkX}>{linkedX ? 'link' : 'add_link'}</Icon>
         </div>
       </div>
-      <div class="kanpas-input flex-row-center-y">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Right</span>
+      <div class="kds-input flex-row-center-y">
+        <span class="kds-panel-prop-label mdr-10 flex">Right</span>
         <InputUnit name="right"
                    placeholder='auto'
                    disabled={linkedX}
@@ -97,9 +97,9 @@
                    on:input={useCustom}></InputUnit>
       </div>
     </div>
-    <div class="kanpas-input-group">
-      <div class="kanpas-input flex-row-center-y">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Top</span>
+    <div class="kds-input-group">
+      <div class="kds-input flex-row-center-y">
+        <span class="kds-panel-prop-label mdr-10 flex">Top</span>
         <InputUnit name="top"
                    placeholder='auto'
                    bind:value={$styles.marginTop}
@@ -114,8 +114,8 @@
                 on:click={toggleLinkY}>{linkedY ? 'link' : 'add_link'}</Icon>
         </div>
       </div>
-      <div class="kanpas-input flex-row-center-y">
-        <span class="kanpas-panel-prop-label mdr-10 flex">Bottom</span>
+      <div class="kds-input flex-row-center-y">
+        <span class="kds-panel-prop-label mdr-10 flex">Bottom</span>
         <InputUnit name="bottom"
                    placeholder='auto'
                    disabled={linkedY}

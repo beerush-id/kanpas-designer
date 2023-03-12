@@ -26,24 +26,24 @@
 <ImmersiveOption title="Journey" collapsible/>
 <Portal slot="#immersive-header">
   <div class="flex-row-center-y">
-    <div class="kanpas-tool-group flex-row-center-y mdr-8">
+    <div class="kds-tool-group flex-row-center-y mdr-8">
       <Icon class="tool-icon" tooltip="Add Journey" clickable on:click={addJourney}>new_label</Icon>
     </div>
-    <div class="kanpas-tool-group">
+    <div class="kds-tool-group">
       <CanvasSwitch/>
     </div>
   </div>
 </Portal>
 <Canvas>
   {#if $journeys?.length}
-    <div class="kanpas-journey kanpas-reset">
+    <div class="kds-journey kds-reset">
       {#each $journeys as step}
         <JourneyNode {step} on:remove={() => remJourney(step)}/>
       {/each}
     </div>
   {:else}
-    <div in:scaleIn class="empty-journey kanpas-reset flex-column-center">
-      <div class="flex-column-center kanpas-empty">
+    <div in:scaleIn class="empty-journey kds-reset flex-column-center">
+      <div class="flex-column-center kds-empty">
         <Icon size="strong">new_label</Icon>
         <p class="my-2">There is no journey yet. Let's add new one!</p>
         <button class="positive elevate" on:click={addJourney}>
@@ -55,7 +55,7 @@
 </Canvas>
 
 <style lang="scss">
-  .kanpas-journey {
+  .kds-journey {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -64,11 +64,11 @@
     padding-top: 72px;
   }
 
-  .kanpas-empty {
-    background-color: var(--kanpas-color-background);
+  .kds-empty {
+    background-color: var(--kds-color-background);
     aspect-ratio: 1/1;
     border-radius: 50%;
-    padding: var(--kanpas-space-large);
+    padding: var(--kds-space-large);
   }
 
   .empty-journey {
@@ -77,7 +77,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    padding: var(--kanpas-space-xl);
+    padding: var(--kds-space-xl);
     border-radius: 50%;
   }
 </style>

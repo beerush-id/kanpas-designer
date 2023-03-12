@@ -50,8 +50,8 @@
   <svelte:fragment slot="panel-head">
     <Icon size="medium"
           tooltip={role === 'filter' ? 'Filter' : 'Backdrop Filter'}
-          class="kanpas-panel-head-icon mdr-24">{role === 'filter' ? 'contrast' : 'background_replace'}</Icon>
-    <div class="kanpas-panel-prop-label mdr-10">Blur</div>
+          class="kds-panel-head-icon mdr-24">{role === 'filter' ? 'contrast' : 'background_replace'}</Icon>
+    <div class="kds-panel-prop-label mdr-10">Blur</div>
     <Range name="blur"
            class="flex"
            min="0"
@@ -59,14 +59,14 @@
            step="0.1"
            bind:value={$options[key].blur}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].blur || 0)}px</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].blur || 0)}px</span>
     <Icon clickable class="mdl-10"
           tooltip="Clear Filter"
           active={Object.keys($options[key]).length}
           on:click={clearFilter}>{Object.keys($options[key]).length ? 'filter_alt' : 'filter_alt_off'}</Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Brightness</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Brightness</div>
     <Range name="brightness"
            class="flex"
            min="0"
@@ -74,14 +74,14 @@
            step="0.1"
            bind:value={$options[key].brightness}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].brightness || 0) * 100}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].brightness || 0) * 100}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].brightness !== 'undefined'}
           on:click={() => removeFilter('brightness')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Contrast</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Contrast</div>
     <Range name="contrast"
            class="flex"
            min="0"
@@ -89,26 +89,26 @@
            step="1"
            bind:value={$options[key].contrast}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].contrast || 0)}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].contrast || 0)}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].contrast !== 'undefined'}
           on:click={() => removeFilter('contrast')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Grayscale</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Grayscale</div>
     <Range name="grayscale"
            class="flex"
            bind:value={$options[key].grayscale}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].grayscale || 0)}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].grayscale || 0)}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].grayscale !== 'undefined'}
           on:click={() => removeFilter('grayscale')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Hue</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Hue</div>
     <Range name="hueRotate"
            class="flex"
            min="0"
@@ -116,55 +116,55 @@
            step="1"
            bind:value={$options[key].hueRotate}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].hueRotate || 0)}</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].hueRotate || 0)}</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].hueRotate !== 'undefined'}
           on:click={() => removeFilter('hueRotate')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Invert</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Invert</div>
     <Range name="invert"
            class="flex"
            bind:value={$options[key].invert}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].invert || 0)}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].invert || 0)}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].invert !== 'undefined'}
           on:click={() => removeFilter('invert')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Opacity</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Opacity</div>
     <Range name="opacity"
            class="flex"
            bind:value={$options[key].opacity}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].opacity || 0)}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].opacity || 0)}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].opacity !== 'undefined'}
           on:click={() => removeFilter('opacity')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Saturate</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Saturate</div>
     <Range name="saturate"
            class="flex"
            bind:value={$options[key].saturate}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].saturate || 0)}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].saturate || 0)}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].saturate !== 'undefined'}
           on:click={() => removeFilter('saturate')}>settings_backup_restore
     </Icon>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-panel-prop-label flex">Sepia</div>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-panel-prop-label flex">Sepia</div>
     <Range name="sepia"
            class="flex"
            bind:value={$options[key].sepia}
            on:input={updateFilter}/>
-    <span class="kanpas-prop-unit mdl-10">{($options[key].sepia || 0)}%</span>
+    <span class="kds-prop-unit mdl-10">{($options[key].sepia || 0)}%</span>
     <Icon clickable tooltip="Revert" class="mdl-10"
           active={typeof $options[key].sepia !== 'undefined'}
           on:click={() => removeFilter('sepia')}>settings_backup_restore
@@ -173,10 +173,10 @@
 </Panel>
 
 <style lang="scss">
-  .kanpas-prop-unit {
+  .kds-prop-unit {
     width: 36px;
     text-align: right;
-    font-size: var(--kanpas-font-subtitle);
+    font-size: var(--kds-font-subtitle);
     opacity: 0.5;
   }
 </style>

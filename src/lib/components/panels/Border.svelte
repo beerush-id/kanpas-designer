@@ -108,7 +108,7 @@
   </svelte:fragment>
   {#each dirs as dir}
     <div class="flex-row-center-y mdb-10">
-      <span class="kanpas-panel-prop-label flex" use:i18n={dir}></span>
+      <span class="kds-panel-prop-label flex" use:i18n={dir}></span>
       <InputUnit class="mdr-4"
                  placeholder="Size"
                  bind:value={$styles[`border${dir}Width`]}

@@ -167,7 +167,7 @@
   });
 </script>
 
-<div bind:this={hoverElem} class="kanpas-box-hover">
+<div bind:this={hoverElem} class="kds-box-hover">
   <div class="margin-box" bind:this={marginElem}></div>
   <div class="padding-box" bind:this={paddingElem}></div>
 
@@ -187,7 +187,7 @@
     x {parseInt($hoverStyles.height).toLocaleString(2)}</div>
 </div>
 {#each $selector.focusBounds as focus}
-  <div class="kanpas-box-focus"
+  <div class="kds-box-focus"
        style:width={focus.width}
        style:height={focus.height}
        style:left={focus.left}
@@ -212,23 +212,23 @@
   }
 
   .margin-box {
-    border-color: var(--kanpas-color-accent-hover);
+    border-color: var(--kds-color-accent-hover);
   }
 
   .padding-box {
-    border-color: var(--kanpas-color-primary-hover);
+    border-color: var(--kds-color-primary-hover);
     width: 100%;
     height: 100%;
   }
 
-  .kanpas-box-hover, .kanpas-box-focus {
-    border: 1px dashed var(--kanpas-color-accent-hover);
+  .kds-box-hover, .kds-box-focus {
+    border: 1px dashed var(--kds-color-accent-hover);
     position: fixed;
     z-index: 999;
     pointer-events: none;
   }
 
-  .kanpas-box-hover {
+  .kds-box-hover {
     display: none;
     transition: all .2s ease-in-out;
 
@@ -241,8 +241,8 @@
     &:before {
       width: 100%;
       height: calc(100vh * 2);
-      border-left: 1px dashed var(--kanpas-color-primary-hover);
-      border-right: 1px dashed var(--kanpas-color-primary-hover);
+      border-left: 1px dashed var(--kds-color-primary-hover);
+      border-right: 1px dashed var(--kds-color-primary-hover);
       top: 50%;
       left: -1px;
       transform: translateY(-50%);
@@ -251,16 +251,16 @@
     &:after {
       height: 100%;
       width: calc(100vw * 2);
-      border-top: 1px dashed var(--kanpas-color-primary-hover);
-      border-bottom: 1px dashed var(--kanpas-color-primary-hover);
+      border-top: 1px dashed var(--kds-color-primary-hover);
+      border-bottom: 1px dashed var(--kds-color-primary-hover);
       left: 50%;
       top: -1px;
       transform: translateX(-50%);
     }
   }
 
-  .kanpas-box-focus {
-    border-color: var(--kanpas-color-success-active);
+  .kds-box-focus {
+    border-color: var(--kds-color-success-active);
     transition: all .2s ease-in-out;
   }
 
@@ -272,7 +272,7 @@
       display: block;
       width: 6px;
       height: 6px;
-      background-color: var(--kanpas-color-success-active);
+      background-color: var(--kds-color-success-active);
       border-radius: 50%;
       position: absolute;
     }
@@ -356,12 +356,12 @@
   .vt-line, .vb-line {
     height: 100vh;
     left: 50%;
-    border-right: 1px dashed var(--kanpas-color-accent-hover);
+    border-right: 1px dashed var(--kds-color-accent-hover);
     writing-mode: vertical-lr;
     text-orientation: mixed;
 
     &:before {
-      border-top: 1px dashed var(--kanpas-color-accent-hover);
+      border-top: 1px dashed var(--kds-color-accent-hover);
       width: 64px;
       left: 50%;
       transform: translateX(-50%);
@@ -377,10 +377,10 @@
   .hl-line, .hr-line {
     width: 100vw;
     top: 50%;
-    border-bottom: 1px dashed var(--kanpas-color-accent-hover);
+    border-bottom: 1px dashed var(--kds-color-accent-hover);
 
     &:before {
-      border-right: 1px dashed var(--kanpas-color-accent-hover);
+      border-right: 1px dashed var(--kds-color-accent-hover);
       height: 64px;
       top: 50%;
       transform: translateY(-50%);
@@ -443,9 +443,9 @@
   .size, .value {
     padding: 4px 8px;
     position: absolute;
-    color: var(--kanpas-color-tooltip);
-    border-radius: var(--kanpas-radius-small);
-    font-size: var(--kanpas-font-subtitle);
+    color: var(--kds-color-tooltip);
+    border-radius: var(--kds-radius-small);
+    font-size: var(--kds-font-subtitle);
     backdrop-filter: blur(10px);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 
@@ -457,9 +457,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: var(--kanpas-color-tooltip-bg);
+      background-color: var(--kds-color-tooltip-bg);
       z-index: -1;
-      border-radius: var(--kanpas-radius-small);
+      border-radius: var(--kds-radius-small);
       opacity: 0.7;
     }
   }
@@ -468,7 +468,7 @@
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
-    border: 1px solid var(--kanpas-color-accent-hover);
+    border: 1px solid var(--kds-color-accent-hover);
     white-space: nowrap;
 
     &:not(.active) {
@@ -477,7 +477,7 @@
   }
 
   .value {
-    border: 1px dashed var(--kanpas-color-accent-hover);
+    border: 1px dashed var(--kds-color-accent-hover);
 
     &:not(.active) {
       display: none;

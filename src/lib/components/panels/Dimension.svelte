@@ -60,7 +60,7 @@
     <Icon tooltip="Toggle Flex Mode" clickable
           active={$styles.flex} on:click={() => toggleFlex('x')}>open_with
     </Icon>
-    <div class="kanpas-separator-y"></div>
+    <div class="kds-separator-y"></div>
     <Icon tooltip="Vertical Scroll" clickable
           active={$styles.overflowY === 'auto'} on:click={toggleVScroll}>swap_vert
     </Icon>
@@ -71,42 +71,42 @@
           active={$styles.overflow === 'hidden'} on:click={toggleNoScroll}>hide_source
     </Icon>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y" slot="panel-body">
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10" use:i18n={'Width'}></span>
+  <div class="kds-panel-section flex-row-center-y" slot="panel-body">
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10" use:i18n={'Width'}></span>
       <InputUnit unit="%" name="width" placeholder="auto" bind:value={$styles.width}></InputUnit>
     </div>
-    <div class="kanpas-separator-y"></div>
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10" use:i18n={'Height'}></span>
+    <div class="kds-separator-y"></div>
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10" use:i18n={'Height'}></span>
       <InputUnit unit="%" name="height" placeholder="auto" bind:value={$styles.height}></InputUnit>
     </div>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10" use:i18n={'Min'}></span>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10" use:i18n={'Min'}></span>
       <InputUnit name="min-width"
                  placeholder="auto"
                  bind:value={$styles.minWidth}></InputUnit>
     </div>
-    <div class="kanpas-separator-y"></div>
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10" use:i18n={'Min'}></span>
+    <div class="kds-separator-y"></div>
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10" use:i18n={'Min'}></span>
       <InputUnit name="min-height"
                  placeholder="auto"
                  bind:value={$styles.minHeight}></InputUnit>
     </div>
   </div>
-  <div class="kanpas-panel-section flex-row-center-y">
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10" use:i18n={'Max'}></span>
+  <div class="kds-panel-section flex-row-center-y">
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10" use:i18n={'Max'}></span>
       <InputUnit name="max-width"
                  placeholder="auto"
                  bind:value={$styles.maxWidth}></InputUnit>
     </div>
-    <div class="kanpas-separator-y"></div>
-    <div class="kanpas-input flex flex-row-center-y">
-      <span class="kanpas-panel-prop-label flex mdr-10" use:i18n={'Max'}></span>
+    <div class="kds-separator-y"></div>
+    <div class="kds-input flex flex-row-center-y">
+      <span class="kds-panel-prop-label flex mdr-10" use:i18n={'Max'}></span>
       <InputUnit name="max-height"
                  placeholder="auto"
                  bind:value={$styles.maxHeight}></InputUnit>

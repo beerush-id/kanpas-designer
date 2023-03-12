@@ -19,10 +19,10 @@
   };
 </script>
 
-<div class="kanpas-viewport" bind:this={viewport}>
-  <div class="kanpas-html kanpas-root" class:dark-mode={$theme?.darkMode}>
+<div class="kds-viewport" bind:this={viewport}>
+  <div class="kds-html kds-root" class:dark-mode={$theme?.darkMode}>
     <div
-      class="kanpas-body"
+      class="kds-body"
       on:click|preventDefault|stopPropagation={focus}
       on:keypress
       use:hoverAssist={styles}
@@ -34,20 +34,20 @@
 </div>
 
 <style lang="scss">
-  .kanpas-viewport,
-  .kanpas-html,
-  .kanpas-body {
+  .kds-viewport,
+  .kds-html,
+  .kds-body {
     display: block;
     width: 100%;
     height: 100%;
   }
 
-  .kanpas-viewport {
+  .kds-viewport {
     position: relative;
     transform: translateZ(0);
   }
 
-  .kanpas-root {
+  .kds-root {
     color-scheme: only light;
     background-color: #fff;
     color: #000;
@@ -60,7 +60,7 @@
     }
   }
 
-  .kanpas-body {
+  .kds-body {
     overflow: auto;
     cursor: default;
   }

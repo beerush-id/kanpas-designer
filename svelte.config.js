@@ -8,8 +8,24 @@ const config = {
   preprocess: vitePreprocess(),
 
   kit: {
-    adapter: adapter({ out: 'dist' })
-  }
+    adapter: adapter({ out: 'dist' }),
+    alias: {
+      '@components': './src/lib/components',
+      '@components/*': './src/lib/components/*',
+      '@utils': './src/lib/utils',
+      '@utils/*': './src/lib/utils/*',
+      '@styles': './src/lib/styles',
+      '@styles/*': './src/lib/styles/*',
+      '@services': './src/lib/services',
+      '@services/*': './src/lib/services/*',
+      '@actions': './src/lib/actions',
+      '@actions/*': './src/lib/actions/*',
+      '@templates': './src/templates',
+      '@templates/*': './src/templates/*',
+      '@data': './src/data',
+      '@data/*': './src/data/*',
+    },
+  },
 };
 
 export default config;

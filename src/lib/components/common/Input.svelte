@@ -4,9 +4,9 @@
   export let value = '';
 </script>
 
-<div class="kanpas-input">
+<div class="kds-input">
   {#if placeholder}
-    <span class="kanpas-placeholder">{placeholder}</span>
+    <span class="kds-placeholder">{placeholder}</span>
   {/if}
   {#if type === "text"}
     <input type="text" bind:value {...$$restProps}/>
@@ -36,14 +36,14 @@
 </div>
 
 <style lang="scss">
-  .kanpas-input {
+  .kds-input {
     display: inline-flex;
     flex-direction: column;
   }
 
-  .kanpas-placeholder {
-    font-size: var(--kanpas-font-subtitle);
+  .kds-placeholder {
+    font-size: var(--kds-font-subtitle);
     opacity: 0.8;
-    margin-bottom: var(--kanpas-space-4);
+    margin-bottom: var(--kds-space-4);
   }
 </style>

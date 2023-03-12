@@ -72,9 +72,9 @@
                bind:value={$styles.borderRadius}
                on:input={useLinked}></InputUnit>
   </svelte:fragment>
-  <div class="kanpas-panel-section flex-row-center-y" style="height: 150px">
-    <div class="kanpas-input-group">
-      <div class="kanpas-input flex-row-center-y">
+  <div class="kds-panel-section flex-row-center-y" style="height: 150px">
+    <div class="kds-input-group">
+      <div class="kds-input flex-row-center-y">
         <InputUnit name="top-left"
                    placeholder="auto"
                    bind:value={$styles.borderTopLeftRadius}
@@ -88,7 +88,7 @@
                 on:click={toggleLinkX}>{linkedX ? 'link' : 'add_link'}</Icon>
         </div>
       </div>
-      <div class="kanpas-input flex-row-center-y">
+      <div class="kds-input flex-row-center-y">
         <InputUnit name="bottom-left"
                    placeholder="auto"
                    bind:value={$styles.borderBottomLeftRadius}
@@ -106,8 +106,8 @@
             active={linkedY}
             on:click={toggleLinkY}>{linkedY ? 'link' : 'add_link'}</Icon>
     </div>
-    <div class="kanpas-input-group">
-      <div class="kanpas-input flex-row-center-y">
+    <div class="kds-input-group">
+      <div class="kds-input flex-row-center-y">
         <InputUnit name="top-right"
                    placeholder="auto"
                    bind:value={$styles.borderTopRightRadius}
@@ -121,7 +121,7 @@
                 on:click={toggleLinkY}>{linkedY ? 'link' : 'add_link'}</Icon>
         </div>
       </div>
-      <div class="kanpas-input flex-row-center-y">
+      <div class="kds-input flex-row-center-y">
         <InputUnit name="bottom-right"
                    placeholder="auto"
                    bind:value={$styles.borderBottomRightRadius}
@@ -131,7 +131,7 @@
   </div>
 </Panel>
 <style lang="scss">
-  .kanpas-panel-section {
+  .kds-panel-section {
     position: relative;
     width: 200px;
     margin: 0 auto;
@@ -144,8 +144,8 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      border: 1px solid var(--kanpas-color-line);
-      border-radius: var(--kanpas-radius-large);
+      border: 1px solid var(--kds-color-line);
+      border-radius: var(--kds-radius-large);
     }
   }
 </style>
