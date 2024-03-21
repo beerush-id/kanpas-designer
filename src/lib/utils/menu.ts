@@ -1,4 +1,4 @@
-import type { Action } from '@services/journey';
+import type { Action } from '@services/journey.js';
 
 export type WheelMenuItem = {
   icon?: string;
@@ -7,7 +7,7 @@ export type WheelMenuItem = {
   angle?: number;
   active?: boolean;
   children?: WheelMenuItem[];
-}
+};
 
 export function createCompactActionMenu(forAction: Action[]): WheelMenuItem[] {
   return [

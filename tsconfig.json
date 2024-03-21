@@ -1,18 +1,20 @@
 {
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./.svelte-kit",
     "allowJs": true,
     "checkJs": true,
     "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "lib": [
-      "ES2020",
-      "DOM"
+      "esnext",
+      "DOM",
+      "DOM.Iterable"
     ]
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias

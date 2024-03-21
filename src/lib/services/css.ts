@@ -1,6 +1,6 @@
 import { reactive, type Unsubscribe } from '@beerush/reactor';
-import { copy } from '@utils/clipboard';
-import { states, swatches, toCssVar, variables } from '@utils/colors';
+import { copy } from '@utils/clipboard.js';
+import { states, swatches, toCssVar, variables } from '@utils/colors.js';
 
 export type CSSVariableGroup = {
   name: string;

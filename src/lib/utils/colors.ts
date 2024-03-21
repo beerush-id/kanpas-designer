@@ -17,19 +17,19 @@ export type ColorInput = {
   darkAlpha?: string;
   darkColor?: string;
   darkVariable?: string;
-}
+};
 
 export type ColorInputGroup = {
   name: string;
   fullName?: string;
   color?: string;
   colors: ColorInput[];
-}
+};
 
 function prepareColors(group: ColorInputGroup) {
   group.fullName = colorName(group);
 
-  group.colors.forEach(child => {
+  group.colors.forEach((child) => {
     child.fullName = colorName(group, child);
 
     if (child.darkColor !== child.color) {
@@ -69,21 +69,21 @@ export const variables = resistant<ColorInputGroup[], true>('color-customs', col
 
 export function colorName(group: ColorInputGroup | string, color?: ColorInput | string) {
   if (color) {
-    return `--${ COLOR_PREFIX }${ varname(typeof group === 'string'
-                                          ? group
-                                          : group.name) }-${ varname(typeof color === 'string' ? color : color.name) }`;
+    return `--${COLOR_PREFIX}${varname(typeof group === 'string' ? group : group.name)}-${varname(
+      typeof color === 'string' ? color : color.name
+    )}`;
   } else {
-    return `--${ COLOR_PREFIX }${ varname(typeof group === 'string' ? group : group.name) }`;
+    return `--${COLOR_PREFIX}${varname(typeof group === 'string' ? group : group.name)}`;
   }
 }
 
 export function rawColorName(group: ColorInputGroup | string, color?: ColorInput | string) {
   if (color) {
-    return `--${ varname(typeof group === 'string'
-                         ? group
-                         : group.name) }-${ varname(typeof color === 'string' ? color : color.name) }`;
+    return `--${varname(typeof group === 'string' ? group : group.name)}-${varname(
+      typeof color === 'string' ? color : color.name
+    )}`;
   } else {
-    return `--${ varname(typeof group === 'string' ? group : group.name) }`;
+    return `--${varname(typeof group === 'string' ? group : group.name)}`;
   }
 }
 
@@ -98,17 +98,20 @@ export function foreground(color: string): string {
   }
 
   if (color.length === 3) {
-    color = color.split('').map(function(hex) {
-      return hex + hex;
-    }).join('');
+    color = color
+      .split('')
+      .map(function (hex) {
+        return hex + hex;
+      })
+      .join('');
   }
 
   const r = parseInt(color.slice(0, 2), 16);
   const g = parseInt(color.slice(2, 4), 16);
   const b = parseInt(color.slice(4, 6), 16);
-  const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
 
-  return (yiq >= 128) ? 'black' : 'white';
+  return yiq >= 128 ? 'black' : 'white';
 }
 
 export function rgbToHex(r: number, g: number, b: number) {
@@ -117,21 +120,42 @@ export function rgbToHex(r: number, g: number, b: number) {
 
 export function hexToRgb(hex: string) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
 }
 
 export function shade(color: string, level: number) {
-  return '#' + color.replace(/^#/, '')
-    .replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + level)).toString(16)).slice(-2));
+  return (
+    '#' +
+    color
+      .replace(/^#/, '')
+      .replace(/../g, (color) =>
+        ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + level)).toString(16)).slice(-2)
+      )
+  );
 }
 
 export function createSwatches(
   color: string,
-  maps: Array<string> = [ '10', '50', '100', '200', '300', '400', '500', '600', '700', '800', '900', '950' ]
+  maps: Array<string> = [
+    '10',
+    '50',
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    '900',
+    '950',
+  ]
 ): ColorInput[] {
   const level = Math.round(100 / maps.length) * 3;
   const start = Math.ceil(maps.length / 2);
@@ -148,7 +172,7 @@ export function createSwatches(
   }
 
   current = color;
-  for (let i = (start - 1); i >= 0; --i) {
+  for (let i = start - 1; i >= 0; --i) {
     current = shade(current, level);
     colors.splice(0, 0, {
       name: maps[i],
@@ -205,9 +229,9 @@ function nToHex(color: number) {
 export type ThemeSetting = {
   scheme?: 'dark' | 'light' | 'system';
   darkMode?: boolean;
-}
+};
 export const theme: Reactive<ThemeSetting> = resistant<ThemeSetting>('theme-setting', {
-  scheme: 'system'
+  scheme: 'system',
 });
 
 export type CssVarOptions = {
@@ -215,7 +239,7 @@ export type CssVarOptions = {
   className?: string;
   forceDark?: boolean;
   darkClass?: string;
-}
+};
 
 export function varname(name: string) {
   return name.toLowerCase().replace(/[-\s]+/g, '-');
@@ -226,30 +250,69 @@ export function prefixColor(name: string): string {
 }
 
 export function cssVarName(name: string): string {
-  return `var(${ prefixColor(name) })`;
+  return `var(${prefixColor(name)})`;
 }
 
 export function toCssVar(groups: ColorInputGroup[], options: CssVarOptions = {}): string {
   const { className = ':root' } = options;
 
-  const light = groups.map(group => cssVar(group, options).light).join('');
-  const dark = groups.map(group => cssVar(group, options).dark).join('');
+  const light = groups.map((group) => cssVar(group, options).light).join('');
+  const dark = groups.map((group) => cssVar(group, options).dark).join('');
 
   let css = '';
 
   if (light) {
-    css += `${ className } {\r\n${ light }}\r\n`;
+    css += `${className} {\r\n${light}}\r\n`;
   }
 
   if (dark) {
     if (options.darkClass) {
-      css += `${ className }${ options.darkClass } {\r\n${ dark }  }\r\n`;
+      css += `${className}${options.darkClass} {\r\n${dark}  }\r\n`;
     } else {
-      css += `@media (prefers-color-scheme: dark) {\r\n  ${ className } {\r\n${ dark }  }\r\n}\r\n`;
+      css += `@media (prefers-color-scheme: dark) {\r\n  ${className} {\r\n${dark}  }\r\n}\r\n`;
     }
   }
 
   return css;
+}
+
+export function createToken(groups: ColorInputGroup[], parent?: string, stringify = false) {
+  const mapped = groups.map(({ name, color, colors }) => {
+    const token = {
+      name: name.toLowerCase().replace(/\s/g, '-'),
+      value: color,
+      tokens: [],
+    };
+
+    for (const item of colors) {
+      const child = {
+        name: item.name.toLowerCase().replace(/\s/g, '-'),
+        value: (item.variable || item.color)
+          .toLowerCase()
+          .replace('--', `@${parent}.`)
+          .replace(/-/g, '.'),
+      };
+
+      if (item.darkColor && item.darkColor !== item.color) {
+        child.value = {
+          '@': (item.variable || item.color)
+            .toLowerCase()
+            .replace('--', `@${parent}.`)
+            .replace(/-/g, '.'),
+          '@dark': (item.darkVariable || item.darkColor)
+            .toLowerCase()
+            .replace('--', `@${parent}.`)
+            .replace(/-/g, '.'),
+        } as never;
+      }
+
+      token.tokens.push(child as never);
+    }
+
+    return token;
+  });
+
+  return stringify ? JSON.stringify(mapped, null, 2) : mapped;
 }
 
 function cssVar(group: ColorInputGroup, options: CssVarOptions = {}) {
@@ -260,20 +323,26 @@ function cssVar(group: ColorInputGroup, options: CssVarOptions = {}) {
   let dark = '';
 
   if (color) {
-    light += `  ${ colorName(group) }: ${ color };\r\n`;
+    light += `  ${colorName(group)}: ${color};\r\n`;
   }
 
   for (const child of colors) {
     if (child.variable) {
-      light += `  ${ colorName(group, child) }: ${ cssVarName(child.variable) };\r\n`;
+      light += `  ${colorName(group, child)}: ${cssVarName(child.variable)};\r\n`;
     } else {
-      light += `  ${ colorName(group, child) }: ${ child.color };\r\n`;
+      light += `  ${colorName(group, child)}: ${child.color};\r\n`;
     }
 
-    if ((child.darkVariable && child.darkVariable !== child.variable) || (child.darkVariable && forceDark)) {
-      dark += `    ${ colorName(group, child) }: ${ cssVarName(child.darkVariable) };\r\n`;
-    } else if ((child.darkColor && child.darkColor !== child.color) || (child.darkColor && forceDark)) {
-      dark += `    ${ colorName(group, child) }: ${ child.darkColor };\r\n`;
+    if (
+      (child.darkVariable && child.darkVariable !== child.variable) ||
+      (child.darkVariable && forceDark)
+    ) {
+      dark += `    ${colorName(group, child)}: ${cssVarName(child.darkVariable)};\r\n`;
+    } else if (
+      (child.darkColor && child.darkColor !== child.color) ||
+      (child.darkColor && forceDark)
+    ) {
+      dark += `    ${colorName(group, child)}: ${child.darkColor};\r\n`;
     }
   }
 

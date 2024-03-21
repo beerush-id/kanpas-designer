@@ -1,5 +1,5 @@
 import { redirect } from '@sveltejs/kit';
 
 export function load() {
-  throw redirect(302, '/theme/colors');
+  throw redirect(302, '/theme/typography');
 }

@@ -1,26 +1,11 @@
 {
   "main": [
     {
-      "name": "designer-preview",
-      "title": "Designer",
-      "endpoint": "designer-preview",
-      "visible": true,
-      "icon": "style",
-      "children": []
-    },
-    {
-      "name": "workflow-preview",
-      "title": "Journey",
-      "endpoint": "workflow-preview",
-      "icon": "account_tree",
-      "visible": true,
-      "children": []
-    },
-    {
       "name": "feature",
       "title": "Features",
       "endpoint": "features",
       "icon": "dashboard",
+      "hidden": true,
       "children": []
     },
     {
@@ -28,6 +13,7 @@
       "title": "Components",
       "endpoint": "components",
       "icon": "category",
+      "hidden": true,
       "children": []
     },
     {
@@ -35,6 +21,7 @@
       "title": "Services",
       "endpoint": "services",
       "icon": "electrical_services",
+      "hidden": true,
       "children": []
     },
     {
@@ -42,6 +29,7 @@
       "title": "Models",
       "endpoint": "models",
       "icon": "account_tree",
+      "hidden": true,
       "children": []
     },
     {
@@ -52,14 +40,14 @@
       "children": [
         {
           "name": "color",
-          "title": "Colors",
+          "title": "Color Palette",
           "endpoint": "colors",
           "icon": "palette"
         },
         {
           "name": "font",
           "title": "Typography",
-          "endpoint": "fonts",
+          "endpoint": "typography",
           "icon": "font_download"
         },
         {

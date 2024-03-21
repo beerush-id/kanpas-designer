@@ -5,10 +5,22 @@
   import StylePanel from '@components/StylePanel.svelte';
   import { createOptions, createStyles } from '@utils/panel';
 
+  export let element: HTMLElement;
   export let styles = createStyles();
   export let options = createOptions();
   export let textMode = false;
 </script>
+
+{#if element}
+  <div class="kds-panel"
+       style:padding="var(--kds-space-10) var(--kds-space-16)"
+       style:border-bottom="1px solid var(--kds-toolbar-line)">
+    <div class="kds-panel-title flex-row-center-y">
+      <span class="flex">Active Element:</span>
+      <code>{`<${ element.name }>`}</code>
+    </div>
+  </div>
+{/if}
 
 <Tab name="editor-tab">
   <TabContent of="editor-tab" name="style" label="Style" icon="style">

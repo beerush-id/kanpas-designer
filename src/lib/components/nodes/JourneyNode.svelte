@@ -1,13 +1,13 @@
 <script lang="ts">
   import type { Reactive } from '@beerush/reactor';
   import { reactive } from '@beerush/reactor';
-  import { features } from '@services/feature';
-  import type { VisitStep } from '@services/journey';
-  import { create } from '@services/journey';
-  import { settings } from '@services/settings';
-  import type { WheelMenuItem } from '@utils/menu';
-  import { createCompactActionMenu } from '@utils/menu';
-  import { makePath } from '@utils/string';
+  import { features } from '@services/feature.js';
+  import type { VisitStep } from '@services/journey.js';
+  import { create } from '@services/journey.js';
+  import { settings } from '@services/settings.js';
+  import type { WheelMenuItem } from '@utils/menu.js';
+  import { createCompactActionMenu } from '@utils/menu.js';
+  import { makePath } from '@utils/string.js';
   import { createEventDispatcher, onMount } from 'svelte';
   import Icon from '../common/Icon.svelte';
   import PopUp from '../common/PopUp.svelte';

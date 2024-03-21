@@ -3,9 +3,9 @@
   import Icon from '@components/common/Icon.svelte';
   import PopUp from '@components/common/PopUp.svelte';
   import WheelMenu from '@components/common/WheelMenu.svelte';
-  import { features } from '@services/feature';
-  import type { FeatureAction } from '@services/journey';
-  import { createCompactActionMenu, type WheelMenuItem } from '@utils/menu';
+  import { features } from '@services/feature.js';
+  import type { FeatureAction } from '@services/journey.js';
+  import { createCompactActionMenu, type WheelMenuItem } from '@utils/menu.js';
   import { createEventDispatcher, onMount } from 'svelte';
   import Node from '../Node.svelte';
 

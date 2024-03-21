@@ -1,4 +1,4 @@
-import { persistent } from "@beerush/reactor";
+import { persistent } from '@beerush/reactor';
 
 export type AppSettings = {
   domain: string;

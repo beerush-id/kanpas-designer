@@ -1,6 +1,6 @@
 import { type Reactive, reactive } from '@beerush/reactor';
 import { dash } from '@beerush/utils';
-import type { StyleDeclarations } from './colors';
+import type { StyleDeclarations } from './colors.js';
 
 export type Unit = 'px' | '%' | 'em' | 'rem' | 'vw' | 'vh' | string;
 

@@ -5,11 +5,12 @@
   import {
     type ColorInputGroup,
     createSwatches,
+    createToken,
     randomize,
     states,
     swatches,
     toCssVar,
-    variables
+    variables,
   } from '@utils/colors';
   import ColorList from './colors/ColorList.svelte';
   import ColorVariables from './colors/ColorVariables.svelte';
@@ -86,6 +87,16 @@
     const css = toCssVar([ ...fromList ]);
     copy(css, 'CSS copied to clipboard.');
   };
+  const copyToken = (name: string, items: ColorInputGroup[]) => {
+    name = name.toLowerCase();
+    const tokens = createToken(items, name);
+    copy({
+      name,
+      type: 'color',
+      tags: ['color', 'theme'],
+      tokens
+    }, 'Token copied to clipboard.');
+  }
 </script>
 <div class="full-height flex-row kds-reset">
   <div class="color-variables p-2 kds-scroll-y">
@@ -93,20 +104,28 @@
       <Icon class="mdr-10" size="medium">css</Icon>
       <span class="flex">Variables</span>
       <ThemeSwitch role="toggle" size="medium" class="mdr-16"/>
-      <Icon clickable="true"
+      <Icon clickable
             size="medium"
             tooltip="Add Group"
             xDir="between"
             yDir="above"
             on:click={addGroup}>add
       </Icon>
-      <Icon clickable="true"
+      <Icon clickable
             size="medium"
             tooltip="Copy CSS"
             xDir="between"
             yDir="above"
             class="mdl-16"
             on:click={() => copyCss(variables)}>code
+      </Icon>
+      <Icon clickable
+            size="medium"
+            tooltip="Copy Token"
+            xDir="between"
+            yDir="above"
+            class="mdl-16"
+            on:click={() => copyToken('color', [...$swatches, ...$variables, ...$states])}>data_object
       </Icon>
     </h3>
     {#each $variables as custom}
@@ -121,20 +140,28 @@
       <h3 class="flex-row-center-y mdb-24">
         <Icon class="mdr-10" size="medium">smart_button</Icon>
         <span class="flex">State Colors</span>
-        <Icon clickable="true"
+        <Icon clickable
               size="medium"
               tooltip="Add State"
               xDir="between"
               yDir="above"
               on:click={addState}>add
         </Icon>
-        <Icon clickable="true"
+        <Icon clickable
               size="medium"
               tooltip="Copy CSS"
               xDir="between"
               yDir="above"
               class="mdl-16"
               on:click={() => copyCss(states)}>code
+        </Icon>
+        <Icon clickable
+              size="medium"
+              tooltip="Copy Token"
+              xDir="between"
+              yDir="above"
+              class="mdl-16"
+              on:click={() => copyToken('state', $states)}>data_object
         </Icon>
       </h3>
       {#each $states as group}
@@ -149,20 +176,28 @@
       <h3 class="flex-row-center-y mdb-24">
         <Icon class="mdr-10" size="medium">style</Icon>
         <span class="flex">Color Palettes</span>
-        <Icon clickable="true"
+        <Icon clickable
               size="medium"
               tooltip="Add Palette"
               xDir="between"
               yDir="above"
               on:click={addPalette}>add
         </Icon>
-        <Icon clickable="true"
+        <Icon clickable
               size="medium"
               tooltip="Copy CSS"
               xDir="between"
               yDir="above"
               class="mdl-16"
               on:click={() => copyCss(swatches)}>code
+        </Icon>
+        <Icon clickable
+              size="medium"
+              tooltip="Copy Token"
+              xDir="between"
+              yDir="above"
+              class="mdl-16"
+              on:click={() => copyToken('palette', $swatches)}>data_object
         </Icon>
       </h3>
       {#each $swatches as group}

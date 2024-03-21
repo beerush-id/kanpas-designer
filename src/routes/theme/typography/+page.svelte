@@ -52,6 +52,9 @@
     elements.quote.options = createOptions();
   }
 
+  styles = elements.body.styles;
+  activeElem = elements.body;
+
   const switchElem = (elem) => {
     activeElem = elem;
 
@@ -60,12 +63,13 @@
   };
 
   const switchToBody = () => {
+    activeElem = elements.body;
+
     styles = elements.body.styles;
     options = elements.body.options;
   };
 
   const history = watch(elements);
-  console.log(history);
 
   let styleElement = document.querySelector('#css-variables');
 
@@ -79,7 +83,6 @@
   const createCSS = (
     root = '.kds-root',
     body = '.kds-body',
-    darkClass = '.dark-mode'
   ): string => {
     let elemCSS = '';
 
@@ -90,7 +93,7 @@
         elements.paragraph,
         elements.link,
         elements.quote,
-        elements.separator
+        elements.separator,
       ]) {
       let propCSS = '';
 
@@ -176,23 +179,29 @@
 <Canvas>
   <Mockup styles={elements.body.styles} on:body-focus={switchToBody}>
     {#each elements.headings as elem}
+      <!-- svelte-ignore a11y-no-static-element-interactions -->
       <svelte:element this={elem.name}
                       use:dragmove="{elem.styles}"
                       use:hoverAssist={elem.styles}
                       use:focusAssist
                       on:click={() => switchElem(elem)}
                       on:keypress>{elem.text}</svelte:element>
-      <p use:hoverAssist={elements.paragraph.styles}
-         use:dragmove="{elements.paragraph.styles}"
-         use:focusAssist
-         on:keypress
-         on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
+
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
       <p use:hoverAssist={elements.paragraph.styles}
          use:dragmove="{elements.paragraph.styles}"
          use:focusAssist
          on:keypress
          on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
 
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+      <p use:hoverAssist={elements.paragraph.styles}
+         use:dragmove="{elements.paragraph.styles}"
+         use:focusAssist
+         on:keypress
+         on:click={() => switchElem(elements.paragraph)}>{elements.paragraph.text}</p>
+
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
       <blockquote use:hoverAssist={elements.quote.styles}
                   use:dragmove="{elements.quote.styles}"
                   use:focusAssist
@@ -205,6 +214,7 @@
          on:keypress
          on:click|preventDefault|stopPropagation={() => switchElem(elements.link)}>{elements.link.text}</a>
 
+      <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
       <hr use:hoverAssist={elements.separator.styles}
           use:dragmove="{elements.separator.styles}"
           use:focusAssist
@@ -213,7 +223,7 @@
     {/each}
   </Mockup>
   <div class="editor-panel kds-acrylic-bg" class:expanded={$mockup.fullScreen} slot="canvas-panel-right">
-    <EditorPanel {styles} {options} textMode></EditorPanel>
+    <EditorPanel element={activeElem} {styles} {options} textMode></EditorPanel>
   </div>
 </Canvas>
 

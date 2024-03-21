@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DirectionX, DirectionY } from '@beerush/browser-utils';
+  import type { DirectionX, DirectionY } from '@beerush/utils/client';
   import { linkPopUpPosition, unlinkPopUp } from '@utils/popup';
   import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 

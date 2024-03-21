@@ -1,7 +1,7 @@
 import type { Reactive } from '@beerush/reactor';
 import { reactive } from '@beerush/reactor';
-import type { Component } from './component';
-import type { Element } from './element';
+import type { Component } from './component.js';
+import type { Element } from './element.js';
 
 export type Node = {
   id: string;
@@ -12,7 +12,7 @@ export type Node = {
   description?: string;
   children?: Node[];
   parentId?: string;
-}
+};
 
 export type ElementNode = {
   type: 'element';

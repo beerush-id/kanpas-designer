@@ -1,8 +1,8 @@
 import type { Reactivities } from '@beerush/reactor';
 import { reactive } from '@beerush/reactor';
-import { createStyles } from '@utils/panel';
+import { createStyles } from '@utils/panel.js';
 import { nanoid } from 'nanoid';
-import type { Component, Slot } from './component';
+import type { Component, Slot } from './component.js';
 
 export type ActionTag = 'a' | 'button';
 export type SectionTag = 'header' | 'main' | 'footer' | 'section' | 'nav' | 'aside' | 'details' | 'div';

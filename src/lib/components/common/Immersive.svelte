@@ -11,7 +11,7 @@
 
   const { main }: {
     main: Reactive<Route[]>
-  } = navigation.routerGroups as never;
+  } = navigation.routerGroups;
 
   export let title = '';
   export let statusbar = false;
@@ -31,7 +31,7 @@
       </a>
     </div>
     <div class="kds-immersive-breadcrumb kds-tool-group pdy-6 pdx-12 flex-row-center-y kds-accept-events mdl-12">
-      {#each $navigation.routes.filter(route => route.active) as route}
+      {#each $navigation?.routes.filter(route => route.active) as route}
         <a href={route.path} class="flex-row-center-y">
           <span>{route.title}</span>
         </a>
@@ -55,11 +55,13 @@
        class:collapse={$mockup?.fullScreen}>
     <div class="kds-immersive-menu-list pdy-4">
       {#each $main || [] as route}
-        {#if route.visible}
+        {#if !route.hidden}
           <div class="immersive-menu-item">
             <a href={route.path} class="kds-tool-button immersive-menu-button" class:active={route.active}>
               <Icon>{route.icon}</Icon>
-              {#if !route.children || (route.children && !route.children.length)}
+              {#if !route.children || (
+                route.children && !route.children.length
+              )}
                 <PopUp xDir="after" yDir="between">{route.title}</PopUp>
               {/if}
               {#if route.children && route.children.length && !route.active}
@@ -82,7 +84,9 @@
               {#each route.children as child}
                 <a href={child.path} class="kds-tool-button immersive-menu-button" class:active={child.active}>
                   <Icon>{child.icon}</Icon>
-                  {#if !child.children || (child.children && !child.children.length)}
+                  {#if !child.children || (
+                    child.children && !child.children.length
+                  )}
                     <PopUp xDir="after" yDir="between">{child.title}</PopUp>
                   {/if}
                 </a>
@@ -104,7 +108,7 @@
             on:click={() => mockup.toggleMax()}>
         {$mockup?.fullScreen ? 'close_fullscreen' : 'open_in_full'}
       </Icon>
-      <ThemeSwitch xDir="after" yDir="between" class="header-menu-icon"/>
+      <ThemeSwitch xDir="after" yDir="between" class="header-menu-icon" />
       <!--      <Icon clickable-->
       <!--            xDir="after"-->
       <!--            yDir="between"-->
@@ -121,7 +125,7 @@
   {#if statusbar}
     <div class="kds-immersive-footer kds-acrylic-bg kds-reset" class:expanded={$mockup?.fullScreen}>
       <div class="kds-immersive-breadcrumb flex-row-center-y kds-accept-events">
-        {#each $navigation.routes.filter(route => route.active) as route}
+        {#each $navigation?.routes.filter(route => route.active) as route}
           <a href={route.path} class="flex-row-center-y">
             <span>{route.title}</span>
           </a>
@@ -313,21 +317,21 @@
       color: var(--kds-color-foreground);
 
       &:hover {
-        //color: var(--kds-color-icon-button-active);
+        color: var(--kds-color-icon-button-active);
       }
     }
 
     :global(.immersive-menu-button:hover .kds-icon) {
-      background-image: var(--kds-button-gradient);
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
+      //background-image: var(--kds-button-gradient);
+      //color: transparent;
+      //background-clip: text;
+      //-webkit-background-clip: text;
     }
 
     :global(.immersive-menu-button.active .kds-icon) {
-      //color: var(--kds-color-icon-button-active);
-      background-image: var(--kds-button-gradient);
-      color: transparent;
+      color: var(--kds-color-icon-button-active);
+      //background-image: var(--kds-button-gradient);
+      //color: transparent;
       background-clip: text;
       -webkit-background-clip: text;
     }
@@ -348,7 +352,7 @@
 
       &:not(:last-of-type):after {
         content: "arrow_forward_ios";
-        font-family: "Material Symbols Rounded", sans-serif;
+        font-family: "Material Symbols Outlined", sans-serif;
         margin: 0 6px;
         opacity: 0.5;
         color: var(--kds-color-menu);

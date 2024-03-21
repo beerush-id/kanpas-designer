@@ -6,9 +6,9 @@
   import ImmersiveOption from '@components/common/ImmersiveOption.svelte';
   import Portal from '@components/common/Portal.svelte';
   import JourneyNode from '@components/nodes/JourneyNode.svelte';
-  import { create, type VisitStep } from '@services/journey';
-  import { scaleIn } from '@services/transition';
-  import { randomize } from '@utils/colors';
+  import { create, type VisitStep } from '@services/journey.js';
+  import { scaleIn } from '@services/transition.js';
+  import { randomize } from '@utils/colors.js';
 
   const journeys = resistant<VisitStep[], true>('journeys', [
     { type: 'visit', path: '/', actions: [], color: randomize() }

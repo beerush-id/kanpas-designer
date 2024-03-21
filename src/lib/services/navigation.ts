@@ -6,7 +6,7 @@ import type { AfterNavigate } from '@sveltejs/kit';
 import UrlPattern from 'url-pattern';
 
 type Entries<T> = {
-  [K in keyof T]: [ K, T[K] ];
+  [K in keyof T]: [K, T[K]];
 }[keyof T][];
 
 export type Route = {
@@ -23,15 +23,16 @@ export type Route = {
   pattern?: UrlPattern;
   parent?: string;
   active?: boolean;
-}
+  hidden?: boolean;
+};
 
 export type RouteGroup = {
   [name: string]: Route[];
-}
+};
 
 export type NamedRoutes = {
   [name: string]: Route;
-}
+};
 
 export type NavigationOptions = {
   replaceState?: boolean;
@@ -39,7 +40,7 @@ export type NavigationOptions = {
   keepFocus?: boolean;
   state?: unknown;
   invalidateAll?: boolean;
-}
+};
 
 export class Navigation {
   public navigating?: boolean;
@@ -47,11 +48,11 @@ export class Navigation {
   public mappedRoutes: Reactive<NamedRoutes> = reactive<NamedRoutes>({});
 
   public get routes(): Route[] {
-    return Object.entries(this.mappedRoutes).map(([ , route ]) => route) as Route[];
+    return Object.entries(this.mappedRoutes).map(([, route]) => route) as Route[];
   }
 
   constructor(routes: RouteGroup = {}) {
-    Object.keys(routes).forEach(name => {
+    Object.keys(routes).forEach((name) => {
       this.routerGroups[name] = routes[name];
 
       for (const child of this.routerGroups[name]) {
@@ -63,15 +64,15 @@ export class Navigation {
   private mapRoute(name: string, route: Route): void {
     this.mappedRoutes[name] = route;
 
-    route.path = this.cleanupUrl(`/${ route.path || route.endpoint }`);
+    route.path = this.cleanupUrl(`/${route.path || route.endpoint}`);
     route.pattern = new UrlPattern(route.path);
 
     if (Array.isArray(route.children)) {
       for (const child of route.children) {
-        child.path = this.cleanupUrl(`/${ route.path }/${ child.endpoint }`);
+        child.path = this.cleanupUrl(`/${route.path}/${child.endpoint}`);
         child.parent = name;
 
-        this.mapRoute(`${ name }.${ child.name }`, child);
+        this.mapRoute(`${name}.${child.name}`, child);
       }
     }
   }
@@ -125,7 +126,7 @@ export class Navigation {
   }
 
   public getByUrl(url: URL): Route | void {
-    for (const [ , route ] of Object.entries(this.mappedRoutes) as Entries<NamedRoutes>) {
+    for (const [, route] of Object.entries(this.mappedRoutes) as Entries<NamedRoutes>) {
       if (route.pattern?.match(url.pathname)) {
         return route as Route;
       }

@@ -2,7 +2,7 @@
   import { reactive } from '@beerush/reactor';
   import { toast } from '@services/toast';
   import { copy } from '@utils/clipboard';
-  import { type ColorInput, randomize, replaceSwatches, theme, toCssVar } from '@utils/colors';
+  import { type ColorInput, createToken, randomize, replaceSwatches, theme, toCssVar } from '@utils/colors';
   import { createEventDispatcher, onMount } from 'svelte';
   import Icon from '../common/Icon.svelte';
   import PopUp from '../common/PopUp.svelte';
@@ -23,7 +23,7 @@
     colors.push({
       name: '',
       color: color || randomize('light'),
-      darkColor: color || randomize('dark')
+      darkColor: color || randomize('dark'),
     });
   };
 
@@ -32,12 +32,12 @@
       .ask({
         title: 'Remove Color',
         subtitle: `Are you sure want to remove color: ${ item.name || item.color }?`,
-        icon: 'warning'
+        icon: 'warning',
       })
       .then(() => {
         colors.splice(colors.indexOf(item), 1);
         toast.info({
-          subtitle: 'Color removed'
+          subtitle: 'Color removed',
         });
       })
       .catch(() => null);
@@ -50,6 +50,11 @@
   const copyCss = () => {
     const css = toCssVar([ { name, color, colors } ]);
     copy(css, 'CSS copied to clipboard.');
+  };
+
+  const copyToken = () => {
+    const tokens = createToken([ { name, color, colors } ]);
+    copy(tokens[0], 'Token copied to clipboard.');
   };
 
   const copyColor = (group: ColorInput) => {
@@ -78,7 +83,7 @@
   <div class="kds-color-head flex-row-center-y">
     {#if color}
       <div class="kds-color-view" style="background-color: {color}">
-        <input type="color" bind:value={color} on:input={regenerateColors}/>
+        <input type="color" bind:value={color} on:input={regenerateColors} />
         <PopUp>Change Base Color</PopUp>
       </div>
     {/if}
@@ -94,6 +99,8 @@
       class="mdl-10">add
     </Icon>
     <Icon clickable xDir="between" yDir="above" tooltip="Copy CSS" on:click={copyCss} class="mdl-10">code
+    </Icon>
+    <Icon clickable xDir="between" yDir="above" tooltip="Copy Token" on:click={copyToken} class="mdl-10">data_object
     </Icon>
     <Icon
       clickable
@@ -115,7 +122,7 @@
             bind:value={group.color}
             bind:variable={group.variable}
             on:delete={() => remColor(group)}
-            on:input={() => copyColor(group)}/>
+            on:input={() => copyColor(group)} />
         {:else}
           <ColorPaletteInput
             parent={name}
@@ -123,7 +130,7 @@
             bind:name={group.name}
             bind:value={group.darkColor}
             bind:variable={group.darkVariable}
-            on:delete={() => remColor(group)}/>
+            on:delete={() => remColor(group)} />
         {/if}
       {/each}
     {/if}

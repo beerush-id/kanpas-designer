@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { DirectionX, DirectionY } from '@beerush/browser-utils';
+  import type { DirectionX, DirectionY } from '@beerush/utils/client';
   import PopUp from './PopUp.svelte';
 
   export let size: 'thin' | 'small' | 'medium' | 'large' | 'strong' = 'small';
@@ -58,14 +58,14 @@
     }
 
     &.active {
-      //color: var(--kds-color-icon-button-active);
+      color: var(--kds-color-icon-button-active);
       //background-image: var(--kds-button-gradient);
 
       .kds-icon-symbol {
-        background-image: var(--kds-button-gradient);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
+        //background-image: var(--kds-button-gradient);
+        //background-clip: text;
+        //-webkit-background-clip: text;
+        //color: transparent;
         //filter: drop-shadow(-4px 0 20px var(--kds-color-blue-500)) drop-shadow(4px 0 20px var(--kds-color-red-500));
       }
     }
@@ -77,9 +77,10 @@
   }
 
   .kds-icon-symbol {
-    font-family: 'Material Symbols Rounded', sans-serif;
+    font-family: 'Material Symbols Outlined', sans-serif;
     font-weight: normal;
     font-style: normal;
+    font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 200, "opsz" 40;
     line-height: 1;
     letter-spacing: normal;
     text-transform: none;

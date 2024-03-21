@@ -1,4 +1,4 @@
-import { navigation } from './navigation';
+import { navigation } from './navigation.js';
 
 export const scaleIn = (element: HTMLElement) => {
   if (navigation.navigating) return;

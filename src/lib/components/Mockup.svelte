@@ -41,7 +41,7 @@
             <slot></slot>
           </Viewport>
         {:else}
-          <div class="kds-desktop {$theme.scheme}">
+          <div class="kds-desktop" class:dark={$theme.darkMode} class:light={!$theme.darkMode}>
             <slot></slot>
           </div>
         {/if}
@@ -53,6 +53,7 @@
       <div class="kds-device-control kds-reset"
            class:collapse={$mockup.controlHide}
            class:full-screen={$mockup.fullScreen}>
+        <!-- svelte-ignore a11y-no-static-element-interactions -->
         <div class="kds-device-control-handle kds-acrylic"
              on:click={() => $mockup.controlHide = !$mockup.controlHide} on:keypress>
           <Icon>{$mockup.controlHide ? 'chevron_left' : 'chevron_right'}</Icon>

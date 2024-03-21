@@ -1,11 +1,11 @@
 import { reactive, type Reactivities } from '@beerush/reactor';
 import { nanoid } from 'nanoid';
-import { Element } from './element';
+import { Element } from './element.js';
 
 export type Slot = {
   name: string;
   description?: string;
-}
+};
 
 export type ComponentRole = 'component' | 'layout' | 'page';
 

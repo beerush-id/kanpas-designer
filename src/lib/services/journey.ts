@@ -1,12 +1,12 @@
 import { nanoid } from 'nanoid';
-import type { Component } from './component';
+import type { Component } from './component.js';
 
 export type Common = {
   name?: string;
   expanded?: boolean;
   color?: string;
   description?: string;
-}
+};
 
 export type BaseStep = Common & { actions: Action[] };
 export type Step = VisitStep | MountStep | DestroyStep | ElementStep;

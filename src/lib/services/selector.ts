@@ -1,8 +1,8 @@
 import { type Reactive, reactive } from '@beerush/reactor';
-import type { StyleDeclarations } from '@utils/colors';
-import { capture } from '@utils/draggable';
-import { offsetRect } from '@utils/element';
-import { canvas } from './canvas';
+import type { StyleDeclarations } from '@utils/colors.js';
+import { capture } from '@utils/draggable.js';
+import { offsetRect } from '@utils/element.js';
+import { canvas } from './canvas.js';
 
 export class SelectorAssist {
   public styles?: Reactive<StyleDeclarations>;

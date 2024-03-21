@@ -1,4 +1,4 @@
-import { type DirectionX, type DirectionY, popTo, restore } from '@beerush/browser-utils';
+import { type DirectionX, type DirectionY, popTo, restore } from '@beerush/utils/client';
 
 export function unlinkPopUp(parent: HTMLElement, element: HTMLElement, delay = 200) {
   return restore({ element, parent }, delay);
